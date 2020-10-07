@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "125492212526",
+    "firebase_url": "https://ecobeauty2-2c5ec.firebaseio.com",
+    "project_id": "ecobeauty2-2c5ec",
+    "storage_bucket": "ecobeauty2-2c5ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:125492212526:android:e935b3509e83486bdcc0bf",
+        "android_client_info": {
+          "package_name": "com.example.ecobeauty2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "125492212526-4cmc13eqn8upg937vg94dlia70n9djv9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDU1oxYysS5eQrUhLu-kwVlrUqzYgdITZc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "125492212526-4cmc13eqn8upg937vg94dlia70n9djv9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

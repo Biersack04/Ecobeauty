@@ -1,0 +1,29 @@
+<resources>
+    <string name="appName">Ecobeauty</string>
+    <string name="aboutTitle">О программе</string>
+    <string name="textAboutApp">О приложении</string>
+    <string name="textButtonAboutApp">О приложении...</string>
+    <string name="textProblem">Сообщить о проблеме</string>
+    <string name="textCheck">Проверить состав</string>
+    <string name="textHintCheck">Поиск...</string>
+    <string name="textButtonCheck">Искать</string>
+    <string name="textComposition">Вставьте состав средства через запятую</string>
+    <string name="textCosmetic">Моя косметичка</string>
+    <string name="titleActivityWishList">WishList</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="minimumPassword">Пароль слишком короткий, введите миниму 6 знаков!</string>
+    <string name="authFailed">Авторизация не прошла. Проверьте свой email и пароль. Или зарегестрируйтесь.</string>
+    <string name="textSave">Сохранить</string>
+    <string name="textDelele">Удалить</string>
+    <string name="productName">Введите название</string>
+    <string name="expirationDate">Годен до</string>
+    <string name="forgotPasswordMsg">Введите почту, которую указывали при регистрации. Вам придет письмо с дальнейшими инструкциями</string>
+    <string name="myCare">Мой уход</string>
+    <string name="changeTypeSkins">Изменить тип кожи</string>
+    <string name="checkComposition">Проверить состав</string>
+    <string name="cosmeticMain">Моя косметичка</string>
+    <string name="checkSkinType">Вы можете выбрать тип кожи вручную или проверить его сканером</string>
+    <string name="scan">Сканировать</string>
+
+</resources>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#EAD5D5</color>
+    <color name="colorPrimaryDark">#CAA59F</color>
+    <color name="colorAccent">#FFC5BBC3</color>
+    <color name="textFind">#90A4B7</color>
+    <color name="textFindText">#545E68</color>
+    <color name="background">#C5BBC3</color>
+    <color name="step">#FF0000</color>
+    <color name="text">#FFFFFF</color>
+    <color name="colorButton">#BE7B70</color>
+    <color name="colorTitle">#414B6B</color>
+    <color name="colorTextTitle">#303030</color>
+    <color name="bg_login">#BE7B70</color>
+    <color name="bg_register">#2e3237</color>
+    <color name="bg_main">#EAD5D5</color>
+    <color name="white">#FFFFFF</color>
+    <color name="input_login">#222222</color>
+    <color name="input_login_hint">#999999</color>
+    <color name="input_register">#888888</color>
+    <color name="input_register_bg">#3b4148</color>
+    <color name="input_register_hint">#5e6266</color>
+    <color name="btn_login">#BE7B70</color>
+    <color name="btn_login_bg">#eceef1</color>
+    <color name="lbl_name">#333333</color>
+    <color name="btn_logut_bg">#ff6861</color>
+    <color name="btn_login_background">#DFB5D0</color>
+    <color name="btn_login_forgot">#BE7B70</color>
+    <color name="colorControlActivated">#FFC5BBC3</color>
+    <color name="colorControlHighlight">#FFC5BBC3</color>
+    <color name="colorMainCheck">#92050505</color>
+    <color name="GrayGood">#DADADA</color>
+    <color name="WhiteSmoke">#F5F5F5</color>
+    <color name="Black">#000000</color>
+    <color name="Colorless">#00000000</color>
+    <color name="Check_Background">#A3000000</color>
+    <color name="Cosmetic_Background">#C3FFFFFF</color>
+    <color name="Divider">#dac7d3</color>
+    <color name="State_Pressed_Cosmetics">#DAC7D3</color>
+
+
+    <color name="lightPink">#dcd1d5</color>
+    <color name="beige">#d7a2a8</color>
+    <color name="crimson">#dc6781</color>
+    <color name="darkGrey">#696969</color>
+    <color name="lightGrey">#adadad</color>
+
+</resources>
