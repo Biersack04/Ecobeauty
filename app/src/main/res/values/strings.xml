@@ -25,5 +25,6 @@
     <string name="cosmeticMain">Моя косметичка</string>
     <string name="checkSkinType">Вы можете выбрать тип кожи вручную или проверить его сканером</string>
     <string name="scan">Сканировать</string>
+    <string name ="alreadyRegistered">Уже зарегистрированны? Войдите!</string>
 
 </resources>

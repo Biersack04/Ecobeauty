@@ -1,7 +1,7 @@
 package com.example.ecobeauty;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,6 +12,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -47,11 +50,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        lipstickImageView = (ImageView) findViewById(R.id.lipstick);
-        eyeshadowImageView = (ImageView) findViewById(R.id.eyeshadow);
-        blushImageView = (ImageView) findViewById(R.id.blush);
-        brushImageView = (ImageView) findViewById(R.id.brush);
-        mascaraImageView = (ImageView) findViewById(R.id.mascara);
+        lipstickImageView =  findViewById(R.id.lipstick);
+        eyeshadowImageView =  findViewById(R.id.eyeshadow);
+        blushImageView = findViewById(R.id.blush);
+        brushImageView = findViewById(R.id.brush);
+        mascaraImageView =  findViewById(R.id.mascara);
 
         Animation motionUpLipstickAnimation = AnimationUtils.loadAnimation(this, R.anim.motion_up_lipstick);
         Animation motionUpEyeshadowAnimation = AnimationUtils.loadAnimation(this, R.anim.motion_up_eyeshadow);
@@ -68,12 +71,16 @@ public class LoginActivity extends AppCompatActivity {
         inputEmail = (TextInputEditText) findViewById(R.id.email);
         inputPassword = (TextInputEditText) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        btnSignup = (Button) findViewById(R.id.btn_signup);
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
+        btnSignup = (Button) findViewById(R.id.btn_signup);
+        btnLogin.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMedium.ttf"));
+        btnReset.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMediumItalic.ttf"));
+        btnSignup.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMedium.ttf"));
+        inputEmail.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoRegular.ttf"));
 
 
-        auth = FirebaseAuth.getInstance();
+                auth = FirebaseAuth.getInstance();
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
 

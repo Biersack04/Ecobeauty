@@ -5,17 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:theme="@style/Theme.AppCompat"
     tools:context=".SignUpActivity"
-    android:background="@color/lightPink">
+    android:background="@color/lightPink"
+    android:backgroundTint="@color/lightPink">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-
-        android:background="@color/white"
+        android:background="@drawable/edge_fillet_layout"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin"
@@ -32,7 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:textColorHint="@color/btn_login_forgot">>
+            android:textColorHighlight="#EAD5D5"
+            android:textColorHint="@color/beige">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
@@ -41,15 +41,16 @@
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:background="@color/Colorless"
-                android:textColor="@color/btn_login_forgot"
-                android:textColorHighlight="#E8CBCB" />
+                android:textColor="@color/beige"
+                android:textColorHighlight="#E8CBCB"
+                android:textColorHint="@color/beige"
+                android:background="@color/Colorless" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
-                android:textColorHint="@color/btn_login_forgot">
+                android:textColorHint="@color/beige">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/password"
@@ -60,9 +61,9 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:background="@color/Colorless"
                     android:singleLine="true"
-                    android:textColor="@color/btn_login_forgot"
+                    android:textColor="@color/beige"
+                    android:background="@color/Colorless"
                     tools:ignore="InvalidImeActionId" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -80,7 +81,7 @@
             android:textColor="@android:color/white"
             android:textStyle="bold" />
 
-        <!-- Link to Login Screen -->
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/sign_in_button"
@@ -88,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
             android:backgroundTint="@color/Colorless"
-            android:text="Уже зарегестрированны? Войдите!"
+            android:text="@string/alreadyRegistered"
             android:textAllCaps="false"
             android:textColor="@color/darkGrey"
             style="@style/Widget.AppCompat.Button.Borderless"
@@ -97,11 +98,14 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="30dp"
+        android:visibility="gone"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_gravity="center|bottom"
-        android:layout_marginBottom="20dp"
-        android:visibility="gone"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginLeft="30dip"
+        android:indeterminateDrawable="@drawable/spinner_ring"
+        android:indeterminateOnly="true"
+        tools:ignore="MissingConstraints"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

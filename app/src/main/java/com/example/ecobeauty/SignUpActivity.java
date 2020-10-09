@@ -1,6 +1,7 @@
 package com.example.ecobeauty;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -8,7 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import android.content.Intent;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,13 +33,14 @@ public class SignUpActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        btnSignIn = (Button) findViewById(R.id.sign_in_button);
-        btnSignUp = (Button) findViewById(R.id.sign_up_button);
+        btnSignIn =  findViewById(R.id.sign_in_button);
+        btnSignUp = findViewById(R.id.sign_up_button);
         inputEmail = (TextInputEditText) findViewById(R.id.email);
         inputPassword = (TextInputEditText) findViewById(R.id.password);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-
-
+        progressBar = findViewById(R.id.progressBar);
+        btnSignUp.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMedium.ttf"));
+        btnSignIn.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMedium.ttf"));
+        inputEmail.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoRegular.ttf"));
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
