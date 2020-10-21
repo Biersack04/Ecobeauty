@@ -13,15 +13,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivityLog" ;
-// ЭТО АМИНА ГЫГЫГГЫГЫГЫГЫГЫГЫГ
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //перенесу сюда
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final TextView firstEditText = (TextView)findViewById(R.id.textView1);
