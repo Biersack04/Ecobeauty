@@ -25,13 +25,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        Log.i("MainActivityLog", "Пользователь хочет выйти из программы " );
+        Log.i("MainActivityLog", "Пользователь хочет выйти из программы" );
         FragmentManager fm = getSupportFragmentManager();
         if (fm.getBackStackEntryCount() > 1) {
             fm.popBackStackImmediate();
         } else {
             new AlertDialog.Builder(this)
-                    .setMessage("Вы действительно хотите покинуть программу? ")
+                    .setMessage("Вы действительно хотите покинуть программу?")
                     .setCancelable(false)
                     .setPositiveButton("Да",
                             new DialogInterface.OnClickListener() {
