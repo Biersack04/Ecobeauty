@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 // ЭТО АМИНА ГЫГЫГГЫГЫГЫГЫГЫГЫГ
 
 
-    //ЭТО ВСЕ ЕЩЕ АМИНА ПОПЫТКА НОМЕР 2
+    //ЭТО ВСЕ ЕЩЕ АМИНА ПОПЫТКА НОМЕР 222222222
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
