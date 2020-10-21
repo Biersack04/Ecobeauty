@@ -19,15 +19,15 @@ public class AboutAppActivity extends Activity {
 
     public void onBackOnClick(View view)
     {
-        Log.i("AboutAppActivityLog", "Переход на главную активность" );
+        Log.i(getString(R.string.AboutAppLog), getString(R.string.onBackMainActivity) );
         Intent intent = new Intent(AboutAppActivity.this, MainActivity.class);
         startActivity(intent);
     }
 
     public void onProblemClick(View view)
     {
-        Log.i("AboutAppActivityLog", "Сообщить о проблеме" );
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://forms.gle/YhrRqS5aWM18Q5DD9"));
+        Log.i(getString(R.string.AboutAppLog), getString(R.string.problems) );
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.linkForms)));
         startActivity(browserIntent);
     }
 
