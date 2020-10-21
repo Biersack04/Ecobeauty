@@ -13,6 +13,16 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivityLog" ;
+
+
+
+
+
+
+
+
+
+
 //на скрине  тут был комментарий Вики, но его тут нет, что происходит.ааааа
     @Override
     protected void onCreate(Bundle savedInstanceState) {
