@@ -13,11 +13,13 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivityLog" ;
+// ЭТО АМИНА ГЫГЫГГЫГЫГЫГЫГЫГЫГ
 
 
 //ты меня видишь?
 
 
+//моя попытка номмер 55
 
 
 
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 //на скрине  тут был комментарий Вики, но его тут нет, что происходит.аааааа
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //перенесу сюда
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final TextView firstEditText = (TextView)findViewById(R.id.textView1);
