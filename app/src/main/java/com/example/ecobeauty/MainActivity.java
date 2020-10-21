@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivityLog" ;
-    //Проверка смерживания с мастером ветки Vika2 Snova
+    //Проверка смерживания с мастером ветки Vika2 Snova POISK AMINAAAAAAAAAA
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
