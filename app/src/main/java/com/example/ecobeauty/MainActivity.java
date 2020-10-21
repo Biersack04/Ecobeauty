@@ -16,9 +16,12 @@ public class MainActivity extends AppCompatActivity {
 // ЭТО АМИНА ГЫГЫГГЫГЫГЫГЫГЫГЫГ
 
 
-    //ЭТО ВСЕ ЕЩЕ АМИНА ПОПЫТКА НОМЕР 222222222
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //перенесу сюда
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final TextView firstEditText = (TextView)findViewById(R.id.textView1);
