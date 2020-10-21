@@ -14,6 +14,9 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivityLog" ;
 // ЭТО АМИНА ГЫГЫГГЫГЫГЫГЫГЫГЫГ
+
+
+    //ЭТО ВСЕ ЕЩЕ АМИНА ПОПЫТКА НОМЕР 2
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
