@@ -71,6 +71,7 @@ public class CheckCompositionActivity extends Activity {
                 HashMap<String, Object> client;
 
                 String product = editText.getText().toString();
+                product = product.toUpperCase();
                 String[] words = product.split(",\\s");
 
                 for (String a : words) {
