@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onCheckClick(View view)
     {
-        Log.i("MainActivityLog", "Переход на активность 'Проверить Состав'" );
+        Log.i("MainActivityLog", "Переход на активность 'Проверить Состав' " );
         Intent intent = new Intent(MainActivity.this, CheckCompositionActivity.class);
         startActivity(intent);
     }
