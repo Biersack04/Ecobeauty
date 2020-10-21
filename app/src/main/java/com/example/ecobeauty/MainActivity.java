@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivityLog" ;
 
 
-
+//ты меня видишь?
 
 
 
