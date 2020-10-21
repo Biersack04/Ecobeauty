@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//на скрине  тут был комментарий Вики, но его тут нет, что происходит.ааааа
+//на скрине  тут был комментарий Вики, но его тут нет, что происходит.аааааа
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
