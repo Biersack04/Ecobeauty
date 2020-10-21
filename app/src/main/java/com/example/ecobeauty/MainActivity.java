@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+//что за пранки. все комменты удалились
 
 
 
