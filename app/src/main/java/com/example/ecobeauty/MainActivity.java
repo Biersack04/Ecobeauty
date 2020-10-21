@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        Log.i("MainActivityLog", "Пользователь хочет выйти из программы" );
+        Log.i("MainActivityLog", "Пользователь хочет выйти из программы " );
         FragmentManager fm = getSupportFragmentManager();
         if (fm.getBackStackEntryCount() > 1) {
             fm.popBackStackImmediate();
@@ -46,14 +46,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void onMyDeparture(View view)
     {
-        Log.i("MainActivityLog", "Переход на активность 'Мой Уход'" );
+        Log.i("MainActivityLog", "Переход на активность 'Мой Уход' " );
         Intent intent = new Intent(MainActivity.this, MyDepartureActivity.class);
         startActivity(intent);
     }
 
     public void onCosmeticsClick(View view)
     {
-        Log.i("MainActivityLog", "Переход на активность 'Моя косметичка'" );
+        Log.i("MainActivityLog", "Переход на активность 'Моя косметичка' " );
         Intent intent = new Intent(MainActivity.this, MyCosmeticsActivity.class);
         startActivity(intent);
     }
