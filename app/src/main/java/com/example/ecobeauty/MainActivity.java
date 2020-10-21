@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             fm.popBackStackImmediate();
         } else {
             new AlertDialog.Builder(this)
-                    .setMessage("Вы действительно хотите покинуть программу?")
+                    .setMessage("Вы действительно хотите покинуть программу? ")
                     .setCancelable(false)
                     .setPositiveButton("Да",
                             new DialogInterface.OnClickListener() {
