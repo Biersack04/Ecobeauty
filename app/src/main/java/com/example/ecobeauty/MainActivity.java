@@ -14,9 +14,6 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivityLog" ;
 
-
-    //Проверка смерживания с мастером ветки Vika2 Snovagt POISK AMINAAAAAAAAAA FFFFFUCCCCKKKK
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             fm.popBackStackImmediate();
         } else {
             new AlertDialog.Builder(this)
-                    .setMessage("Вы действительно хотите покинуть программу?")
+                    .setMessage("Вы действительно хотите покинуть программу? ")
                     .setCancelable(false)
                     .setPositiveButton("Да",
                             new DialogInterface.OnClickListener() {
@@ -49,21 +46,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void onMyDeparture(View view)
     {
-        Log.i("MainActivityLog", "Переход на активность 'Мой Уход' " );
+        Log.i("MainActivityLog", "Переход на активность 'Мой Уход'" );
         Intent intent = new Intent(MainActivity.this, MyDepartureActivity.class);
         startActivity(intent);
     }
 
     public void onCosmeticsClick(View view)
     {
-        Log.i("MainActivityLog", "Переход на активность 'Моя косметичка' " );
+        Log.i("MainActivityLog", "Переход на активность 'Моя косметичка'" );
         Intent intent = new Intent(MainActivity.this, MyCosmeticsActivity.class);
         startActivity(intent);
     }
 
     public void onCheckClick(View view)
     {
-        Log.i("MainActivityLog", "Переход на активность 'Проверить Состав' " );
+        Log.i("MainActivityLog", "Переход на активность 'Проверить Состав'" );
         Intent intent = new Intent(MainActivity.this, CheckCompositionActivity.class);
         startActivity(intent);
     }
