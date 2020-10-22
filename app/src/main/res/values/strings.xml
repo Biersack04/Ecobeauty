@@ -29,7 +29,6 @@
     <string name="onBackMainActivity">Переход на главную активность</string>
     <string name="AboutAppLog">AboutAppActivityLog</string>
     <string name="problems">Сообщить о проблеме</string>
-    <string name="AboutAppLog">AboutAppActivityLog</string>
     <string name="linkForms">https://forms.gle/YhrRqS5aWM18Q5DD9</string>
 
 </resources>
