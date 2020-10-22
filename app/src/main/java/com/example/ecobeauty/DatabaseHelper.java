@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static String DB_NAME = "comp1.db";
+    private static String DB_NAME = "comp11.db";
     private static String DB_PATH = "C:\\Users\\Aisov\\AndroidStudioProjects\\Project\\app\\src\\main\\assets";
     private static final int DB_VERSION = 1;
 
