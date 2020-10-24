@@ -1,4 +1,4 @@
-package com.example.ecobeauty;
+package com.example.ecobeauty.mydeparture;
 
 import android.content.Context;
 import android.util.Log;

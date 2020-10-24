@@ -1,4 +1,4 @@
-package com.example.ecobeauty;
+package com.example.ecobeauty.authorization;
 
 import android.content.Context;
 
@@ -17,7 +17,7 @@ public class ScrollingFABAnimation extends
 		super(context, attrs);
 	}
 
-	//For SnackBar to push up the Floating Button when it pops up
+
 	@Override
 	public boolean layoutDependsOn(CoordinatorLayout parent, FloatingActionButton child, View dependency) {
 		return dependency instanceof Snackbar.SnackbarLayout;

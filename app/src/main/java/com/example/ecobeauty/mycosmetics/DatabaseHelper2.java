@@ -1,15 +1,14 @@
-package com.example.ecobeauty;
+package com.example.ecobeauty.mycosmetics;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper2 extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "userpr.db"; // название бд
-    private static final int SCHEMA = 1; // версия базы данных
-    static final String TABLE = "users"; // название таблицы в бд
-    static final String TABLE_W = "wish_product"; // название таблицы в бд
-    // названия столбцов
+    private static final String DATABASE_NAME = "userpr.db";
+    private static final int SCHEMA = 1;
+    static final String TABLE = "users";
+    static final String TABLE_W = "wish_product";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_CATEGORY = "category";

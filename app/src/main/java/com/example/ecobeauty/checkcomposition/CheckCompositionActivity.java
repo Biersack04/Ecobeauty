@@ -1,4 +1,4 @@
-package com.example.ecobeauty;
+package com.example.ecobeauty.checkcomposition;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+
+import com.example.ecobeauty.MainActivity;
+import com.example.ecobeauty.R;
 
 import java.io.IOException;
 import java.util.ArrayList;

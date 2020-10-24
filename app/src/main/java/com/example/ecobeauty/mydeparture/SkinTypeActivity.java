@@ -1,4 +1,4 @@
-package com.example.ecobeauty;
+package com.example.ecobeauty.mydeparture;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import com.example.ecobeauty.R;
 
 public class SkinTypeActivity extends Activity {
 

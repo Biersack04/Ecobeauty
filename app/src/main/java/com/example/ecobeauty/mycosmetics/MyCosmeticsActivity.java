@@ -1,7 +1,6 @@
-package com.example.ecobeauty;
+package com.example.ecobeauty.mycosmetics;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,7 +14,8 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.example.ecobeauty.MainActivity;
+import com.example.ecobeauty.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -25,9 +25,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import static com.example.ecobeauty.DatabaseHelper2.COLUMN_DATE;
-import static com.example.ecobeauty.DatabaseHelper2.COLUMN_ID;
-import static com.example.ecobeauty.DatabaseHelper2.COLUMN_NAME;
+import static com.example.ecobeauty.mycosmetics.DatabaseHelper2.COLUMN_DATE;
+import static com.example.ecobeauty.mycosmetics.DatabaseHelper2.COLUMN_ID;
+import static com.example.ecobeauty.mycosmetics.DatabaseHelper2.COLUMN_NAME;
 
 public class MyCosmeticsActivity extends AppCompatActivity {
 

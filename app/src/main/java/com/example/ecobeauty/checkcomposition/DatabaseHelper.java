@@ -1,4 +1,4 @@
-package com.example.ecobeauty;
+package com.example.ecobeauty.checkcomposition;
 
 import android.content.Context;
 import android.database.SQLException;
