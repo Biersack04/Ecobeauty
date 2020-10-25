@@ -66,6 +66,13 @@
         app:srcCompat="@drawable/plus2"
         tools:ignore="MissingConstraints" />
 
+
+    ​
+
+
+    ​
+
+
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/imageButton2"
         android:layout_width="130dp"
@@ -80,38 +87,59 @@
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:layout_marginStart="50dp"
+        android:id="@+id/textAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="@string/textCosmetic"
-        android:textColor="@color/colorTitle"
+        android:text="@string/cosmeticMain"
+        android:textColor="@color/darkGrey"
         android:textSize="@dimen/dim_title"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022"
+        android:layout_marginStart="20dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/left_back"
+        android:onClick="goHome"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/button"
-        android:layout_width="30dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:background="@drawable/arrow_icon"
-        android:onClick="goHome"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView6"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.035"
-        tools:ignore="MissingConstraints" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:backgroundTint="@color/lightPink"
+            app:fabAlignmentMode="center"
+            app:navigationIcon="@drawable/baseline_menu_white_24" />
 
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add_icon2"
+            app:backgroundTint="@color/beige"
+            app:layout_anchor="@id/bottom_app_bar" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
