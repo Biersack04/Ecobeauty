@@ -89,7 +89,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="@string/email"
             android:textColorHighlight="#EAD5D5"
             android:textColorHint="@color/beige">
 
@@ -107,7 +107,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/password"
             android:textColorHint="@color/beige">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -125,7 +125,7 @@
             android:id="@+id/btn_login"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Войти"
+            android:text="@string/toComeIn"
             android:textColor="@color/white"
             app:backgroundTint="@color/beige" />
 
@@ -134,7 +134,7 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Забыли пароль?"
+            android:text="@string/forgetPassword"
             android:textAllCaps="false"
             android:textColor="@color/darkGrey"
             app:backgroundTint="@color/Colorless" />
@@ -147,10 +147,10 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="Регистрация"
+            android:text="@string/registration"
             android:textAllCaps="false"
             android:textColor="@color/darkGrey"
-            android:textSize="15dp"
+            android:textSize="@dimen/textSize"
             app:backgroundTint="@color/Colorless" />
     </LinearLayout>
 

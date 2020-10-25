@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorButton"
         android:onClick="onBackSkin"
-        android:text="Вернуться назад"
+        android:text="@string/backUp"
         android:textColor="@color/text"
         android:textSize="@dimen/dim_button"
         app:layout_constraintBottom_toBottomOf="parent"

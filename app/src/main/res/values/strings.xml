@@ -14,8 +14,6 @@
     <string name="previous">Previous</string>
     <string name="minimumPassword">Пароль слишком короткий, введите миниму 6 знаков!</string>
     <string name="authFailed">Авторизация не прошла. Проверьте свой email и пароль. Или зарегестрируйтесь.</string>
-    <string name="textSave">Сохранить</string>
-    <string name="textDelele">Удалить</string>
     <string name="productName">Введите название</string>
     <string name="expirationDate">Годен до</string>
     <string name="forgotPasswordMsg">Введите почту, которую указывали при регистрации. Вам придет письмо с дальнейшими инструкциями</string>
@@ -33,5 +31,36 @@
     <string name="aboutAppThanks">Спасибо, что воспользовались нашим приложением!</string>
     <string name="aboutApp">О приложении...</string>
     <string name="aboutAppMsg">Приложение еще находится в разработке и если вы нашли какую то ошибку - просим сообщить нам</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="toComeIn">Войти</string>
+    <string name="forgetPassword">Забыли пароль?</string>
+    <string name="registration">Регистрация</string>
+    <string name="morning">Утро</string>
+    <string name="evening">Вечер</string>
+    <string name="dayDeparture">Дней ухода:</string>
+    <string name="youSkinType">Ваш тип кожи:</string>
+    <string name="changePassword">Сменить пароль</string>
+    <string name="back">Назад</string>
+    <string name="normal">Нормальная</string>
+    <string name="fat">Жирная</string>
+    <string name="dry">Сухая</string>
+    <string name="combined">Комбинированная</string>
+    <string name="save">Сохранить</string>
+    <string name="delete">Удалить</string>
+    <string name="inCosmetics">В косметичку</string>
+    <string name="inputName">Введите название</string>
+    <string name="add">Добавить</string>
+    <string name="remove">Удалить</string>
+    <string name="textName">Название</string>
+    <string name="textDescription">Описание</string>
+    <string name="textDangerous">Опасность</string>
+    <string name="textStage">Степень</string>
+    <string name="SA">SA</string>
+    <string name="imageFavorite">imageFavorite</string>
+    <string name="Abash">Abash</string>
+    <string name="Verb">Verb</string>
+    <string name="backUp">Вернуться назад</string>
+
 
 </resources>

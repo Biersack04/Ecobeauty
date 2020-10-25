@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:onClick="add"
             android:src="@drawable/addd"
-            fab:fab_label="Добавить "
+            fab:fab_label="@string/add"
             fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:onClick="remove"
             android:src="@drawable/del"
-            fab:fab_label="Удалить"
+            fab:fab_label="@string/remove"
             fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:onClick="move"
             android:src="@drawable/move"
-            fab:fab_label="В косметичку"
+            fab:fab_label="@string/inCosmetics"
             fab:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>
@@ -142,7 +142,7 @@
         android:layout_height="55dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:hint="Введите название"
+        android:hint="@string/inputName"
         fab:layout_constraintBottom_toBottomOf="parent"
         fab:layout_constraintEnd_toEndOf="parent"
         fab:layout_constraintStart_toStartOf="parent"

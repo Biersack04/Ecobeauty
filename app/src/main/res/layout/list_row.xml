@@ -26,7 +26,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/circular_bg"
-            android:text="SA"
+            android:text="@string/SA"
             android:gravity="center"
             android:textAllCaps="true"
             android:textColor="@color/WhiteSmoke"
@@ -45,7 +45,7 @@
             android:layout_toRightOf="@+id/txtView_iconEntry"
             android:layout_toStartOf="@+id/imgButton_Favourite"
             android:gravity="center_vertical"
-            android:text="Abash"
+            android:text="@string/Abash"
             android:textColor="@color/Black"
             android:textStyle="bold" />
 
@@ -59,7 +59,7 @@
             android:layout_below="@id/txtView_Word"
             android:layout_toLeftOf="@+id/imgButton_Favourite"
             android:layout_toStartOf="@+id/imgButton_Favourite"
-            android:text="Verb" />
+            android:text="@string/Verb" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/imgButton_Favourite"
@@ -69,7 +69,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:background="@drawable/ic_favourite"
-            android:contentDescription="imageFavorite" />
+            android:contentDescription="@string/imageFavorite" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

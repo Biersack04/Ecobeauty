@@ -15,16 +15,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:hint="@string/productName"
+        android:inputType="textCapWords"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.906"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042"
-        android:inputType="textCapWords"/>
+        app:layout_constraintVertical_bias="0.042" />
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/category"
@@ -72,7 +72,7 @@
             android:layout_marginRight="10dp"
             android:backgroundTint="@color/colorButton"
             android:onClick="save"
-            android:text="Сохранить"
+            android:text="@string/save"
             android:textColor="@color/text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +89,7 @@
 
             android:backgroundTint="@color/colorButton"
             android:onClick="delete"
-            android:text="Удалить"
+            android:text="@string/delete"
             android:textColor="@color/text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
