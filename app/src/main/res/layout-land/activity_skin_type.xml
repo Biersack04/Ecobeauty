@@ -44,7 +44,7 @@
             android:id="@+id/radioButtonOne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Нормальная"
+            android:text="@string/normal"
             android:textColor="@color/colorTitle"
             android:textSize="20sp" />
 
@@ -52,7 +52,7 @@
             android:id="@+id/radioButtonTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Жирная"
+            android:text="@string/fat"
             android:textColor="@color/colorTitle"
             android:textSize="20sp" />
 
@@ -60,7 +60,7 @@
             android:id="@+id/radioButtonThird"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Сухая"
+            android:text="@string/dry"
             android:textColor="@color/colorTitle"
             android:textSize="20sp" />
 
@@ -68,7 +68,7 @@
             android:id="@+id/radioButtonFour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Комбинированная"
+            android:text="@string/combined"
             android:textColor="@color/colorTitle"
             android:textSize="20sp" />
     </RadioGroup>
