@@ -1,9 +1,13 @@
 package com.example.ecobeauty.mycosmetics;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.Gravity;
@@ -64,15 +68,50 @@ public class MyCosmeticsActivity extends AppCompatActivity {
     String DatenewFormat;
     int IDIndex;
     Long idcheck;
-
+    TextView myCosmetics;
+    List<UserCosmetics> usercosm = new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_cosmetics);
+        setContentView(R.layout.mycosm);
+        setInitialData();
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
+// создаем адаптер
+        DataAdapterCosmetics adapter = new DataAdapterCosmetics(this, usercosm );
+// устанавливаем для списка адаптер
+        recyclerView.setAdapter(adapter);
+    }
 
+    private void setInitialData(){
+
+
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+
+
+    }
+/*
         userList = (ListView)findViewById(R.id.list);
+        myCosmetics = (TextView) findViewById(R.id.textAbout);
+        myCosmetics.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMedium.ttf"));
+
 
         userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -219,5 +258,6 @@ public class MyCosmeticsActivity extends AppCompatActivity {
         super.onDestroy();
         db.close();
 
-    }
+    }*/
+
 }
