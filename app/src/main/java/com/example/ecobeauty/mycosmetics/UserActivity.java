@@ -1,4 +1,4 @@
-package com.example.ecobeauty;
+package com.example.ecobeauty.mycosmetics;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -17,6 +17,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.ecobeauty.R;
+import com.example.ecobeauty.mycosmetics.DatabaseHelper2;
+import com.example.ecobeauty.mycosmetics.MyCosmeticsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;

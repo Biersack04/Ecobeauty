@@ -1,10 +1,13 @@
-package com.example.ecobeauty;
+package com.example.ecobeauty.mycosmetics;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.Gravity;
@@ -15,7 +18,8 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.example.ecobeauty.MainActivity;
+import com.example.ecobeauty.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -25,9 +29,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import static com.example.ecobeauty.DatabaseHelper2.COLUMN_DATE;
-import static com.example.ecobeauty.DatabaseHelper2.COLUMN_ID;
-import static com.example.ecobeauty.DatabaseHelper2.COLUMN_NAME;
+import static com.example.ecobeauty.mycosmetics.DatabaseHelper2.COLUMN_DATE;
+import static com.example.ecobeauty.mycosmetics.DatabaseHelper2.COLUMN_ID;
+import static com.example.ecobeauty.mycosmetics.DatabaseHelper2.COLUMN_NAME;
 
 public class MyCosmeticsActivity extends AppCompatActivity {
 
@@ -64,15 +68,50 @@ public class MyCosmeticsActivity extends AppCompatActivity {
     String DatenewFormat;
     int IDIndex;
     Long idcheck;
-
+    TextView myCosmetics;
+    List<UserCosmetics> usercosm = new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_cosmetics);
+        setContentView(R.layout.mycosm);
+        setInitialData();
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
+// создаем адаптер
+        DataAdapterCosmetics adapter = new DataAdapterCosmetics(this, usercosm );
+// устанавливаем для списка адаптер
+        recyclerView.setAdapter(adapter);
+    }
 
+    private void setInitialData(){
+
+
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+        usercosm.add(new UserCosmetics ("Huawei P10", 11315315));
+
+
+    }
+/*
         userList = (ListView)findViewById(R.id.list);
+        myCosmetics = (TextView) findViewById(R.id.textAbout);
+        myCosmetics.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMedium.ttf"));
+
 
         userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -219,5 +258,6 @@ public class MyCosmeticsActivity extends AppCompatActivity {
         super.onDestroy();
         db.close();
 
-    }
+    }*/
+
 }

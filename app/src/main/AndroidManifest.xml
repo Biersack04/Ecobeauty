@@ -10,13 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name="com.example.ecobeauty.ResetPasswordActivity"></activity>
+        <activity android:name="com.example.ecobeauty.authorization.ResetPasswordActivity"></activity>
 
-        <activity android:name="com.example.ecobeauty.SignUpActivity" />
-        <activity android:name="com.example.ecobeauty.WishList" />
+        <activity android:name="com.example.ecobeauty.authorization.SignUpActivity" />
+        <activity android:name="com.example.ecobeauty.mycosmetics.WishList" />
         <activity android:name="com.example.ecobeauty.MainActivity"/>
-        <activity android:name="com.example.ecobeauty.MyCosmeticsActivity" />
-        <activity android:name="com.example.ecobeauty.LoginActivity" >
+        <activity android:name="com.example.ecobeauty.mycosmetics.MyCosmeticsActivity" />
+        <activity android:name="com.example.ecobeauty.authorization.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,14 +25,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.ecobeauty.AboutAppActivity"
+            android:name="com.example.ecobeauty.aboutapp.AboutAppActivity"
             android:label="@string/aboutTitle" />
-        <activity android:name="com.example.ecobeauty.CheckCompositionActivity" />
-        <activity android:name="com.example.ecobeauty.UserActivity" />
-        <activity android:name="com.example.ecobeauty.MyDepartureActivity" />
-        <activity android:name="com.example.ecobeauty.SkinTypeActivity" />
-        <activity android:name="com.example.ecobeauty.Types"/>
-        <activity android:name=".WordActivity" />
+        <activity android:name="com.example.ecobeauty.checkcomposition.CheckCompositionActivity" />
+        <activity android:name="com.example.ecobeauty.mycosmetics.UserActivity" />
+        <activity android:name="com.example.ecobeauty.mydeparture.MyDepartureActivity" />
+        <activity android:name="com.example.ecobeauty.mydeparture.SkinTypeActivity" />
+        <activity android:name="com.example.ecobeauty.mydeparture.Types"/>
+        <activity android:name=".mycosmetics.WordActivity" />
 
 
     </application>

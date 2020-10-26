@@ -1,4 +1,4 @@
-package com.example.ecobeauty;
+package com.example.ecobeauty.mydeparture;
 
 import android.content.Context;
 import android.database.SQLException;
@@ -64,7 +64,6 @@ public class DatabaseHelper3 extends SQLiteOpenHelper {
 
     private void copyDBFile() throws IOException {
         InputStream mInput = mContext.getAssets().open(DB_NAME);
-        //InputStream mInput = mContext.getResources().openRawResource(R.raw.components);
         OutputStream mOutput = new FileOutputStream(DB_PATH + DB_NAME);
         byte[] mBuffer = new byte[1024];
         int mLength;

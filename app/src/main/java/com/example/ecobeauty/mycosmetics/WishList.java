@@ -1,4 +1,4 @@
-package com.example.ecobeauty;
+package com.example.ecobeauty.mycosmetics;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
-
+import com.example.ecobeauty.R;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -20,7 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import java.util.ArrayList;
-import static com.example.ecobeauty.DatabaseHelper2.*;
+import static com.example.ecobeauty.mycosmetics.DatabaseHelper2.*;
 import static java.lang.String.*;
 
 

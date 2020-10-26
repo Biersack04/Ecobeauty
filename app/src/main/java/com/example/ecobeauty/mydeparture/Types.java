@@ -1,10 +1,13 @@
-package com.example.ecobeauty;
+package com.example.ecobeauty.mydeparture;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.ecobeauty.R;
+import com.example.ecobeauty.mydeparture.MyDepartureActivity;
 
 public class Types extends AppCompatActivity {
     public String typeSkin;

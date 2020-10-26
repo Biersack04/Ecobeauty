@@ -1,10 +1,12 @@
-package com.example.ecobeauty;
+package com.example.ecobeauty.mydeparture;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.ecobeauty.mydeparture.Word;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +38,6 @@ public class DBSQLiteHandler extends SQLiteOpenHelper {
 		db.execSQL(CREATE_TABLE);
 	}
 
-	//update table
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 

@@ -28,6 +28,9 @@
     <string name="AboutAppLog">AboutAppActivityLog</string>
     <string name="problems">Сообщить о проблеме</string>
     <string name="linkForms">https://forms.gle/YhrRqS5aWM18Q5DD9</string>
+    <string name="aboutAppThanks">Спасибо, что воспользовались нашим приложением!</string>
+    <string name="aboutApp">О приложении...</string>
+    <string name="aboutAppMsg">Приложение еще находится в разработке и если вы нашли какую то ошибку - просим сообщить нам</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="toComeIn">Войти</string>
@@ -58,5 +61,6 @@
     <string name="Abash">Abash</string>
     <string name="Verb">Verb</string>
     <string name="backUp">Вернуться назад</string>
+
 
 </resources>

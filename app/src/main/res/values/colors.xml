@@ -3,7 +3,7 @@
 
 <!--
     <color name="colorPrimary">#EAD5D5</color>
-    <color name="colorPrimaryDark">#CAA59F</color>
+    <color name="colorPrimaryDark">#00000000</color>
     <color name="colorAccent">#FFC5BBC3</color>
     <color name="textFind">#90A4B7</color>
     <color name="textFindText">#545E68</color>
@@ -46,7 +46,12 @@
     <color name="crimson">#dc6781</color>
     <color name="darkGrey">#696969</color>
     <color name="lightGrey">#adadad</color>
+<<<<<<< HEAD
     <color name="white">#F4F4F4</color>
     <color name="step">#6E0404</color>
     <color name="Colorless">#00000000</color>
+=======
+    <color name="transparent">@android:color/transparent</color>
+
+>>>>>>> origin/master
 </resources>

@@ -1,18 +1,15 @@
-package com.example.ecobeauty;
+package com.example.ecobeauty.mycosmetics;
 
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-
 import com.example.ecobeauty.R;
 
 public class WordActivity extends AppCompatActivity implements OnClickListener{

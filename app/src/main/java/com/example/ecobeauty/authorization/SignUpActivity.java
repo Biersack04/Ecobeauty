@@ -1,4 +1,4 @@
-package com.example.ecobeauty;
+package com.example.ecobeauty.authorization;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ecobeauty.MainActivity;
+import com.example.ecobeauty.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
