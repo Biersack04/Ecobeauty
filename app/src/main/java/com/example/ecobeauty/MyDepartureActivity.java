@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -41,6 +42,7 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_departure);
         typeSkin = findViewById(R.id.textTypeSkin);
+        typeSkin.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoRegular.ttf"));
         skinType ="";
 
         Bundle arguments = getIntent().getExtras();

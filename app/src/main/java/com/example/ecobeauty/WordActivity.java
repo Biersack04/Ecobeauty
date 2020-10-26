@@ -1,6 +1,7 @@
 package com.example.ecobeauty;
 
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +26,6 @@ public class WordActivity extends AppCompatActivity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_word);
-		
 		sp = getSharedPreferences("spWords", 0);
 		
 		mToolBar = (Toolbar) findViewById(R.id.toolbar);
@@ -35,7 +35,8 @@ public class WordActivity extends AppCompatActivity implements OnClickListener{
 		
 		txtView_Word = (TextView) findViewById(R.id.txtView_Individual_Word);
 		txtView_POS = (TextView) findViewById(R.id.txtView_Individual_POS);
-		
+		txtView_Word.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMedium.ttf"));
+		txtView_POS.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMedium.ttf"));
 		
 	}
 	
