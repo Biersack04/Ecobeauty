@@ -233,7 +233,7 @@ public class MyCosmeticsActivity extends AppCompatActivity {
         return idcheck;
     }
 
-
+*/
     public void add(View view){
 
         Intent intent = new Intent(this, UserActivity.class);
@@ -252,7 +252,7 @@ public class MyCosmeticsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
+/*
     @Override
     public void onDestroy(){
         super.onDestroy();
