@@ -9,14 +9,15 @@
         android:label="@string/appName"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name="com.example.ecobeauty.authorization.ResetPasswordActivity"></activity>
+        android:theme="@style/AppTheme.NoActionBar"
+        android:screenOrientation="portrait">
+        <activity android:name="com.example.ecobeauty.authorization.ResetPasswordActivity"  android:screenOrientation="portrait"></activity>
 
-        <activity android:name="com.example.ecobeauty.authorization.SignUpActivity" />
-        <activity android:name="com.example.ecobeauty.mycosmetics.WishList" />
-        <activity android:name="com.example.ecobeauty.MainActivity"/>
-        <activity android:name="com.example.ecobeauty.mycosmetics.MyCosmeticsActivity" />
-        <activity android:name="com.example.ecobeauty.authorization.LoginActivity" >
+        <activity android:name="com.example.ecobeauty.authorization.SignUpActivity"  android:screenOrientation="portrait" />
+        <activity android:name="com.example.ecobeauty.mycosmetics.WishList"  android:screenOrientation="portrait"/>
+        <activity android:name="com.example.ecobeauty.MainActivity"  android:screenOrientation="portrait"/>
+        <activity android:name="com.example.ecobeauty.mycosmetics.MyCosmeticsActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.example.ecobeauty.authorization.LoginActivity"  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,13 +27,13 @@
         </activity>
         <activity
             android:name="com.example.ecobeauty.aboutapp.AboutAppActivity"
-            android:label="@string/aboutTitle" />
-        <activity android:name="com.example.ecobeauty.checkcomposition.CheckCompositionActivity" />
-        <activity android:name="com.example.ecobeauty.mycosmetics.UserActivity" />
-        <activity android:name="com.example.ecobeauty.mydeparture.MyDepartureActivity" />
-        <activity android:name="com.example.ecobeauty.mydeparture.SkinTypeActivity" />
+            android:label="@string/aboutTitle"  android:screenOrientation="portrait" />
+        <activity android:name="com.example.ecobeauty.checkcomposition.CheckCompositionActivity"  android:screenOrientation="portrait" />
+        <activity android:name="com.example.ecobeauty.mycosmetics.UserActivity"  android:screenOrientation="portrait" />
+        <activity android:name="com.example.ecobeauty.mydeparture.MyDepartureActivity"  android:screenOrientation="portrait"/>
+        <activity android:name="com.example.ecobeauty.mydeparture.SkinTypeActivity"  android:screenOrientation="portrait" />
         <activity android:name="com.example.ecobeauty.mydeparture.Types"/>
-        <activity android:name=".mycosmetics.WordActivity" />
+        <activity android:name=".mycosmetics.WordActivity"  android:screenOrientation="portrait" />
 
 
     </application>

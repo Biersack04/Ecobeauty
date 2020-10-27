@@ -6,36 +6,34 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/item_normal">
+    android:background="@drawable/item_normal"
+    tools:context=".mycosmetics.MyCosmeticsActivity">
 
 
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="110dp"
-        android:layout_marginTop="80dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
         android:divider="@color/Divider"
         android:dividerHeight="10.0sp"
         android:listSelector="@drawable/list_selector"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        app:layout_constraintBottom_toTopOf="@+id/plusButton"
+        app:layout_constraintBottom_toTopOf="@+id/container_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.694"
-        android:layout_marginLeft="20dp">
-    </ListView>
+        app:layout_constraintVertical_bias="0.0"></ListView>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textAbout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="@string/cosmeticMain"
         android:textColor="@color/darkGrey"
@@ -61,6 +59,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/container_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="32dp"
+            android:backgroundTint="@color/beige"
+            android:clickable="true"
+            android:onClick="add"
+            android:src="@drawable/ic_baseline_add_24"
+            app:backgroundTint="@color/bg_login" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
 
