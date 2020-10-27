@@ -19,9 +19,6 @@ public class SharedPreference {
         super();
     }
     
-    // This four methods are used for maintaining favorites.
-    
-    //save to sharedPreference
     public void saveFavorites(Context context, List<Word> favorites) {
         SharedPreferences settings;
         SharedPreferences.Editor editor;
@@ -35,8 +32,7 @@ public class SharedPreference {
         editor.putString(FAVORITES, jsonFavorites);
         editor.commit();
     }
-    
-    //add to sharedPreference
+
     public void addFavorite(Context context, Word word) {
         List<Word> favorites = getFavorites(context);
         if (favorites == null)
@@ -46,8 +42,7 @@ public class SharedPreference {
         saveFavorites(context, favorites);
     }
 
-    //remove from sharedPreference
-    public void removeFavorite(Context context, Word word) {
+     public void removeFavorite(Context context, Word word) {
         ArrayList<Word> favorites = getFavorites(context);
         if (favorites != null) {
             favorites.remove(word);
@@ -55,7 +50,6 @@ public class SharedPreference {
         }
     }
 
-    //get all words from sharedPreference
     public ArrayList<Word> getFavorites(Context context) {
         SharedPreferences settings;
         List<Word> favorites;

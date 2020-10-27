@@ -16,7 +16,7 @@ public class DatabaseHelper3 extends SQLiteOpenHelper {
 
     private static final int DB_VERSION = 1;
 
-    private SQLiteDatabase mDataBase;
+    private SQLiteDatabase mDatabase;
     private final Context mContext;
     private boolean mNeedUpdate = false;
 
@@ -28,7 +28,7 @@ public class DatabaseHelper3 extends SQLiteOpenHelper {
             DB_PATH = "/data/data/" + context.getPackageName() + "/databases/";
         this.mContext = context;
 
-        copyDataBase();
+        copyDatabase();
 
         this.getReadableDatabase();
     }
@@ -39,19 +39,19 @@ public class DatabaseHelper3 extends SQLiteOpenHelper {
             if (dbFile.exists())
                 dbFile.delete();
 
-            copyDataBase();
+            copyDatabase();
 
             mNeedUpdate = false;
         }
     }
 
-    private boolean checkDataBase() {
+    private boolean checkDatabase() {
         File dbFile = new File(DB_PATH + DB_NAME);
         return dbFile.exists();
     }
 
-    private void copyDataBase() {
-        if (!checkDataBase()) {
+    private void copyDatabase() {
+        if (!checkDatabase()) {
             this.getReadableDatabase();
             this.close();
             try {
@@ -74,15 +74,15 @@ public class DatabaseHelper3 extends SQLiteOpenHelper {
         mInput.close();
     }
 
-    public boolean openDataBase() throws SQLException {
-        mDataBase = SQLiteDatabase.openDatabase(DB_PATH + DB_NAME, null, SQLiteDatabase.CREATE_IF_NECESSARY);
-        return mDataBase != null;
+    public boolean openDatabase() throws SQLException {
+        mDatabase = SQLiteDatabase.openDatabase(DB_PATH + DB_NAME, null, SQLiteDatabase.CREATE_IF_NECESSARY);
+        return mDatabase != null;
     }
 
     @Override
     public synchronized void close() {
-        if (mDataBase != null)
-            mDataBase.close();
+        if (mDatabase != null)
+            mDatabase.close();
         super.close();
     }
 

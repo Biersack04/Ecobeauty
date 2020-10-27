@@ -24,11 +24,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 	
 	private List<Word> wordsList;
 	public List<Word> favouriteWords = new ArrayList<Word>();
-	int mPreviousPosition = -1;
 	Context mContext;
 	static ClickListener clickListener;	
 	SharedPreference mSharedPreference;
-	//added extra
 	DBSQLiteHandler dbHandler;
 	public ArrayList<Word> wordsListDB = new ArrayList<Word>();
 	private static final String LOG_TAG = "myLogs" ;
@@ -37,8 +35,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 	public RecyclerAdapter(Context con, List<Word> wordsList){
 		this.wordsList=wordsList;
 		this.mContext=con;
-		//mSharedPreference = new SharedPreference();
-		//added extra
 		this.dbHandler = new DBSQLiteHandler(mContext);
 		this.wordsListDB = (ArrayList<Word>) wordsList;
 	}
@@ -59,8 +55,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 		holder.txtViewWord.setText(wordMapper.getWord());
 		holder.txtViewPOS.setText(wordMapper.getPartOfSpeech());
 
-
-		/*If a product exists in SQLite then set filled star drawable and set a tag*/
 		if(checkFavouriteItem(wordMapper)){
 
 			Drawable starFilled = ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.ic_favourite_filled, null);
@@ -76,25 +70,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 			holder.imgButtonFavourite.setTag("empty");
 			
 		}
-		//Animation on Up and Down scroll
-		
-		/*if(position>mPreviousPosition){
-			AnimationUtils.animate(holder, true);			
-		}else{
-			AnimationUtils.animate(holder, true);
-		}	
-	    mPreviousPosition = position;*/
 	}
 	
 	@Override
 	public int getItemCount() {
-		//Log.i("TAG", "RecyclerAdapterwordsList.size() " + wordsList.size());
 		int a =wordsList.size();
-		//a=a-1;
 		return a;
 
-		//return (null != wordsList ? wordsList.size() : 0);
-	}
+		}
 
 
 
@@ -123,11 +106,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 					
 					String tag = imgButtonFavourite.getTag().toString();
 					if (tag.equalsIgnoreCase("empty") && !starred) {
-						
-						//SharedPreference way
-						//mSharedPreference.addFavorite(mContext,	wordsList.get(getAdapterPosition()));
-						
-						//SQLiteDB way
+
 						dbHandler.addWord(wordsList.get(getAdapterPosition()));
 						
 						imgButtonFavourite.setTag("filled");
@@ -139,31 +118,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 							
 							@Override
 							public void onClick(View view) {
-								//SharedPreference way
-								//mSharedPreference.removeFavorite(mContext, wordsList.get(getAdapterPosition()));
-								
-								//SQLiteDB way
 								dbHandler.removeWord(wordsList.get(getAdapterPosition()));
-								
+
 								Drawable star = ResourcesCompat.getDrawable(view.getResources(), R.drawable.ic_favourite, null);
 								star.setBounds(0,0,24,24);
 								imgButtonFavourite.setBackground(star);
 							}
 						}).show();
 					} else {
-
-						//SharedPreference way
-						//mSharedPreference.removeFavorite(mContext,	wordsList.get(getAdapterPosition()));
-						
-						//SQLiteDB way
 						dbHandler.removeWord(wordsList.get(getAdapterPosition()));
-						
-						//***ДЕДЛИК убрать
-						//wordsList.remove(getAdapterPosition());
-						//notifyItemRemoved(getAdapterPosition());
-						//notifyItemRangeChanged(getAdapterPosition(), wordsList.size());
-						//*******//	
-						
 						imgButtonFavourite.setTag("empty");
 						Drawable starEmpty = ResourcesCompat.getDrawable(view.getResources(), R.drawable.ic_favourite, null);
 						starEmpty.setBounds(0, 0, 24, 24);
@@ -183,36 +146,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 	}
 	
 	
-/*	//added extra
-	public void removeItem(int position){
-		wordsList.remove(position);
-		notifyItemRemoved(position);
-	}
-		
-	//added extra
-	public void addItem(MapperClass mapperObject){
-		wordsList.add(mapperObject);
-		notifyDataSetChanged();
-	}
-*/
-	
-	//Checks whether a particular product exists in SQLiteDB
 	public boolean checkFavouriteItem(Word checkStarredItem){
 		boolean check = false;
-		//shared preference way
-		/*List<Word> favouriteItemsInSharedPreference = mSharedPreference.getFavorites(mContext); 
-		
-		if (favouriteItemsInSharedPreference != null) {
-            for (Word word : favouriteItemsInSharedPreference) {
-                if (word.equals(checkStarredItem)) {
-                    check = true;
-                    break;
-                }
-            }
-        }*/
-        
-		
-		//SQLiteDB way		
+
 		ArrayList<Word> itemsInDB = dbHandler.getWords();
 		
 		if(itemsInDB!=null){

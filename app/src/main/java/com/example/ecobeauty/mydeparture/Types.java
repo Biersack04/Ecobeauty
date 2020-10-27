@@ -7,7 +7,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ecobeauty.R;
-import com.example.ecobeauty.mydeparture.MyDepartureActivity;
 
 public class Types extends AppCompatActivity {
     public String typeSkin;

@@ -20,8 +20,6 @@ public class DBSQLiteHandler extends SQLiteOpenHelper {
 	private static final String KEY_WORD = "word";
 	private static final String KEY_POS = "partofspeech";
 
-	private static final String TAG ="myLogs" ;
-
 	Context context;
 
 	public DBSQLiteHandler(Context context) {
@@ -29,7 +27,6 @@ public class DBSQLiteHandler extends SQLiteOpenHelper {
 		this.context = context;
 	}
 
-	//create table
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		String CREATE_TABLE = "CREATE TABLE " + TABLE_WORD + "("
@@ -44,8 +41,7 @@ public class DBSQLiteHandler extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS "+TABLE_WORD);
 		onCreate(db);
 	}
-	
-	//add word
+
 	public void addWord(Word word){
 		SQLiteDatabase db = this.getWritableDatabase();
 		
@@ -58,30 +54,27 @@ public class DBSQLiteHandler extends SQLiteOpenHelper {
 		db.insert(TABLE_WORD,null,contentValues);
 		db.close();		
 	}
-	
-	//remove word
+
 	public void removeWord(Word word){
 		SQLiteDatabase db = this.getWritableDatabase();
 		
 		db.delete(TABLE_WORD, KEY_WORD + " = ?", new String[]{String.valueOf(word.getWord())});
 		db.close();
 	}
-	
-	//getWord
+
 	public Word getWord(Word word){
 		SQLiteDatabase db = this.getReadableDatabase();
-		
+
 		Cursor cursor = db.query(TABLE_WORD, new String[]{KEY_ID,KEY_WORD,KEY_POS},KEY_ID + " = ?",
 				new String[]{String.valueOf(word.getId())}, null,null,null,null);
-		if(cursor!=null) 
+		if(cursor!=null)
 			cursor.moveToFirst();
-		
+
 		Word wordFound = new Word(cursor.getString(1), cursor.getString(2));
-		
+
 		return wordFound;
 	}
-	
-	//getAllWords
+
 	public ArrayList<Word> getWords(){
 		List<Word> wordsList = new ArrayList<Word>();
 		String query = "SELECT * FROM " + TABLE_WORD;
@@ -93,12 +86,9 @@ public class DBSQLiteHandler extends SQLiteOpenHelper {
 			do{
 				Word word = new Word(cursor.getString(1), cursor.getString(2));
 				wordsList.add(word);
-				//Log.i(TAG, "SQL wordsList - " + wordsList);
 			}while(cursor.moveToNext());
 
 		}
-		//Отмеченные задачи
-		//Log.i(TAG, "SQL wordsList - " + wordsList);
 		return (ArrayList<Word>) wordsList;
 	}
 
