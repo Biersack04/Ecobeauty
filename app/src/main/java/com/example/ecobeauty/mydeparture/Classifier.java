@@ -2,6 +2,8 @@ package com.example.ecobeauty.mydeparture;
 
 import android.graphics.Bitmap;
 
+import com.example.ecobeauty.main.Constants;
+
 import org.pytorch.IValue;
 import org.pytorch.Module;
 import org.pytorch.Tensor;

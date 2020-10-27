@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ecobeauty.MainActivity;
 import com.example.ecobeauty.R;
 import com.example.ecobeauty.mycosmetics.WordActivity;
 
@@ -192,8 +191,6 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
         mRecyclerViewM.setAdapter(mRecyclerAdapterM);
         mRecyclerAdapterN.setListener(this);
         mRecyclerViewN.setAdapter(mRecyclerAdapterN);
-
-
         }
 
     public void onTypeSkin(View view)
@@ -204,9 +201,7 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
 
 
     public void onBackOnClick (View view) {
-
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     void saveText() {
@@ -248,13 +243,11 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
     @Override
     public void onBackPressed() {
         saveText();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     @Override
     public void onClick(View v) {
-
     }
 
 

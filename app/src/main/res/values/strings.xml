@@ -25,10 +25,9 @@
     <string name="scan">Сканировать</string>
     <string name ="alreadyRegistered">Уже зарегистрированны? Войдите!</string>
     <string name="onBackMainActivity">Переход на главную активность</string>
-    <string name="AboutAppLog">AboutAppActivityLog</string>
     <string name="problems">Сообщить о проблеме</string>
     <string name="linkForms">https://forms.gle/YhrRqS5aWM18Q5DD9</string>
-    <string name="aboutAppThanks">Спасибо, что воспользовались нашим приложением!</string>
+    <string name="aboutAppThanks">Спасибо, что пользуетесь нашим приложением!</string>
     <string name="aboutApp">О приложении...</string>
     <string name="aboutAppMsg">Приложение еще находится в разработке и если вы нашли какую то ошибку - просим сообщить нам</string>
     <string name="email">Email</string>
@@ -61,6 +60,17 @@
     <string name="Abash">Abash</string>
     <string name="Verb">Verb</string>
     <string name="backUp">Вернуться назад</string>
+    <string name="robotoMedium">fonts/robotoMedium.ttf</string>
+    <string name="robotoRegular">fonts/robotoRegular.ttf</string>
+    <string name="maintext">fonts/maintext.ttf</string>
+    <string name="exitTheProgram">Пользователь хочет выйти из программы</string>
+    <string name="reallyQuitTheProgram">\"Вы действительно хотите покинуть программу? \"</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="goToMyDeparture">Переход на активность \'Мой Уход\'</string>
+    <string name="goToMyCosmetics">Переход на активность \'Моя косметичка\'</string>
+    <string name="goToCheckComposition">Переход на активность \'Проверить Состав\'</string>
+    <string name="goToAboutApp">Переход на активность \'О Приложении\'</string>
 
 
 </resources>

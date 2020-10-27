@@ -3,24 +3,15 @@ package com.example.ecobeauty.mycosmetics;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.format.DateUtils;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
-import com.example.ecobeauty.MainActivity;
+
 import com.example.ecobeauty.R;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,9 +20,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import static com.example.ecobeauty.mycosmetics.DatabaseHelper2.COLUMN_DATE;
-import static com.example.ecobeauty.mycosmetics.DatabaseHelper2.COLUMN_ID;
-import static com.example.ecobeauty.mycosmetics.DatabaseHelper2.COLUMN_NAME;
 
 public class MyCosmeticsActivity extends AppCompatActivity {
 
@@ -248,9 +236,7 @@ public class MyCosmeticsActivity extends AppCompatActivity {
     }
 
     public void goHome(View view) {
-
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 /*
     @Override

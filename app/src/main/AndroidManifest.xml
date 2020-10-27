@@ -14,7 +14,7 @@
 
         <activity android:name="com.example.ecobeauty.authorization.SignUpActivity" />
         <activity android:name="com.example.ecobeauty.mycosmetics.WishList" />
-        <activity android:name="com.example.ecobeauty.MainActivity"/>
+        <activity android:name="com.example.ecobeauty.main.MainActivity"/>
         <activity android:name="com.example.ecobeauty.mycosmetics.MyCosmeticsActivity" />
         <activity android:name="com.example.ecobeauty.authorization.LoginActivity" >
             <intent-filter>

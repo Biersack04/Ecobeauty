@@ -1,7 +1,6 @@
 package com.example.ecobeauty.checkcomposition;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,7 +13,6 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import com.example.ecobeauty.MainActivity;
 import com.example.ecobeauty.R;
 
 import java.io.IOException;
@@ -112,10 +110,8 @@ public class CheckCompositionActivity extends Activity {
             }
         });
     }
-    public void onBackClick(View view)
-    {
-        Intent intent = new Intent(CheckCompositionActivity.this, MainActivity.class);
-        startActivity(intent);
+    public void onBackClick(View view) {
+        finish();
     }
 }
 
