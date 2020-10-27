@@ -14,7 +14,7 @@
         android:layout_height="28dp"
         android:gravity="center"
         android:text="@string/myCare"
-        android:textColor="@color/colorTitle"
+        android:textColor="@color/darkGrey"
         android:textSize="@dimen/dim_title"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -12,7 +12,6 @@
     <color name="text">#FFFFFF</color>
     <color name="colorButton">#BE7B70</color>
     <color name="colorTitle">#414B6B</color>
-    <color name="colorTextTitle">#303030</color>
     <color name="bg_login">#BE7B70</color>
     <color name="bg_register">#2e3237</color>
     <color name="bg_main">#EAD5D5</color>
@@ -34,24 +33,22 @@
     <color name="WhiteSmoke">#F5F5F5</color>
     <color name="Black">#000000</color>
     <color name="Colorless">#00000000</color>
-    <color name="Check_Background">#A3000000</color>
-    <color name="Cosmetic_Background">#C3FFFFFF</color>
-    <color name="Divider">#dac7d3</color>
     <color name="State_Pressed_Cosmetics">#DAC7D3</color>
 -->
 
-
+    <color name="bg_login">#BE7B70</color>
+    <color name="Divider">#dac7d3</color>
+    <color name="Check_Background">#A3000000</color>
+    <color name="colorTextTitle">#303030</color>
+    <color name="Cosmetic_Background">#C3FFFFFF</color>
     <color name="lightPink">#dcd1d5</color>
     <color name="beige">#d7a2a8</color>
     <color name="crimson">#dc6781</color>
     <color name="darkGrey">#696969</color>
     <color name="lightGrey">#adadad</color>
-<<<<<<< HEAD
     <color name="white">#F4F4F4</color>
     <color name="step">#6E0404</color>
     <color name="Colorless">#00000000</color>
-=======
     <color name="transparent">@android:color/transparent</color>
 
->>>>>>> origin/master
 </resources>

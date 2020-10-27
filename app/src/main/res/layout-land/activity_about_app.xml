@@ -10,19 +10,11 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/problem"
         android:layout_width="match_parent"
-<<<<<<< HEAD
-        android:layout_height="55dp"
-=======
         android:layout_height="wrap_content"
->>>>>>> origin/master
         android:onClick="onProblemClick"
         android:text="@string/textProblem"
         android:textColor="@color/white"
         app:backgroundTint="@color/beige"
-<<<<<<< HEAD
-        android:textSize="@dimen/dim_button"
-=======
->>>>>>> origin/master
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
@@ -67,23 +59,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-<<<<<<< HEAD
-        android:background="@drawable/abouttext_land"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:paddingLeft="40dp"
+        android:text="@string/aboutAppThanks"
         android:textColor="@color/darkGrey"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
-=======
-        android:padding="@dimen/activity_horizontal_margin"
-        android:text="@string/aboutAppThanks"
-        android:textColor="@color/darkGrey"
-        android:paddingLeft="40dp"
-        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
->>>>>>> origin/master
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textAbout"
-        app:layout_constraintVertical_bias="0.108" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textmsg2"
