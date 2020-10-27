@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-<!--
+
     <color name="colorPrimary">#EAD5D5</color>
     <color name="colorPrimaryDark">#00000000</color>
     <color name="colorAccent">#FFC5BBC3</color>
+    <!--
     <color name="textFind">#90A4B7</color>
     <color name="textFindText">#545E68</color>
     <color name="background">#C5BBC3</color>

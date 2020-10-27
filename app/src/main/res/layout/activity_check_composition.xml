@@ -77,7 +77,7 @@
         android:id="@+id/button"
         android:layout_width="27dp"
         android:layout_height="17dp"
-        android:background="@drawable/arrow_icon"
+        android:background="@drawable/left_back"
         android:onClick="onBackClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
