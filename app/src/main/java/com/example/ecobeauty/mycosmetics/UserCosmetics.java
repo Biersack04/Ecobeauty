@@ -19,13 +19,5 @@ class UserCosmetics {
         this.name = name;
     }
 
-    public long getDate() {
-        return this.date;
-    }
-
-   /* public void setDate(long date) {
-        this.date = date;
-    }*/
-
 }
 

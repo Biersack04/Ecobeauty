@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -21,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import java.util.ArrayList;
 import static com.example.ecobeauty.mycosmetics.DatabaseHelper2.*;
+import static com.example.ecobeauty.mydeparture.Constants.BASIC_NAME_USER_WISH;
 import static java.lang.String.*;
 
 
@@ -32,25 +32,19 @@ public class WishList extends AppCompatActivity {
     SQLiteDatabase db;
     Cursor cursor;
     SimpleCursorAdapter adapter;
-    ArrayList<Long> idCheckedProduct = new ArrayList<>();
-    ArrayList<String> nameCheckedProduct = new ArrayList<>();
-    int numberCountNameUserWish = 0;
-    String nameUserWish;
-    String stringCountNameUserWish;
-    String basicNameUserWish = "UserWish";
+    ArrayList<Long> idCheckedProduct;
+    ArrayList<String> nameCheckedProduct;
+    int numberCountNameUserWish, nameIndex;
+    String nameUserWish, stringCountNameUserWish, uid, nameWish, nameCheck, nameMove;
     DatabaseReference myRef;
-    String uid;
     boolean containsWord;
-    int nameIndex;
-    String nameWish;
-    String nameCheck;
-    String nameMove;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wishlist);
+
         fam = (FloatingActionMenu) findViewById(R.id.fab_menu);
         wishList = (ListView) findViewById(R.id.wishlist);
         wishList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -84,10 +78,10 @@ public class WishList extends AppCompatActivity {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
-        FirebaseDatabase database = FirebaseDatabase.getInstance("https://ecobeauty2-2c5ec.firebaseio.com/");
+        FirebaseDatabase database = FirebaseDatabase.getInstance(getString(R.string.dataBase));
         myRef = database.getReference(uid);
         stringCountNameUserWish = Integer.toString(numberCountNameUserWish);
-        nameUserWish = basicNameUserWish + stringCountNameUserWish;
+        nameUserWish = BASIC_NAME_USER_WISH + stringCountNameUserWish;
     }
 
 
@@ -103,7 +97,7 @@ public class WishList extends AppCompatActivity {
                while (cursor.moveToNext()) {
                    numberCountNameUserWish++;
                    stringCountNameUserWish = Integer.toString(numberCountNameUserWish);
-                   nameUserWish = basicNameUserWish + stringCountNameUserWish;
+                   nameUserWish = BASIC_NAME_USER_WISH + stringCountNameUserWish;
                    nameIndex = cursor.getColumnIndex(COLUMN_NAME2);
                    nameWish = cursor.getString(nameIndex);
                    myRef.child("UserWishes").child(nameUserWish).setValue(new UserWish(nameWish));
@@ -118,7 +112,6 @@ public class WishList extends AppCompatActivity {
    }
 
      public void add(View view) {
-         Log.i("WishListActivityLog", "Добавление списка желания" );
          EditText nameEditText = (EditText) findViewById(R.id.entername);
          db = databaseHelper.getWritableDatabase();
          String name = nameEditText.getText().toString();
@@ -131,17 +124,20 @@ public class WishList extends AppCompatActivity {
 
 
    public void remove(View view) {
-       Log.i("WishListActivityLog", "Удаление списка желания" );
+
        nameCheckedProduct = new ArrayList<String>();
        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
        nameCheck ="";
 
        for(int i=0;i<idCheckedProduct.size();i++) {
+
            cursor = db.rawQuery("select * from " + DatabaseHelper2.TABLE_W +
                            " where " + DatabaseHelper2.COLUMN_ID2 + " like ?" ,
                    new String[]{"%" + idCheckedProduct.get(i)} );
            if(cursor.getCount() >= 1) {
+
                while (cursor.moveToNext()) {
+
                    int nameIndex = cursor.getColumnIndex(COLUMN_NAME2);
                    nameCheck = cursor.getString(nameIndex);
                    nameCheckedProduct.add(nameCheck);
@@ -167,7 +163,7 @@ public class WishList extends AppCompatActivity {
    }
 
     public void move(View view) {
-        Log.i("WishListActivityLog", "Перенос списка желаний в 'Косметичку' " );
+
         db = databaseHelper.getWritableDatabase();
         nameCheckedProduct = new ArrayList<>();
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
@@ -208,7 +204,6 @@ public class WishList extends AppCompatActivity {
 
     public void homeCosmetics(View view) {
 
-        Log.i("WishListActivityLog", "Переход в 'Косметичку' " );
         Intent intent = new Intent(this, MyCosmeticsActivity.class);
         startActivity(intent);
     }

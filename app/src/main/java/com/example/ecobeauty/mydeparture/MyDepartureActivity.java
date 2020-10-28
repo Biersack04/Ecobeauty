@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecobeauty.MainActivity;
 import com.example.ecobeauty.R;
-import com.example.ecobeauty.mycosmetics.WordActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,8 +101,8 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
             mEditor.putString("pos", strPOS);
             mEditor.commit();
 
-            Intent intent = new Intent(getApplication(), WordActivity.class);
-            startActivity(intent);
+         //   Intent intent = new Intent(getApplication(), WordActivity.class);
+            //startActivity(intent);
         }
         else
         {
@@ -115,8 +114,8 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
             mEditor.putString("pos", strPOS1);
             mEditor.commit();
 
-            Intent intent = new Intent(getApplication(),WordActivity.class);
-            startActivity(intent);
+           // Intent intent = new Intent(getApplication(),WordActivity.class);
+         //   startActivity(intent);
 
         }
     }

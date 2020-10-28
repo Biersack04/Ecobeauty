@@ -26,7 +26,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/circular_bg"
-            android:text="@string/SA"
+            android:text="@string/sa"
             android:gravity="center"
             android:textAllCaps="true"
             android:textColor="@color/WhiteSmoke"
@@ -45,7 +45,7 @@
             android:layout_toRightOf="@+id/txtView_iconEntry"
             android:layout_toStartOf="@+id/imgButton_Favourite"
             android:gravity="center_vertical"
-            android:text="@string/Abash"
+            android:text="@string/abash"
             android:textColor="@color/Black"
             android:textStyle="bold" />
 
@@ -59,7 +59,7 @@
             android:layout_below="@id/txtView_Word"
             android:layout_toLeftOf="@+id/imgButton_Favourite"
             android:layout_toStartOf="@+id/imgButton_Favourite"
-            android:text="@string/Verb" />
+            android:text="@string/verb" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/imgButton_Favourite"

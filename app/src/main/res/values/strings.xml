@@ -25,7 +25,7 @@
     <string name="scan">Сканировать</string>
     <string name ="alreadyRegistered">Уже зарегистрированны? Войдите!</string>
     <string name="onBackMainActivity">Переход на главную активность</string>
-    <string name="AboutAppLog">AboutAppActivityLog</string>
+    <string name="aboutAppLog">AboutAppActivityLog</string>
     <string name="problems">Сообщить о проблеме</string>
     <string name="linkForms">https://forms.gle/YhrRqS5aWM18Q5DD9</string>
     <string name="aboutAppThanks">Спасибо, что воспользовались нашим приложением!</string>
@@ -56,11 +56,16 @@
     <string name="textDescription">Описание</string>
     <string name="textDangerous">Опасность</string>
     <string name="textStage">Степень</string>
-    <string name="SA">SA</string>
+    <string name="sa">SA</string>
     <string name="imageFavorite">imageFavorite</string>
-    <string name="Abash">Abash</string>
-    <string name="Verb">Verb</string>
+    <string name="abash">Abash</string>
+    <string name="verb">Verb</string>
     <string name="backUp">Вернуться назад</string>
+    <string name="dataBase">https://ecobeauty2–2c5ec.firebaseio.com/</string>
+    <string name="userCosmetics">UserCosmetics</string>
+    <string name="name">name</string>
+    <string name="cosmetics">Косметичка</string>
+    <string name="wish">Желания</string>
 
 
 </resources>

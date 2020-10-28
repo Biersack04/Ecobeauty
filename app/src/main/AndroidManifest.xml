@@ -33,7 +33,6 @@
         <activity android:name="com.example.ecobeauty.mydeparture.MyDepartureActivity"  android:screenOrientation="portrait"/>
         <activity android:name="com.example.ecobeauty.mydeparture.SkinTypeActivity"  android:screenOrientation="portrait" />
         <activity android:name="com.example.ecobeauty.mydeparture.Types"/>
-        <activity android:name=".mycosmetics.WordActivity"  android:screenOrientation="portrait" />
 
 
     </application>
