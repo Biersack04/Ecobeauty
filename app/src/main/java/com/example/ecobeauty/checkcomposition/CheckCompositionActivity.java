@@ -22,12 +22,12 @@ import java.util.HashMap;
 
 public class CheckCompositionActivity extends Activity {
 
+    private DatabaseHelper mDBHelper;
+    private SQLiteDatabase mDb;
+
     EditText editText;
     Button button;
     ListView listView;
-
-    private DatabaseHelper mDBHelper;
-    private SQLiteDatabase mDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +54,8 @@ public class CheckCompositionActivity extends Activity {
 
         final ArrayList<HashMap<String, Object>> comp1 = new ArrayList<HashMap<String, Object>>();
 
-
         final String[] from = Constants.COMPOSITION;
         final int[] to = { R.id.textView, R.id.textView2, R.id.textView3, R.id.textView4};
-
         final SimpleAdapter adapter = new SimpleAdapter(this, comp1, R.layout.adapter_item, from, to);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -73,36 +71,29 @@ public class CheckCompositionActivity extends Activity {
                 String[] words = product.split(getString(R.string.split));
 
                 for (String a : words) {
-
-
                     Cursor cursor = mDb.rawQuery("SELECT * FROM comp1 WHERE name =?", new String[]{a});
                     cursor.moveToFirst();
 
                     if (cursor.getCount() != 0) {
-
                         while (!cursor.isAfterLast()) {
                             client = new HashMap<String, Object>();
-
                             client.put(getString(R.string.name), cursor.getString(1));
                             client.put(getString(R.string.action), cursor.getString(2));
                             client.put(getString(R.string.danger), cursor.getString(3));
                             client.put(getString(R.string.describe_danger), cursor.getString(4));
 
                             comp1.add(client);
-
                             cursor.moveToNext();
                         }
                         cursor.close();
                         editText.setText("");
 
                     } else {
-
                         Toast toast = Toast.makeText(getApplicationContext(), R.string.componentsMissing, Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                     }
                 }
-
                 listView.setAdapter(adapter);
             }
         });

@@ -24,13 +24,11 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsViewHolder>{
 	
 	private List<Word> wordsList;
-	public List<Word> favouriteWords = new ArrayList<Word>();
-	Context mContext;
-	static ClickListener clickListener;	
-	SharedPreference mSharedPreference;
-	DBSQLiteHandler dbHandler;
 	public ArrayList<Word> wordsListDB = new ArrayList<Word>();
+	static ClickListener clickListener;
 
+	Context mContext;
+	DBSQLiteHandler dbHandler;
 
 	public RecyclerAdapter(Context con, List<Word> wordsList){
 		this.wordsList=wordsList;
@@ -47,7 +45,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 	
 	@Override
 	public void onBindViewHolder(ItemsViewHolder holder, int position) {
-		
 		Word wordMapper = wordsList.get(position);
 		
 		holder.txtViewIcon.setText(""+ wordMapper.getWord().charAt(0));
@@ -56,19 +53,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 		holder.txtViewPOS.setText(wordMapper.getPartOfSpeech());
 
 		if(checkFavouriteItem(wordMapper)){
-
 			Drawable starFilled = ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.ic_favourite_filled, null);
 			starFilled.setBounds(0,0,24,24);
 			holder.imgButtonFavourite.setBackground(starFilled);
 			holder.imgButtonFavourite.setTag(Constants.FILLED);
 			
 		}else{
-			
 			Drawable starEmpty = ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.ic_favourite,null);
 			starEmpty.setBounds(0,0,24,24);
 			holder.imgButtonFavourite.setBackground(starEmpty);
 			holder.imgButtonFavourite.setTag(Constants.EMPTY);
-			
 		}
 	}
 	
@@ -76,14 +70,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 	public int getItemCount() {
 		int a =wordsList.size();
 		return a;
-
-		}
-
-
-
+	}
 
 	public class ItemsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-		
 		CardView cardView;
 		TextView txtViewIcon,txtViewWord,txtViewPOS;
 		ImageButton imgButtonFavourite;
@@ -163,11 +152,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 	}	
 
 	public void setListener(ClickListener clicked){
-
 		RecyclerAdapter.clickListener = clicked;
 	}	
 	
 	public interface ClickListener{
-		public void itemClicked(View view, int position);
+		void itemClicked(View view, int position);
 	}
 }

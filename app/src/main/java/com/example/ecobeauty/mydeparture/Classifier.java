@@ -18,7 +18,6 @@ public class Classifier {
         model = Module.load(modelPath);
     }
 
-
     public Tensor preprocess(Bitmap bitmap, int size) {
         bitmap = Bitmap.createScaledBitmap(bitmap, size, size, false);
         return TensorImageUtils.bitmapToFloat32Tensor(bitmap, this.mean, this.std);

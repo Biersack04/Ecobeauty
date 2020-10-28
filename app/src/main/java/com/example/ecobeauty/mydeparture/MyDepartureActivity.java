@@ -25,21 +25,18 @@ import java.util.List;
 public class MyDepartureActivity<view> extends Activity implements RecyclerAdapter.ClickListener,View.OnClickListener{
 
     public TextView typeSkin;
+    private RecyclerView mRecyclerViewM, mRecyclerViewN;
+    private List<Word> wordsListMorning, wordsListNight;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+    int countPeriodProduct = 0;
+
     DatabaseHelper3 databaseHelper;
     SQLiteDatabase db;
     Cursor cursorPeriod;
-    int countPeriodProduct =0;
-    String skinType;
+    String skinType, type;
     SharedPreferences sPref;
-    private RecyclerView mRecyclerViewM;
-    private RecyclerView mRecyclerViewN;
-    RecyclerAdapter mRecyclerAdapterM;
-    RecyclerAdapter mRecyclerAdapterN;
-    private List<Word> wordsListMorning;
-    private List<Word> wordsListNight;
-    private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
-    String type;
+    RecyclerAdapter mRecyclerAdapterM, mRecyclerAdapterN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +88,6 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
 
     @Override
     public void itemClicked(View view, int position) {
-
         View a =mRecyclerViewM.findContainingItemView(view);
 
         if (a!=null)
@@ -103,7 +99,6 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
             mEditor.putString(Constants.WORD, strWord);
             mEditor.putString(Constants.POS, strPOS);
             mEditor.commit();
-
         }
         else
         {
@@ -114,15 +109,12 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
             mEditor.putString(Constants.WORD, strWord1);
             mEditor.putString(Constants.POS, strPOS1);
             mEditor.commit();
-
         }
     }
-
 
     private void prepareRecyclerView(String Period) {
         switch (Period) {
             case Constants.MORNING:
-
                 mRecyclerViewM = findViewById(R.id.recyclerViewMainMorning);
                 wordsListMorning = new ArrayList<>();
                 mRecyclerAdapterM = new RecyclerAdapter(getApplicationContext(), wordsListMorning);
@@ -131,11 +123,9 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
                 mRecyclerViewM.setItemAnimator(new DefaultItemAnimator());
                 mRecyclerViewM.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 mRecyclerViewM.setAdapter(mRecyclerAdapterM);
-
                 break;
 
             case Constants.EVENING:
-
                 mRecyclerViewN = findViewById(R.id.recyclerViewMainNight);
                 wordsListNight = new ArrayList<>();
                 mRecyclerAdapterN = new RecyclerAdapter(getApplicationContext(), wordsListNight);
@@ -144,7 +134,6 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
                 mRecyclerViewN.setItemAnimator(new DefaultItemAnimator());
                 mRecyclerViewN.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 mRecyclerViewN.setAdapter(mRecyclerAdapterN);
-
                 break;
         }
     }
@@ -165,19 +154,15 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
         for (int i = 0; i < countPeriodProduct; i++) {
             Word mapperClass = new Word(cursorPeriod.getString(0), cursorPeriod.getString(1));
 
-            if ( Period == Constants.MORNING)
-            {
+            if ( Period == Constants.MORNING) {
                 wordsListMorning.add(mapperClass);
             }
-            else
-            {
+            else {
                 wordsListNight.add(mapperClass);
             }
-
             cursorPeriod.moveToNext();
         }
     }
-
 
     @Override
     public void onResume() {
@@ -189,12 +174,10 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
         mRecyclerViewN.setAdapter(mRecyclerAdapterN);
         }
 
-    public void onTypeSkin(View view)
-    {
+    public void onTypeSkin(View view) {
         Intent intent = new Intent(this, SkinTypeActivity.class);
         startActivity(intent);
     }
-
 
     public void onBackOnClick (View view) {
         saveText();
@@ -229,7 +212,6 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
             default:
                 break;
         }
-
     }
 
     @Override
@@ -258,8 +240,5 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
     }
 
     @Override
-    public void onClick(View v) {
-    }
-
-
+    public void onClick(View v) { }
 }

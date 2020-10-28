@@ -46,7 +46,6 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
             }
         });
@@ -54,7 +53,6 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
 
@@ -83,7 +81,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
 
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(SignUpActivity.this, getString(R.string.errorRegistration) + task.getException(),
+                                    Toast.makeText(SignUpActivity.this, getString(R.string.errorRegistration),
                                             Toast.LENGTH_SHORT).show();
                                 }
                                 else {
@@ -93,7 +91,6 @@ public class SignUpActivity extends AppCompatActivity {
                                 }
                             }
                         });
-
             }
         });
     }

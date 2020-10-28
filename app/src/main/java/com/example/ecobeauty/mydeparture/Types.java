@@ -19,19 +19,14 @@ public class Types extends AppCompatActivity {
         TextView text = findViewById(R.id.textViewResult);
         String prediction  = getIntent().getStringExtra(Constants.PRED);
 
-
         if (prediction.equals(getString(R.string.normal))){
             text.setText(R.string.normalDescribe);
-
         }
         else if (prediction.equals(getString(R.string.fat))){
             text.setText(R.string.fatDescribe);
-
         }
-
         else if (prediction.equals(getString(R.string.dry))){
             text.setText(R.string.dryDescribe);
-
         }
         else if (prediction.equals(getString(R.string.combined))){
             text.setText(R.string.combineDescribe);
@@ -53,9 +48,7 @@ public class Types extends AppCompatActivity {
             default:
                 break;
         }
-
     }
-
 
     public void onBackSkin (View view) {
         Intent intent = new Intent(this, MyDepartureActivity.class);
@@ -64,5 +57,4 @@ public class Types extends AppCompatActivity {
         intent.putExtras(data1);
         startActivity(intent);
     }
-
 }

@@ -29,29 +29,19 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private ProgressBar progressBar;
     private Button btnSignup, btnLogin, btnReset;
-
-    private ImageView lipstickImageView;
-    private ImageView eyeshadowImageView;
-    private ImageView blushImageView;
-    private ImageView brushImageView;
-    private ImageView mascaraImageView;
+    private ImageView lipstickImageView, eyeshadowImageView, blushImageView, brushImageView, mascaraImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         auth = FirebaseAuth.getInstance();
-
         if (auth.getCurrentUser() != null) {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
         }
 
-
         setContentView(R.layout.activity_login);
-
-
         lipstickImageView =  findViewById(R.id.lipstick);
         eyeshadowImageView =  findViewById(R.id.eyeshadow);
         blushImageView = findViewById(R.id.blush);
@@ -64,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
         Animation motionUpBrushAnimation = AnimationUtils.loadAnimation(this, R.anim.motion_up_brush);
         Animation motionUpMascaraAnimation = AnimationUtils.loadAnimation(this, R.anim.motion_up_mascara);
 
-
         lipstickImageView.startAnimation(motionUpLipstickAnimation);
         eyeshadowImageView.startAnimation(motionUpEyeshadowAnimation);
         blushImageView.startAnimation(motionUpBlushAnimation);
@@ -72,17 +61,16 @@ public class LoginActivity extends AppCompatActivity {
         mascaraImageView.startAnimation(motionUpMascaraAnimation);
         inputEmail = (TextInputEditText) findViewById(R.id.email);
         inputPassword = (TextInputEditText) findViewById(R.id.password);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        btnLogin = (Button) findViewById(R.id.btn_login);
-        btnReset = (Button) findViewById(R.id.btn_reset_password);
-        btnSignup = (Button) findViewById(R.id.btn_signup);
+        progressBar = findViewById(R.id.progressBar);
+        btnLogin = findViewById(R.id.btn_login);
+        btnReset = findViewById(R.id.btn_reset_password);
+        btnSignup = findViewById(R.id.btn_signup);
         btnLogin.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
         btnReset.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMediumItalic)));
         btnSignup.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
         inputEmail.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
 
-
-                auth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
 
@@ -118,7 +106,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
-
 
                 auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {

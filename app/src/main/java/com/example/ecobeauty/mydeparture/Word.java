@@ -8,7 +8,6 @@ public class Word {
 	private String word;
 	private String partOfSpeech;
 
-
 	public Word( String word, String pos) {
 		super();
 		this.word = word;
@@ -34,7 +33,6 @@ public class Word {
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	
 	@Override
 	public String toString() {

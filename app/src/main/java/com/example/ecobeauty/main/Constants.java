@@ -24,8 +24,6 @@ public class Constants {
     public static final String NEW_API = "NewApi";
     public static final String FILLED = "filled";
     public static final String EMPTY = "empty";
-    public static final String PREFS_NAME = "WORD_APP";
-    public static final String FAVORITES = "Words_Favorite";
     public static final String NETWORK_FILE= "model_densenet121.pt";
     public static final String DATA = "data";
     public static final String PRED = "pred";

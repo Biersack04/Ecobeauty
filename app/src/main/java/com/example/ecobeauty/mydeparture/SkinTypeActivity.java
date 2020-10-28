@@ -16,10 +16,11 @@ import com.example.ecobeauty.main.Constants;
 
 public class SkinTypeActivity extends Activity {
 
-    int cameraRequestCode = 001;
-    Classifier classifier;
     public String typeSkin;
-    public int  count=0;
+    public int  count = 0;
+    int cameraRequestCode = 001;
+
+    Classifier classifier;
     Bitmap imageBitmap;
     String identifiedType;
 
@@ -77,7 +78,6 @@ public class SkinTypeActivity extends Activity {
             }
 
         });
-
     }
 
     @Override
@@ -89,19 +89,14 @@ public class SkinTypeActivity extends Activity {
             Intent intent1 = new Intent(SkinTypeActivity.this, Types.class);
             intent1.putExtra(Constants.PRED, identifiedType);
             startActivity(intent1);
-
         }
-
     }
-    public void changeActivity()
-    {
+
+    public void changeActivity() {
         Intent intent = new Intent(this, MyDepartureActivity.class);
         Bundle data1 = new Bundle();
         data1.putString(Constants.CHECK_TYPE, typeSkin);
         intent.putExtras(data1);
         startActivity(intent);
-
-
     }
-
 }

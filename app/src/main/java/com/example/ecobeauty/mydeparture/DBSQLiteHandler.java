@@ -31,7 +31,6 @@ public class DBSQLiteHandler extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
 		db.execSQL("DROP TABLE IF EXISTS "+Constants.TABLE_WORD);
 		onCreate(db);
 	}
@@ -41,9 +40,7 @@ public class DBSQLiteHandler extends SQLiteOpenHelper {
 		
 		ContentValues contentValues = new ContentValues();
 		contentValues.put(Constants.KEY_WORD, word.getWord());
-
 		contentValues.put(Constants.KEY_POS, word.getPartOfSpeech());
-
 		
 		db.insert(Constants.TABLE_WORD,null,contentValues);
 		db.close();		
@@ -81,9 +78,7 @@ public class DBSQLiteHandler extends SQLiteOpenHelper {
 				Word word = new Word(cursor.getString(1), cursor.getString(2));
 				wordsList.add(word);
 			}while(cursor.moveToNext());
-
 		}
 		return (ArrayList<Word>) wordsList;
 	}
-
 }

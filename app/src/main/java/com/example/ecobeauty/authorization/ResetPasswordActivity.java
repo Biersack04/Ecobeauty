@@ -54,7 +54,6 @@ public class ResetPasswordActivity extends AppCompatActivity {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String email = inputEmail.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
@@ -79,5 +78,4 @@ public class ResetPasswordActivity extends AppCompatActivity {
             }
         });
     }
-
 }

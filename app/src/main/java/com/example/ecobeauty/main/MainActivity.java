@@ -23,31 +23,24 @@ public class MainActivity extends AppCompatActivity {
     
     private Button btnAbout, myDep, myCosm, checkComp;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final TextView firstEditText = (TextView)findViewById(R.id.textView1);
         firstEditText.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.maintext)));
-        btnAbout = (Button) findViewById(R.id.aboutApp);
+        btnAbout = findViewById(R.id.aboutApp);
         btnAbout.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
-
-        myDep = (Button) findViewById(R.id.myDeparture);
+        myDep = findViewById(R.id.myDeparture);
         myDep.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
-
-        myCosm = (Button) findViewById(R.id.myMakeup);
+        myCosm = findViewById(R.id.myMakeup);
         myCosm.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
-
-        checkComp = (Button) findViewById(R.id.checkComposition);
+        checkComp = findViewById(R.id.checkComposition);
         checkComp.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
-
-
     }
 
     @Override
     public void onBackPressed() {
-
         Log.i(Constants.TAG_MAIN, getString(R.string.exitTheProgram) );
         FragmentManager fm = getSupportFragmentManager();
         if (fm.getBackStackEntryCount() > 1) {
@@ -67,32 +60,27 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void onMyDeparture(View view)
-    {
+    public void onMyDeparture(View view) {
         Log.i(Constants.TAG_MAIN, getString(R.string.goToMyDeparture) );
         Intent intent = new Intent(MainActivity.this, MyDepartureActivity.class);
         startActivity(intent);
     }
 
-    public void onCosmeticsClick(View view)
-    {
+    public void onCosmeticsClick(View view) {
         Log.i(Constants.TAG_MAIN, getString(R.string.goToMyCosmetics) );
         Intent intent = new Intent(MainActivity.this, MyCosmeticsActivity.class);
         startActivity(intent);
     }
 
-    public void onCheckClick(View view)
-    {
+    public void onCheckClick(View view) {
         Log.i(Constants.TAG_MAIN, getString(R.string.goToCheckComposition) );
         Intent intent = new Intent(MainActivity.this, CheckCompositionActivity.class);
         startActivity(intent);
     }
 
-    public void onMyButtonClick(View view)
-    {
+    public void onMyButtonClick(View view) {
         Log.i(Constants.TAG_MAIN, getString(R.string.goToAboutApp) );
         Intent intent = new Intent(MainActivity.this, AboutAppActivity.class);
         startActivity(intent);
     }
-
 }
