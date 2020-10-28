@@ -41,10 +41,10 @@
     <string name="youSkinType">Ваш тип кожи:</string>
     <string name="changePassword">Сменить пароль</string>
     <string name="back">Назад</string>
-    <string name="normal">Нормальная</string>
-    <string name="fat">Жирная</string>
-    <string name="dry">Сухая</string>
-    <string name="combined">Комбинированная</string>
+    <string name="normalText">Нормальная</string>
+    <string name="fatText">Жирная</string>
+    <string name="dryText">Сухая</string>
+    <string name="combinedText">Комбинированная</string>
     <string name="save">Сохранить</string>
     <string name="delete">Удалить</string>
     <string name="inCosmetics">В косметичку</string>
@@ -71,6 +71,38 @@
     <string name="goToMyCosmetics">Переход на активность \'Моя косметичка\'</string>
     <string name="goToCheckComposition">Переход на активность \'Проверить Состав\'</string>
     <string name="goToAboutApp">Переход на активность \'О Приложении\'</string>
+    <string name="robotoMediumItalic">fonts/robotoMediumItalic.ttf</string>
+    <string name="inputPassword">Введите пароль!</string>
+    <string name="inputEmail">Введите Email адрес!</string>
+    <string name="emailAtRegistration">\"Введите email, который указывали при регистрации \"</string>
+    <string name="changePasswordInstruction">Мы отправили вам инструкции для смены пароля!</string>
+    <string name="changePasswordError">Ошибка при смене пароля!</string>
+    <string name="errorRegistration">Ошибка регистрации</string>
+    <string name="successfulRegistration">Регистрация прошла успешно!</string>
+    <string name="name">name</string>
+    <string name="action">action</string>
+    <string name="danger">danger</string>
+    <string name="describe_danger">describe_danger</string>
+    <string name="split">,\\s</string>
+    <string name="componentsMissing">Один или несколько компонентов отсутсвуют в базе</string>
+    <string name="goodJob">Отличная работа!</string>
+    <string name="cancel">Отменить</string>
+    <string name="nothingSelected">Ничего не выбрано</string>
+    <string name="normal">normal</string>
+    <string name="fat">fat</string>
+    <string name="dry">dry</string>
+    <string name="combined">combined</string>
+    <string name="normalDescribe">У вас нормальный тип кожи. он является самым редким типом кожи. Такой тип в меру чувствителен. Кожа матовая, упругая, поры почти не видны</string>
+    <string name="fatDescribe">У вас жирный тип кожи. Этому типу кожи присущи жирный блеск, пористость, частые высыпания, такие как акне или угри</string>
+    <string name="dryDescribe">У вас сухой тип кожи. Для данного типа характерны частое шелушение, покраснения. Такая кожа часто тонкая, нежная и сильно подвержена влиянию внешних факторов</string>
+    <string name="combineDescribe">У вас комбинированный тип кожи. Данный тип кожи является самым распространенным. Особенность состоит в том, что различные участки кожи имеют разным тип, например: щеки имеют сухой тип, а Т-зона - жирный. Для такого типа кожи свойственны аллергичность и частые высыпания и раздражения.</string>
+    <string name="wordWord">Word [ Word=</string>
+    <string name="partofSpeech">, part of Speech=</string>
+    <string name="skob">\" ]\"</string>
+    <string name="normalType">Нормальный тип</string>
+    <string name="fatType">Жирный тип</string>
+    <string name="dryType">Сухой тип</string>
+    <string name="combinedType">Комбинированный тип</string>
 
 
 </resources>

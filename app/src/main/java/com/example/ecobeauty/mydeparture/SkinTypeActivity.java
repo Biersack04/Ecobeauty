@@ -12,10 +12,10 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.ecobeauty.R;
+import com.example.ecobeauty.main.Constants;
 
 public class SkinTypeActivity extends Activity {
 
-    public static final String NETWORK_FILE= "model_densenet121.pt";
     int cameraRequestCode = 001;
     Classifier classifier;
     public String typeSkin;
@@ -28,7 +28,7 @@ public class SkinTypeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skin_type);
 
-        classifier = new Classifier(Utils.assetFilePath(this,NETWORK_FILE));
+        classifier = new Classifier(Utils.assetFilePath(this, Constants.NETWORK_FILE));
 
         Button capture = findViewById(R.id.capture);
         capture.setOnClickListener(new View.OnClickListener(){
@@ -39,7 +39,7 @@ public class SkinTypeActivity extends Activity {
             }
         });
 
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.rGroup);
+        RadioGroup radioGroup = findViewById(R.id.rGroup);
         radioGroup.clearCheck();
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
@@ -47,24 +47,24 @@ public class SkinTypeActivity extends Activity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case -1:
-                        Toast.makeText(getApplicationContext(), "Ничего не выбрано",
+                        Toast.makeText(getApplicationContext(), R.string.nothingSelected,
                                 Toast.LENGTH_SHORT).show();
                         count+=1;
                         break;
                     case R.id.radioButtonOne:
-                        typeSkin = "normal";
+                        typeSkin = getString(R.string.normal);
                         count+=1;
                         break;
                     case R.id.radioButtonTwo:
-                        typeSkin = "fat";
+                        typeSkin = getString(R.string.fat);
                         count+=1;
                         break;
                     case R.id.radioButtonThird:
-                        typeSkin = "dry";
+                        typeSkin = getString(R.string.dry);
                         count+=1;
                         break;
                     case R.id.radioButtonFour:
-                        typeSkin = "combined";
+                        typeSkin = getString(R.string.combined);
                         count+=1;
                         break;
                     default:
@@ -84,10 +84,10 @@ public class SkinTypeActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == cameraRequestCode && resultCode == RESULT_OK) {
-            imageBitmap = (Bitmap) data.getExtras().get("data");
+            imageBitmap = (Bitmap) data.getExtras().get(Constants.DATA);
             identifiedType = classifier.predict(imageBitmap);
             Intent intent1 = new Intent(SkinTypeActivity.this, Types.class);
-            intent1.putExtra("pred", identifiedType);
+            intent1.putExtra(Constants.PRED, identifiedType);
             startActivity(intent1);
 
         }
@@ -95,10 +95,9 @@ public class SkinTypeActivity extends Activity {
     }
     public void changeActivity()
     {
-        Log.i("SkinTypeActivityLog", " Переход на активность 'Изменить тип кожи' ");
         Intent intent = new Intent(this, MyDepartureActivity.class);
         Bundle data1 = new Bundle();
-        data1.putString("checkType", typeSkin);
+        data1.putString(Constants.CHECK_TYPE, typeSkin);
         intent.putExtras(data1);
         startActivity(intent);
 

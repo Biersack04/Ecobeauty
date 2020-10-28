@@ -44,7 +44,7 @@
             android:id="@+id/radioButtonOne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/normal"
+            android:text="@string/normalText"
             android:textColor="@color/darkGrey"
             android:textSize="20sp" />
 
@@ -52,7 +52,7 @@
             android:id="@+id/radioButtonTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/fat"
+            android:text="@string/fatText"
             android:textColor="@color/darkGrey"
             android:textSize="20sp" />
 
@@ -60,7 +60,7 @@
             android:id="@+id/radioButtonThird"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/dry"
+            android:text="@string/dryText"
             android:textColor="@color/darkGrey"
             android:textSize="20sp" />
 
@@ -68,7 +68,7 @@
             android:id="@+id/radioButtonFour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/combined"
+            android:text="@string/combinedText"
             android:textColor="@color/darkGrey"
             android:textSize="20sp" />
     </RadioGroup>

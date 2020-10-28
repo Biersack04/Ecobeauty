@@ -1,5 +1,7 @@
 package com.example.ecobeauty.mydeparture;
 
+import com.example.ecobeauty.R;
+
 public class Word {
 
 	private int id;
@@ -36,6 +38,6 @@ public class Word {
 	
 	@Override
 	public String toString() {
-		return "Word [ Word=" + word + ", part of Speech="	+ partOfSpeech + " ]";
+		return R.string.wordWord + word + R.string.partofSpeech + partOfSpeech + R.string.skob;
 	}
 }

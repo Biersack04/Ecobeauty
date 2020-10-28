@@ -2,6 +2,9 @@ package com.example.ecobeauty.mydeparture;
 
 import android.content.Context;
 import android.util.Log;
+
+import com.example.ecobeauty.main.Constants;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -24,11 +27,11 @@ public class Utils {
                 }
                 os.flush();
             }catch (Exception e) {
-                Log.e("pytorchandroid", "Error process asset 1 " + assetName + " to file path");
+                Log.e(Constants.PYTORCH, Constants.ERROR_PROCESS_ONE + assetName + Constants.FILE_PATH);
             }
             return file.getAbsolutePath();
         } catch (IOException e) {
-            Log.e("pytorchandroid", "Error process asset 2" + assetName + " to file path");
+            Log.e(Constants.PYTORCH, Constants.ERROR_PROCESS_TWO + assetName + Constants.FILE_PATH);
         }
         return null;
     }

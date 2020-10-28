@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.ecobeauty.main.Constants;
 import com.example.ecobeauty.mydeparture.Word;
 
 import java.util.ArrayList;
@@ -13,32 +14,25 @@ import java.util.List;
 
 public class DBSQLiteHandler extends SQLiteOpenHelper {
 
-	public static final int DATABASE_VERSION = 1;
-	public static final String DATABASE_NAME = "easyPronounce";
-	private static final String TABLE_WORD = "words";
-	private static final String KEY_ID = "id";
-	private static final String KEY_WORD = "word";
-	private static final String KEY_POS = "partofspeech";
-
 	Context context;
 
 	public DBSQLiteHandler(Context context) {
-		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		super(context, Constants.DATABASE_NAME, null, Constants.DATABASE_VERSION);
 		this.context = context;
 	}
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		String CREATE_TABLE = "CREATE TABLE " + TABLE_WORD + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_WORD + " TEXT,"
-                + KEY_POS + " TEXT" + ")";
+		String CREATE_TABLE = "CREATE TABLE " + Constants.TABLE_WORD + "("
+                + Constants.KEY_ID + " INTEGER PRIMARY KEY," + Constants.KEY_WORD + " TEXT,"
+                + Constants.KEY_POS + " TEXT" + ")";
 		db.execSQL(CREATE_TABLE);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-		db.execSQL("DROP TABLE IF EXISTS "+TABLE_WORD);
+		db.execSQL("DROP TABLE IF EXISTS "+Constants.TABLE_WORD);
 		onCreate(db);
 	}
 
@@ -46,26 +40,26 @@ public class DBSQLiteHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 		
 		ContentValues contentValues = new ContentValues();
-		contentValues.put(KEY_WORD, word.getWord());
+		contentValues.put(Constants.KEY_WORD, word.getWord());
 
-		contentValues.put(KEY_POS, word.getPartOfSpeech());
+		contentValues.put(Constants.KEY_POS, word.getPartOfSpeech());
 
 		
-		db.insert(TABLE_WORD,null,contentValues);
+		db.insert(Constants.TABLE_WORD,null,contentValues);
 		db.close();		
 	}
 
 	public void removeWord(Word word){
 		SQLiteDatabase db = this.getWritableDatabase();
 		
-		db.delete(TABLE_WORD, KEY_WORD + " = ?", new String[]{String.valueOf(word.getWord())});
+		db.delete(Constants.TABLE_WORD, Constants.KEY_WORD + " = ?", new String[]{String.valueOf(word.getWord())});
 		db.close();
 	}
 
 	public Word getWord(Word word){
 		SQLiteDatabase db = this.getReadableDatabase();
 
-		Cursor cursor = db.query(TABLE_WORD, new String[]{KEY_ID,KEY_WORD,KEY_POS},KEY_ID + " = ?",
+		Cursor cursor = db.query(Constants.TABLE_WORD, new String[]{Constants.KEY_ID,Constants.KEY_WORD,Constants.KEY_POS},Constants.KEY_ID + " = ?",
 				new String[]{String.valueOf(word.getId())}, null,null,null,null);
 		if(cursor!=null)
 			cursor.moveToFirst();
@@ -77,7 +71,7 @@ public class DBSQLiteHandler extends SQLiteOpenHelper {
 
 	public ArrayList<Word> getWords(){
 		List<Word> wordsList = new ArrayList<Word>();
-		String query = "SELECT * FROM " + TABLE_WORD;
+		String query = "SELECT * FROM " + Constants.TABLE_WORD;
 		
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery(query, null);

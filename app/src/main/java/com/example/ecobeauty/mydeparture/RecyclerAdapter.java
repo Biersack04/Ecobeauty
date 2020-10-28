@@ -14,12 +14,13 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecobeauty.R;
+import com.example.ecobeauty.main.Constants;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressLint("NewApi")
+@SuppressLint(Constants.NEW_API)
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsViewHolder>{
 	
 	private List<Word> wordsList;
@@ -29,7 +30,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 	SharedPreference mSharedPreference;
 	DBSQLiteHandler dbHandler;
 	public ArrayList<Word> wordsListDB = new ArrayList<Word>();
-	private static final String LOG_TAG = "myLogs" ;
 
 
 	public RecyclerAdapter(Context con, List<Word> wordsList){
@@ -60,14 +60,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 			Drawable starFilled = ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.ic_favourite_filled, null);
 			starFilled.setBounds(0,0,24,24);
 			holder.imgButtonFavourite.setBackground(starFilled);
-			holder.imgButtonFavourite.setTag("filled");
+			holder.imgButtonFavourite.setTag(Constants.FILLED);
 			
 		}else{
 			
 			Drawable starEmpty = ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.ic_favourite,null);
 			starEmpty.setBounds(0,0,24,24);
 			holder.imgButtonFavourite.setBackground(starEmpty);
-			holder.imgButtonFavourite.setTag("empty");
+			holder.imgButtonFavourite.setTag(Constants.EMPTY);
 			
 		}
 	}
@@ -92,11 +92,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 		public ItemsViewHolder(View itemView){
 			super(itemView);
 			
-			cardView = (CardView) itemView.findViewById(R.id.cardViewID);
-			txtViewIcon = (TextView) itemView.findViewById(R.id.txtView_iconEntry);
-			txtViewWord = (TextView) itemView.findViewById(R.id.txtView_Word);
-			txtViewPOS = (TextView) itemView.findViewById(R.id.txtView_PartOfSpeech);
-			imgButtonFavourite = (ImageButton) itemView.findViewById(R.id.imgButton_Favourite);			
+			cardView = itemView.findViewById(R.id.cardViewID);
+			txtViewIcon = itemView.findViewById(R.id.txtView_iconEntry);
+			txtViewWord = itemView.findViewById(R.id.txtView_Word);
+			txtViewPOS = itemView.findViewById(R.id.txtView_PartOfSpeech);
+			imgButtonFavourite = itemView.findViewById(R.id.imgButton_Favourite);
 			
 			itemView.setOnClickListener(this);	
 			imgButtonFavourite.setOnClickListener(new View.OnClickListener() {
@@ -105,16 +105,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 				public void onClick(View view) {
 					
 					String tag = imgButtonFavourite.getTag().toString();
-					if (tag.equalsIgnoreCase("empty") && !starred) {
+					if (tag.equalsIgnoreCase(Constants.EMPTY) && !starred) {
 
 						dbHandler.addWord(wordsList.get(getAdapterPosition()));
 						
-						imgButtonFavourite.setTag("filled");
+						imgButtonFavourite.setTag(Constants.FILLED);
 						Drawable starFilled = ResourcesCompat.getDrawable(view.getResources(), R.drawable.ic_favourite_filled, null);
 						starFilled.setBounds(0, 0, 24, 24);
 						imgButtonFavourite.setBackground(starFilled);
 						
-						Snackbar.make(view, "Отличная работа!", Snackbar.LENGTH_LONG).setAction("Отменить",new View.OnClickListener() {
+						Snackbar.make(view, R.string.goodJob, Snackbar.LENGTH_LONG).setAction(R.string.cancel,new View.OnClickListener() {
 							
 							@Override
 							public void onClick(View view) {
@@ -127,7 +127,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 						}).show();
 					} else {
 						dbHandler.removeWord(wordsList.get(getAdapterPosition()));
-						imgButtonFavourite.setTag("empty");
+						imgButtonFavourite.setTag(Constants.EMPTY);
 						Drawable starEmpty = ResourcesCompat.getDrawable(view.getResources(), R.drawable.ic_favourite, null);
 						starEmpty.setBounds(0, 0, 24, 24);
 						imgButtonFavourite.setBackground(starEmpty);					

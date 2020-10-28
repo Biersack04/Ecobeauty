@@ -40,9 +40,9 @@ public class SignUpActivity extends AppCompatActivity {
         inputEmail = (TextInputEditText) findViewById(R.id.email);
         inputPassword = (TextInputEditText) findViewById(R.id.password);
         progressBar = findViewById(R.id.progressBar);
-        btnSignUp.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMedium.ttf"));
-        btnSignIn.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMedium.ttf"));
-        inputEmail.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoRegular.ttf"));
+        btnSignUp.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+        btnSignIn.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+        inputEmail.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,17 +59,17 @@ public class SignUpActivity extends AppCompatActivity {
                 String password = inputPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Введите Email адрес!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.inputEmail), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), "Введите пароль!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.inputPassword), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (password.length() < 6) {
-                    Toast.makeText(getApplicationContext(), "Пароль слишком короткий. Он должен быть не менее 6 знаков!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.minimumPassword), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -83,11 +83,11 @@ public class SignUpActivity extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
 
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(SignUpActivity.this, "Ошибка регестрации" + task.getException(),
+                                    Toast.makeText(SignUpActivity.this, getString(R.string.errorRegistration) + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 }
                                 else {
-                                    Toast.makeText(SignUpActivity.this, "Регистрация прошла успешно!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SignUpActivity.this, getString(R.string.successfulRegistration), Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(SignUpActivity.this, MainActivity.class));
                                     finish();
                                 }

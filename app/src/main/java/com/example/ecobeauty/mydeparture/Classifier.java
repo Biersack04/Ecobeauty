@@ -10,7 +10,6 @@ import org.pytorch.Tensor;
 import org.pytorch.torchvision.TensorImageUtils;
 
 public class Classifier {
-    public static final int IMG_SIZE = 224;
     Module model;
     float[] mean = {0.485f, 0.456f, 0.406f};
     float[] std = {0.229f, 0.224f, 0.225f};
@@ -38,7 +37,7 @@ public class Classifier {
     }
 
     public String predict(Bitmap bitmap) {
-        Tensor tensor = preprocess(bitmap, IMG_SIZE);
+        Tensor tensor = preprocess(bitmap, Constants.IMG_SIZE);
         IValue inputs = IValue.from(tensor);
         Tensor outputs = model.forward(inputs).toTensor();
         float[] scores = outputs.getDataAsFloatArray();

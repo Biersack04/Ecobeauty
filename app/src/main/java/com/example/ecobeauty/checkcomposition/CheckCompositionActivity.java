@@ -14,6 +14,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.ecobeauty.R;
+import com.example.ecobeauty.main.Constants;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,11 +26,8 @@ public class CheckCompositionActivity extends Activity {
     Button button;
     ListView listView;
 
-
     private DatabaseHelper mDBHelper;
     private SQLiteDatabase mDb;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +39,7 @@ public class CheckCompositionActivity extends Activity {
         try {
             mDBHelper.updateDataBase();
         } catch (IOException mIOException) {
-            throw new Error("UnableToUpdateDatabase");
+            throw new Error(Constants.IOE_ERROR_UPDATE);
         }
 
         try {
@@ -57,7 +55,7 @@ public class CheckCompositionActivity extends Activity {
         final ArrayList<HashMap<String, Object>> comp1 = new ArrayList<HashMap<String, Object>>();
 
 
-        final String[] from = { "name", "action", "danger", "describe_danger"};
+        final String[] from = Constants.COMPOSITION;
         final int[] to = { R.id.textView, R.id.textView2, R.id.textView3, R.id.textView4};
 
         final SimpleAdapter adapter = new SimpleAdapter(this, comp1, R.layout.adapter_item, from, to);
@@ -68,12 +66,11 @@ public class CheckCompositionActivity extends Activity {
 
                 ListView listView = findViewById(R.id.listView);
 
-
                 HashMap<String, Object> client;
 
                 String product = editText.getText().toString();
                 product = product.toUpperCase();
-                String[] words = product.split(",\\s");
+                String[] words = product.split(getString(R.string.split));
 
                 for (String a : words) {
 
@@ -86,10 +83,10 @@ public class CheckCompositionActivity extends Activity {
                         while (!cursor.isAfterLast()) {
                             client = new HashMap<String, Object>();
 
-                            client.put("name", cursor.getString(1));
-                            client.put("action", cursor.getString(2));
-                            client.put("danger", cursor.getString(3));
-                            client.put("describe_danger", cursor.getString(4));
+                            client.put(getString(R.string.name), cursor.getString(1));
+                            client.put(getString(R.string.action), cursor.getString(2));
+                            client.put(getString(R.string.danger), cursor.getString(3));
+                            client.put(getString(R.string.describe_danger), cursor.getString(4));
 
                             comp1.add(client);
 
@@ -100,7 +97,7 @@ public class CheckCompositionActivity extends Activity {
 
                     } else {
 
-                        Toast toast = Toast.makeText(getApplicationContext(),"Один или несколько компонентов отсутсвуют в базе", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(), R.string.componentsMissing, Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                     }

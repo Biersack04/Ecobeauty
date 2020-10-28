@@ -37,10 +37,10 @@ public class ResetPasswordActivity extends AppCompatActivity {
         btnBack =  findViewById(R.id.btn_back);
         progressBar =  findViewById(R.id.progressBar);
         resetText = findViewById(R.id.resetText);
-        btnReset.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMedium.ttf"));
-        btnBack.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMedium.ttf"));
-        inputEmail.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoRegular.ttf"));
-        resetText.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoRegular.ttf"));
+        btnReset.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+        btnBack.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+        inputEmail.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
+        resetText.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
 
         auth = FirebaseAuth.getInstance();
 
@@ -58,7 +58,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 String email = inputEmail.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplication(), "Введите email, который указывали при регистрации ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication(), getString(R.string.emailAtRegistration), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -68,9 +68,9 @@ public class ResetPasswordActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(ResetPasswordActivity.this, "Мы отправили вам инструкции для смены пароля!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ResetPasswordActivity.this, getString(R.string.changePasswordInstruction), Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(ResetPasswordActivity.this, "Ошибка при смене пароля!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ResetPasswordActivity.this, getString(R.string.changePasswordError), Toast.LENGTH_SHORT).show();
                                 }
 
                                 progressBar.setVisibility(View.GONE);

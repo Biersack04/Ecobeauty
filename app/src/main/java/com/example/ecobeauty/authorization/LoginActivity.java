@@ -76,10 +76,10 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
         btnSignup = (Button) findViewById(R.id.btn_signup);
-        btnLogin.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMedium.ttf"));
-        btnReset.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMediumItalic.ttf"));
-        btnSignup.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMedium.ttf"));
-        inputEmail.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoRegular.ttf"));
+        btnLogin.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+        btnReset.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMediumItalic)));
+        btnSignup.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+        inputEmail.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
 
 
                 auth = FirebaseAuth.getInstance();
@@ -108,12 +108,12 @@ public class LoginActivity extends AppCompatActivity {
                 final String password = inputPassword.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Введите Еmail адрес!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.inputEmail), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), "Введите пароль!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.inputPassword), Toast.LENGTH_SHORT).show();
                     return;
                 }
 

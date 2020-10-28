@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecobeauty.R;
+import com.example.ecobeauty.main.Constants;
+import com.example.ecobeauty.main.MainActivity;
 import com.example.ecobeauty.mycosmetics.WordActivity;
 
 import java.util.ArrayList;
@@ -29,7 +31,6 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
     int countPeriodProduct =0;
     String skinType;
     SharedPreferences sPref;
-    final String SAVED_TEXT = "saved_text";
     private RecyclerView mRecyclerViewM;
     private RecyclerView mRecyclerViewN;
     RecyclerAdapter mRecyclerAdapterM;
@@ -45,31 +46,31 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_departure);
         typeSkin = findViewById(R.id.textTypeSkin);
-        typeSkin.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoRegular.ttf"));
+        typeSkin.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
         skinType ="";
 
         Bundle arguments = getIntent().getExtras();
         if(arguments != null) {
             skinType ="";
-            type = arguments.getString("checkType");
+            type = arguments.getString(Constants.CHECK_TYPE);
 
             if (type != null) {
                 switch (type) {
-                    case "normal":
-                        typeSkin.setText("Нормальный тип");
-                        skinType ="Нормальная";
+                    case Constants.NORMAL:
+                        typeSkin.setText(R.string.normalType);
+                        skinType = getString(R.string.normalText);
                         break;
-                    case "fat":
-                        typeSkin.setText("Жирный тип");
-                        skinType ="Жирная";
+                    case Constants.FAT:
+                        typeSkin.setText(R.string.fatType);
+                        skinType = getString(R.string.fatText);
                         break;
-                    case "dry":
-                        typeSkin.setText("Сухой тип");
-                        skinType ="Сухая";
+                    case Constants.DRY:
+                        typeSkin.setText(R.string.dryType);
+                        skinType = getString(R.string.dryText);
                         break;
-                    case "combined":
-                        skinType ="Комбинированная";
-                        typeSkin.setText("Комбинированный тип");
+                    case Constants.COMBINED:
+                        skinType = getString(R.string.combinedText);
+                        typeSkin.setText(R.string.combinedType);
                         break;
                     default:
                         break;
@@ -78,13 +79,13 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
         }else{
             loadText();
         }
-        mRecyclerViewM = (RecyclerView) findViewById(R.id.recyclerViewMainMorning);
-        mRecyclerViewN=(RecyclerView) findViewById(R.id.recyclerViewMainNight);
-        mSharedPreferences = getSharedPreferences("spWords", 0);
-        prepareRecyclerView("Утро");
-        prepareWordsList("Утро");
-        prepareRecyclerView("Вечер");
-        prepareWordsList("Вечер");
+        mRecyclerViewM = findViewById(R.id.recyclerViewMainMorning);
+        mRecyclerViewN= findViewById(R.id.recyclerViewMainNight);
+        mSharedPreferences = getSharedPreferences(Constants.SP_WORDS, 0);
+        prepareRecyclerView(Constants.MORNING);
+        prepareWordsList(Constants.MORNING);
+        prepareRecyclerView(Constants.EVENING);
+        prepareWordsList(Constants.EVENING);
         databaseHelper =new DatabaseHelper3(this);
        }
 
@@ -99,12 +100,10 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
             String strWord = mapperObject.getWord();
             String strPOS = mapperObject.getPartOfSpeech();
             mEditor = mSharedPreferences.edit();
-            mEditor.putString("word", strWord);
-            mEditor.putString("pos", strPOS);
+            mEditor.putString(Constants.WORD, strWord);
+            mEditor.putString(Constants.POS, strPOS);
             mEditor.commit();
 
-            Intent intent = new Intent(getApplication(), WordActivity.class);
-            startActivity(intent);
         }
         else
         {
@@ -112,12 +111,9 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
             String strWord1 = mapperObject1.getWord();
             String strPOS1 = mapperObject1.getPartOfSpeech();
             mEditor = mSharedPreferences.edit();
-            mEditor.putString("word", strWord1);
-            mEditor.putString("pos", strPOS1);
+            mEditor.putString(Constants.WORD, strWord1);
+            mEditor.putString(Constants.POS, strPOS1);
             mEditor.commit();
-
-            Intent intent = new Intent(getApplication(),WordActivity.class);
-            startActivity(intent);
 
         }
     }
@@ -125,9 +121,9 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
 
     private void prepareRecyclerView(String Period) {
         switch (Period) {
-            case "Утро":
+            case Constants.MORNING:
 
-                mRecyclerViewM = (RecyclerView) findViewById(R.id.recyclerViewMainMorning);
+                mRecyclerViewM = findViewById(R.id.recyclerViewMainMorning);
                 wordsListMorning = new ArrayList<>();
                 mRecyclerAdapterM = new RecyclerAdapter(getApplicationContext(), wordsListMorning);
                 mRecyclerViewM.setHasFixedSize(true);
@@ -138,9 +134,9 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
 
                 break;
 
-            case "Вечер":
+            case Constants.EVENING:
 
-                mRecyclerViewN = (RecyclerView) findViewById(R.id.recyclerViewMainNight);
+                mRecyclerViewN = findViewById(R.id.recyclerViewMainNight);
                 wordsListNight = new ArrayList<>();
                 mRecyclerAdapterN = new RecyclerAdapter(getApplicationContext(), wordsListNight);
                 mRecyclerViewN.setHasFixedSize(true);
@@ -169,7 +165,7 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
         for (int i = 0; i < countPeriodProduct; i++) {
             Word mapperClass = new Word(cursorPeriod.getString(0), cursorPeriod.getString(1));
 
-            if ( Period == "Утро")
+            if ( Period == Constants.MORNING)
             {
                 wordsListMorning.add(mapperClass);
             }
@@ -201,32 +197,34 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
 
 
     public void onBackOnClick (View view) {
-        finish();
+        saveText();
+        Intent intent = new Intent(MyDepartureActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
     void saveText() {
         sPref = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
-        ed.putString(SAVED_TEXT, typeSkin.getText().toString());
+        ed.putString(Constants.SAVED_TEXT, typeSkin.getText().toString());
         ed.commit();
     }
 
     void loadText() {
         sPref = getPreferences(MODE_PRIVATE);
-        String savedText = sPref.getString(SAVED_TEXT, "");
+        String savedText = sPref.getString(Constants.SAVED_TEXT, "");
         typeSkin.setText(savedText);
         switch (savedText) {
-            case "Нормальный тип":
-                skinType ="Нормальная";
+            case Constants.NORMAL_TYPE:
+                skinType =getString(R.string.normalText);
                 break;
-            case "Жирный тип":
-                skinType ="Жирная";
+            case Constants.FAT_TYPE:
+                skinType =getString(R.string.fatText);
                 break;
-            case "Сухой тип":
-                skinType ="Сухая";
+            case Constants.DRY_TYPE:
+                skinType =getString(R.string.dryText);
                 break;
-            case "Комбинированный тип":
-                skinType ="Комбинированная";
+            case Constants.COMBINED_TYPE:
+                skinType =getString(R.string.combinedText);
                 break;
             default:
                 break;
@@ -241,9 +239,22 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        saveText();
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        saveText();
+    }
+
+    @Override
     public void onBackPressed() {
         saveText();
-        finish();
+        Intent intent = new Intent(MyDepartureActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override

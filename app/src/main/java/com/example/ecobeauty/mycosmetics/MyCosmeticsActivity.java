@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.ecobeauty.R;
+import com.example.ecobeauty.main.MainActivity;
+import com.example.ecobeauty.mydeparture.MyDepartureActivity;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -236,7 +238,8 @@ public class MyCosmeticsActivity extends AppCompatActivity {
     }
 
     public void goHome(View view) {
-        finish();
+        Intent intent = new Intent(MyCosmeticsActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 /*
     @Override
