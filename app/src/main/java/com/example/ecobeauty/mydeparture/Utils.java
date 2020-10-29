@@ -12,20 +12,23 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class Utils {
+    private static File file;
+    private static InputStream inputStream;
+    private static OutputStream outputStream;
 
     public static String assetFilePath(Context context, String assetName) {
-        File file = new File(context.getFilesDir(), assetName);
+        file = new File(context.getFilesDir(), assetName);
 
         try {
-            InputStream is = context.getAssets().open(assetName);
+            inputStream = context.getAssets().open(assetName);
             try  {
-                OutputStream os = new FileOutputStream(file);
+                outputStream = new FileOutputStream(file);
                 byte[] buffer = new byte[4 * 1024];
                 int read;
-                while ((read = is.read(buffer)) != -1) {
-                    os.write(buffer, 0, read);
+                while ((read = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, read);
                 }
-                os.flush();
+                outputStream.flush();
             }catch (Exception e) {
                 Log.e(Constants.PYTORCH, Constants.ERROR_PROCESS_ONE + assetName + Constants.FILE_PATH);
             }

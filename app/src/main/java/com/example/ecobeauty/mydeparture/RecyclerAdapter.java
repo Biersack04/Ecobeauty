@@ -24,11 +24,19 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsViewHolder>{
 	
 	private List<Word> wordsList;
-	public ArrayList<Word> wordsListDB = new ArrayList<Word>();
+	public ArrayList<Word> wordsListDB = new ArrayList<Word>(), itemsInDB;
 	static ClickListener clickListener;
-
-	Context mContext;
-	DBSQLiteHandler dbHandler;
+	private Context mContext;
+	private DBSQLiteHandler dbHandler;
+	private View view;
+	private Word wordMapper;
+	private Drawable starFilled, starEmpty, star;
+	private int wordListSize;
+	private CardView cardView;
+	private TextView txtViewIcon,txtViewWord,txtViewPOS;
+	private ImageButton imgButtonFavourite;
+	private String tag;
+	private boolean isChecked;
 
 	public RecyclerAdapter(Context con, List<Word> wordsList){
 		this.wordsList=wordsList;
@@ -39,44 +47,42 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 	
 	@Override
 	public ItemsViewHolder onCreateViewHolder(ViewGroup parent, int viewType){		
-		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row, parent, false);
+		view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row, parent, false);
 		return new ItemsViewHolder(view);
 	}
 	
 	@Override
 	public void onBindViewHolder(ItemsViewHolder holder, int position) {
-		Word wordMapper = wordsList.get(position);
+		wordMapper = wordsList.get(position);
 		
-		holder.txtViewIcon.setText(""+ wordMapper.getWord().charAt(0));
-		holder.txtViewIcon.setGravity(Gravity.CENTER);
-		holder.txtViewWord.setText(wordMapper.getWord());
-		holder.txtViewPOS.setText(wordMapper.getPartOfSpeech());
+		txtViewIcon.setText(""+ wordMapper.getWord().charAt(0));
+		txtViewIcon.setGravity(Gravity.CENTER);
+		txtViewWord.setText(wordMapper.getWord());
+		txtViewPOS.setText(wordMapper.getPartOfSpeech());
 
 		if(checkFavouriteItem(wordMapper)){
-			Drawable starFilled = ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.ic_favourite_filled, null);
+			starFilled = ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.ic_favourite_filled, null);
 			starFilled.setBounds(0,0,24,24);
-			holder.imgButtonFavourite.setBackground(starFilled);
-			holder.imgButtonFavourite.setTag(Constants.FILLED);
+			imgButtonFavourite.setBackground(starFilled);
+			imgButtonFavourite.setTag(Constants.FILLED);
 			
 		}else{
-			Drawable starEmpty = ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.ic_favourite,null);
+			starEmpty = ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.ic_favourite,null);
 			starEmpty.setBounds(0,0,24,24);
-			holder.imgButtonFavourite.setBackground(starEmpty);
-			holder.imgButtonFavourite.setTag(Constants.EMPTY);
+			imgButtonFavourite.setBackground(starEmpty);
+			imgButtonFavourite.setTag(Constants.EMPTY);
 		}
 	}
 	
 	@Override
 	public int getItemCount() {
-		int a =wordsList.size();
-		return a;
+		wordListSize =wordsList.size();
+		return wordListSize;
 	}
 
 	public class ItemsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-		CardView cardView;
-		TextView txtViewIcon,txtViewWord,txtViewPOS;
-		ImageButton imgButtonFavourite;
-		boolean starred = false;		
+
+		boolean starred = false;
 		
 		public ItemsViewHolder(View itemView){
 			super(itemView);
@@ -93,13 +99,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 				@Override
 				public void onClick(View view) {
 					
-					String tag = imgButtonFavourite.getTag().toString();
+					tag = imgButtonFavourite.getTag().toString();
 					if (tag.equalsIgnoreCase(Constants.EMPTY) && !starred) {
 
 						dbHandler.addWord(wordsList.get(getAdapterPosition()));
 						
 						imgButtonFavourite.setTag(Constants.FILLED);
-						Drawable starFilled = ResourcesCompat.getDrawable(view.getResources(), R.drawable.ic_favourite_filled, null);
+						starFilled = ResourcesCompat.getDrawable(view.getResources(), R.drawable.ic_favourite_filled, null);
 						starFilled.setBounds(0, 0, 24, 24);
 						imgButtonFavourite.setBackground(starFilled);
 						
@@ -109,7 +115,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 							public void onClick(View view) {
 								dbHandler.removeWord(wordsList.get(getAdapterPosition()));
 
-								Drawable star = ResourcesCompat.getDrawable(view.getResources(), R.drawable.ic_favourite, null);
+								star = ResourcesCompat.getDrawable(view.getResources(), R.drawable.ic_favourite, null);
 								star.setBounds(0,0,24,24);
 								imgButtonFavourite.setBackground(star);
 							}
@@ -117,7 +123,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 					} else {
 						dbHandler.removeWord(wordsList.get(getAdapterPosition()));
 						imgButtonFavourite.setTag(Constants.EMPTY);
-						Drawable starEmpty = ResourcesCompat.getDrawable(view.getResources(), R.drawable.ic_favourite, null);
+						starEmpty = ResourcesCompat.getDrawable(view.getResources(), R.drawable.ic_favourite, null);
 						starEmpty.setBounds(0, 0, 24, 24);
 						imgButtonFavourite.setBackground(starEmpty);					
 					}					
@@ -136,19 +142,19 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 	
 	
 	public boolean checkFavouriteItem(Word checkStarredItem){
-		boolean check = false;
+		isChecked = false;
 
-		ArrayList<Word> itemsInDB = dbHandler.getWords();
+		itemsInDB = dbHandler.getWords();
 		
 		if(itemsInDB!=null){
 			for(Word word : itemsInDB){
 				if((word.getWord()).equals(checkStarredItem.getWord())) {
-					check = true;
+					isChecked = true;
 					break;
 				}
 			}
 		}
-        return check;
+        return isChecked;
 	}	
 
 	public void setListener(ClickListener clicked){

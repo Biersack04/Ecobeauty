@@ -46,8 +46,12 @@ public class Constants {
     public static final String FAT_TYPE = "Жирный тип";
     public static final String DRY_TYPE = "Сухой тип";
     public static final String COMBINED_TYPE = "Комбинированный тип";
-    public static String BASIC_NAME_USER_PRODUCT = "UserProduct";
-    public static String BASIC_NAME_USER_WISH = "UserWish";
-
+    public static final String BASIC_NAME_USER_PRODUCT = "UserProduct";
+    public static final String BASIC_NAME_USER_WISH = "UserWish";
+    public static final String SAVED_DATE_CHECKALL = "saved_date_checkall" ;
+    public static final String SAVED_DATE = "saved_date";
+    public static final String MOTIV_COUNT = "saved_motivation_count";
+    public static final String SIMPLE_DATE_FORMAT="MMM dd yyyy";
+    public static final String NULL ="null";
 }
 

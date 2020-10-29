@@ -18,6 +18,12 @@ public class DatabaseHelper3 extends SQLiteOpenHelper {
     private SQLiteDatabase mDatabase;
     private final Context mContext;
     private boolean mNeedUpdate = false;
+    private File dbFile;
+    private InputStream mInput;
+    private OutputStream mOutput;
+    private  byte[] mBuffer;
+    private int mLength;
+
 
     public DatabaseHelper3(Context context) {
         super(context, Constants.DB_NAME_THREE, null, Constants.DB_VERSION);
@@ -34,7 +40,7 @@ public class DatabaseHelper3 extends SQLiteOpenHelper {
 
     public void updateDataBase() throws IOException {
         if (mNeedUpdate) {
-            File dbFile = new File(Constants.DB_PATH_THREE + Constants.DB_NAME_THREE);
+            dbFile = new File(Constants.DB_PATH_THREE + Constants.DB_NAME_THREE);
             if (dbFile.exists())
                 dbFile.delete();
 
@@ -45,7 +51,7 @@ public class DatabaseHelper3 extends SQLiteOpenHelper {
     }
 
     private boolean checkDatabase() {
-        File dbFile = new File(Constants.DB_PATH_THREE + Constants.DB_NAME_THREE);
+        dbFile = new File(Constants.DB_PATH_THREE + Constants.DB_NAME_THREE);
         return dbFile.exists();
     }
 
@@ -62,10 +68,9 @@ public class DatabaseHelper3 extends SQLiteOpenHelper {
     }
 
     private void copyDBFile() throws IOException {
-        InputStream mInput = mContext.getAssets().open(Constants.DB_NAME_THREE);
-        OutputStream mOutput = new FileOutputStream(Constants.DB_PATH_THREE + Constants.DB_NAME_THREE);
-        byte[] mBuffer = new byte[1024];
-        int mLength;
+        mInput = mContext.getAssets().open(Constants.DB_NAME_THREE);
+        mOutput = new FileOutputStream(Constants.DB_PATH_THREE + Constants.DB_NAME_THREE);
+        mBuffer = new byte[1024];
         while ((mLength = mInput.read(mBuffer)) > 0)
             mOutput.write(mBuffer, 0, mLength);
         mOutput.flush();

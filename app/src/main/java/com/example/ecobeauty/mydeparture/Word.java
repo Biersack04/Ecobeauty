@@ -5,8 +5,7 @@ import com.example.ecobeauty.R;
 public class Word {
 
 	private int id;
-	private String word;
-	private String partOfSpeech;
+	private String word, partOfSpeech;
 
 	public Word( String word, String pos) {
 		super();

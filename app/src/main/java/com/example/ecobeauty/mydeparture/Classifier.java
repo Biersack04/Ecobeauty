@@ -10,9 +10,14 @@ import org.pytorch.Tensor;
 import org.pytorch.torchvision.TensorImageUtils;
 
 public class Classifier {
-    Module model;
-    float[] mean = {0.485f, 0.456f, 0.406f};
-    float[] std = {0.229f, 0.224f, 0.225f};
+    private Module model;
+    private float[] mean = {0.485f, 0.456f, 0.406f};
+    private float[] std = {0.229f, 0.224f, 0.225f};
+    private int maxIndex, classIndex;
+    private float maxvalue;
+    private Tensor tensor, outputs;
+    private IValue inputs;
+    private float[] scores;
 
     public Classifier(String modelPath) {
         model = Module.load(modelPath);
@@ -24,8 +29,8 @@ public class Classifier {
     }
 
     public int argMax(float[] inputs) {
-        int maxIndex = -1;
-        float maxvalue = 0.0f;
+        maxIndex = -1;
+        maxvalue = 0.0f;
         for (int i = 0; i < inputs.length; i++) {
             if (inputs[i] > maxvalue) {
                 maxIndex = i;
@@ -36,11 +41,11 @@ public class Classifier {
     }
 
     public String predict(Bitmap bitmap) {
-        Tensor tensor = preprocess(bitmap, Constants.IMG_SIZE);
-        IValue inputs = IValue.from(tensor);
-        Tensor outputs = model.forward(inputs).toTensor();
-        float[] scores = outputs.getDataAsFloatArray();
-        int classIndex = argMax(scores);
+        tensor = preprocess(bitmap, Constants.IMG_SIZE);
+        inputs = IValue.from(tensor);
+        outputs = model.forward(inputs).toTensor();
+        scores = outputs.getDataAsFloatArray();
+        classIndex = argMax(scores);
         return Constants.IMAGENET_CLASSES[classIndex];
     }
 }

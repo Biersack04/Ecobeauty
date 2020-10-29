@@ -10,14 +10,17 @@ import com.example.ecobeauty.R;
 import com.example.ecobeauty.main.Constants;
 
 public class Types extends AppCompatActivity {
-    public String typeSkin;
+    private String typeSkin, prediction;
+    private TextView text;
+    private Intent intentToMyDepartureActivity;
+    private Bundle activityData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.result_layout);
-        TextView text = findViewById(R.id.textViewResult);
-        String prediction  = getIntent().getStringExtra(Constants.PRED);
+        text = findViewById(R.id.textViewResult);
+        prediction  = getIntent().getStringExtra(Constants.PRED);
 
         if (prediction.equals(getString(R.string.normal))){
             text.setText(R.string.normalDescribe);
@@ -51,10 +54,10 @@ public class Types extends AppCompatActivity {
     }
 
     public void onBackSkin (View view) {
-        Intent intent = new Intent(this, MyDepartureActivity.class);
-        Bundle data1 = new Bundle();
-        data1.putString(Constants.CHECK_TYPE, typeSkin);
-        intent.putExtras(data1);
-        startActivity(intent);
+        intentToMyDepartureActivity = new Intent(this, MyDepartureActivity.class);
+        activityData = new Bundle();
+        activityData.putString(Constants.CHECK_TYPE, typeSkin);
+        intentToMyDepartureActivity.putExtras(activityData);
+        startActivity(intentToMyDepartureActivity);
     }
 }

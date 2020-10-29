@@ -16,13 +16,17 @@ import com.example.ecobeauty.main.Constants;
 
 public class SkinTypeActivity extends Activity {
 
-    public String typeSkin;
-    public int  count = 0;
-    int cameraRequestCode = 001;
+    private String typeSkin;
+    private int  count = 0;
+    private int cameraRequestCode = 001;
 
-    Classifier classifier;
-    Bitmap imageBitmap;
-    String identifiedType;
+    private Classifier classifier;
+    private Bitmap imageBitmap;
+    private String identifiedType;
+    private Button capture;
+    private Intent cameraIntent, intentToType, intentToMyDepartureActivity;
+    private RadioGroup radioGroup;
+    private Bundle activityData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +35,16 @@ public class SkinTypeActivity extends Activity {
 
         classifier = new Classifier(Utils.assetFilePath(this, Constants.NETWORK_FILE));
 
-        Button capture = findViewById(R.id.capture);
+        capture = findViewById(R.id.capture);
         capture.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(cameraIntent,cameraRequestCode);
             }
         });
 
-        RadioGroup radioGroup = findViewById(R.id.rGroup);
+        radioGroup = findViewById(R.id.radioGroup);
         radioGroup.clearCheck();
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
@@ -86,17 +90,17 @@ public class SkinTypeActivity extends Activity {
         if (requestCode == cameraRequestCode && resultCode == RESULT_OK) {
             imageBitmap = (Bitmap) data.getExtras().get(Constants.DATA);
             identifiedType = classifier.predict(imageBitmap);
-            Intent intent1 = new Intent(SkinTypeActivity.this, Types.class);
-            intent1.putExtra(Constants.PRED, identifiedType);
-            startActivity(intent1);
+            intentToType = new Intent(SkinTypeActivity.this, Types.class);
+            intentToType.putExtra(Constants.PRED, identifiedType);
+            startActivity(intentToType);
         }
     }
 
     public void changeActivity() {
-        Intent intent = new Intent(this, MyDepartureActivity.class);
-        Bundle data1 = new Bundle();
-        data1.putString(Constants.CHECK_TYPE, typeSkin);
-        intent.putExtras(data1);
-        startActivity(intent);
+        intentToMyDepartureActivity = new Intent(this, MyDepartureActivity.class);
+        activityData = new Bundle();
+        activityData.putString(Constants.CHECK_TYPE, typeSkin);
+        intentToMyDepartureActivity.putExtras(activityData);
+        startActivity(intentToMyDepartureActivity);
     }
 }

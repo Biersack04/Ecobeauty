@@ -1,14 +1,16 @@
 package com.example.ecobeauty.mydeparture;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,37 +19,47 @@ import com.example.ecobeauty.R;
 import com.example.ecobeauty.main.Constants;
 import com.example.ecobeauty.main.MainActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+
 
 
 public class MyDepartureActivity<view> extends Activity implements RecyclerAdapter.ClickListener,View.OnClickListener{
 
-    public TextView typeSkin;
-    private RecyclerView mRecyclerViewM, mRecyclerViewN;
-    private List<Word> wordsListMorning, wordsListNight;
+    private TextView typeSkin, motivCountText;
+    private DatabaseHelper3 databaseHelper;
+    private SQLiteDatabase db;
+    private Cursor cursorPeriod;
+    private int countPeriodProduct=0, motivCount;
+    private String skinType, strWord, strPosition, savedText, today, dateSH, type;
+    private SharedPreferences sPref;
+    private RecyclerView mRecyclerViewMorning, mRecyclerViewNight;
+    private RecyclerAdapter mRecyclerAdapterMorning, mRecyclerAdapterNight;
+    private List<Word> wordsList;
     private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
-    int countPeriodProduct = 0;
+    private SharedPreferences.Editor mEditor, editor;
+    private DBSQLiteHandler dbHandler;
+    private ArrayList<Word> wordsListFavourite;
+    private Bundle arguments;
+    private Word mapperObject, mapperClass;
+    private Intent intent;
+    private Calendar calendar;
+    private SimpleDateFormat simpleDateFormat;
+    private View viewRecyclerMorning;
 
-    DatabaseHelper3 databaseHelper;
-    SQLiteDatabase db;
-    Cursor cursorPeriod;
-    String skinType, type;
-    SharedPreferences sPref;
-    RecyclerAdapter mRecyclerAdapterM, mRecyclerAdapterN;
-
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_departure);
         typeSkin = findViewById(R.id.textTypeSkin);
-        typeSkin.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
-        skinType ="";
+        motivCountText = findViewById(R.id.textMotivCount);
 
-        Bundle arguments = getIntent().getExtras();
+        arguments = getIntent().getExtras();
         if(arguments != null) {
-            skinType ="";
+            skinType="";
             type = arguments.getString(Constants.CHECK_TYPE);
 
             if (type != null) {
@@ -75,70 +87,76 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
         }else{
             loadText();
         }
-        mRecyclerViewM = findViewById(R.id.recyclerViewMainMorning);
-        mRecyclerViewN= findViewById(R.id.recyclerViewMainNight);
+        mRecyclerViewMorning = (RecyclerView) findViewById(R.id.recyclerViewMainMorning);
+        mRecyclerViewNight=(RecyclerView) findViewById(R.id.recyclerViewMainNight);
+
         mSharedPreferences = getSharedPreferences(Constants.SP_WORDS, 0);
+
         prepareRecyclerView(Constants.MORNING);
         prepareWordsList(Constants.MORNING);
         prepareRecyclerView(Constants.EVENING);
         prepareWordsList(Constants.EVENING);
+
         databaseHelper =new DatabaseHelper3(this);
-       }
+
+        sPref = getPreferences(MODE_PRIVATE);
+        motivCount = sPref.getInt(Constants.MOTIV_COUNT, 0);
+        motivCountText.setText(Integer.toString(motivCount));
+        Motivation();
+
+    }
+
+
+
+
 
     @Override
     public void itemClicked(View view, int position) {
-        View a =mRecyclerViewM.findContainingItemView(view);
 
-        if (a!=null)
+        viewRecyclerMorning =mRecyclerViewMorning.findContainingItemView(view);
+
+        if (viewRecyclerMorning!=null)
         {
-            Word mapperObject = wordsListMorning.get(position);
-            String strWord = mapperObject.getWord();
-            String strPOS = mapperObject.getPartOfSpeech();
-            mEditor = mSharedPreferences.edit();
-            mEditor.putString(Constants.WORD, strWord);
-            mEditor.putString(Constants.POS, strPOS);
-            mEditor.commit();
+            mapperObject = wordsList.get(position);
 
-         //   Intent intent = new Intent(getApplication(), WordActivity.class);
-            //startActivity(intent);
         }
         else
         {
-            Word mapperObject1 = wordsListNight.get(position);
-            String strWord1 = mapperObject1.getWord();
-            String strPOS1 = mapperObject1.getPartOfSpeech();
-            mEditor = mSharedPreferences.edit();
-            mEditor.putString(Constants.WORD, strWord1);
-            mEditor.putString(Constants.POS, strPOS1);
-            mEditor.commit();
-           // Intent intent = new Intent(getApplication(),WordActivity.class);
-         //   startActivity(intent);
+            mapperObject = wordsList.get(position);
 
         }
+        strWord = mapperObject.getWord();
+        strPosition = mapperObject.getPartOfSpeech();
+        mEditor = mSharedPreferences.edit();
+        mEditor.putString(Constants.WORD, strWord);
+        mEditor.putString(Constants.POS, strPosition);
+        mEditor.commit();
+
     }
+
+
 
     private void prepareRecyclerView(String Period) {
         switch (Period) {
             case Constants.MORNING:
-                mRecyclerViewM = findViewById(R.id.recyclerViewMainMorning);
-                wordsListMorning = new ArrayList<>();
-                mRecyclerAdapterM = new RecyclerAdapter(getApplicationContext(), wordsListMorning);
-                mRecyclerViewM.setHasFixedSize(true);
-                mRecyclerAdapterM.setListener(this);
-                mRecyclerViewM.setItemAnimator(new DefaultItemAnimator());
-                mRecyclerViewM.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                mRecyclerViewM.setAdapter(mRecyclerAdapterM);
+                mRecyclerViewMorning = (RecyclerView) findViewById(R.id.recyclerViewMainMorning);
+                wordsList = new ArrayList<>();
+                mRecyclerAdapterMorning = new RecyclerAdapter(getApplicationContext(), wordsList);
+                mRecyclerViewMorning.setHasFixedSize(true);
+                mRecyclerAdapterMorning.setListener(this);
+                mRecyclerViewMorning.setItemAnimator(new DefaultItemAnimator());
+                mRecyclerViewMorning.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                mRecyclerViewMorning.setAdapter(mRecyclerAdapterMorning);
                 break;
-
             case Constants.EVENING:
-                mRecyclerViewN = findViewById(R.id.recyclerViewMainNight);
-                wordsListNight = new ArrayList<>();
-                mRecyclerAdapterN = new RecyclerAdapter(getApplicationContext(), wordsListNight);
-                mRecyclerViewN.setHasFixedSize(true);
-                mRecyclerAdapterN.setListener(this);
-                mRecyclerViewN.setItemAnimator(new DefaultItemAnimator());
-                mRecyclerViewN.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                mRecyclerViewN.setAdapter(mRecyclerAdapterN);
+                mRecyclerViewNight = (RecyclerView) findViewById(R.id.recyclerViewMainNight);
+                wordsList = new ArrayList<>();
+                mRecyclerAdapterNight = new RecyclerAdapter(getApplicationContext(), wordsList);
+                mRecyclerViewNight.setHasFixedSize(true);
+                mRecyclerAdapterNight.setListener(this);
+                mRecyclerViewNight.setItemAnimator(new DefaultItemAnimator());
+                mRecyclerViewNight.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                mRecyclerViewNight.setAdapter(mRecyclerAdapterNight);
                 break;
         }
     }
@@ -146,7 +164,6 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
     private void prepareWordsList(String Period) {
         databaseHelper = new DatabaseHelper3(this);
         db = databaseHelper.getReadableDatabase();
-
         cursorPeriod = db.rawQuery("" +
                 "select c.name, c.description " +
                 "from type t " +
@@ -157,49 +174,57 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
         cursorPeriod.moveToFirst();
 
         for (int i = 0; i < countPeriodProduct; i++) {
-            Word mapperClass = new Word(cursorPeriod.getString(0), cursorPeriod.getString(1));
+            mapperClass = new Word(cursorPeriod.getString(0), cursorPeriod.getString(1));
+             if ( Period == Constants.MORNING)
+            {
+                wordsList.add(mapperClass);
+            }
+            else
+            {
+                wordsList.add(mapperClass);
+            }
 
-            if ( Period == Constants.MORNING) {
-                wordsListMorning.add(mapperClass);
-            }
-            else {
-                wordsListNight.add(mapperClass);
-            }
+
             cursorPeriod.moveToNext();
         }
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
+        mRecyclerAdapterMorning.setListener(this);
+        mRecyclerViewMorning.setAdapter(mRecyclerAdapterMorning);
+        mRecyclerAdapterNight.setListener(this);
+        mRecyclerViewNight.setAdapter(mRecyclerAdapterNight);
+    }
 
-        mRecyclerAdapterM.setListener(this);
-        mRecyclerViewM.setAdapter(mRecyclerAdapterM);
-        mRecyclerAdapterN.setListener(this);
-        mRecyclerViewN.setAdapter(mRecyclerAdapterN);
-        }
-
-    public void onTypeSkin(View view) {
-        Intent intent = new Intent(this, SkinTypeActivity.class);
+    public void onTypeSkin(View view)
+    {
+        intent = new Intent(this, SkinTypeActivity.class);
         startActivity(intent);
     }
 
+
     public void onBackOnClick (View view) {
-        saveText();
-        Intent intent = new Intent(MyDepartureActivity.this, MainActivity.class);
+        intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
     void saveText() {
         sPref = getPreferences(MODE_PRIVATE);
-        SharedPreferences.Editor ed = sPref.edit();
-        ed.putString(Constants.SAVED_TEXT, typeSkin.getText().toString());
-        ed.commit();
+        editor = sPref.edit();
+        editor.putString(Constants.SAVED_TEXT, typeSkin.getText().toString());
+        simpleDateFormat = new SimpleDateFormat(Constants.SIMPLE_DATE_FORMAT);
+        calendar=Calendar.getInstance();
+        today = simpleDateFormat.format(calendar.getTime());
+        editor.putString(Constants.SAVED_DATE, today);
+        editor.commit();
     }
 
     void loadText() {
         sPref = getPreferences(MODE_PRIVATE);
-        String savedText = sPref.getString(Constants.SAVED_TEXT, "");
+        savedText = sPref.getString(Constants.SAVED_TEXT, "");
         typeSkin.setText(savedText);
         switch (savedText) {
             case Constants.NORMAL_TYPE:
@@ -217,6 +242,15 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
             default:
                 break;
         }
+        simpleDateFormat = new SimpleDateFormat(Constants.SIMPLE_DATE_FORMAT);
+        calendar=Calendar.getInstance();
+        today = simpleDateFormat.format(calendar.getTime());
+        dateSH = sPref.getString(Constants.SAVED_DATE, Constants.NULL);
+        if (!today.equals(dateSH)) {
+            dbHandler = new DBSQLiteHandler(getApplicationContext());
+            db = dbHandler.getReadableDatabase();
+            dbHandler.onUpgrade(db,1,2);
+        }
     }
 
     @Override
@@ -226,24 +260,55 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        saveText();
-    }
-
-    @Override
-    public void finish() {
-        super.finish();
-        saveText();
-    }
-
-    @Override
     public void onBackPressed() {
         saveText();
-        Intent intent = new Intent(MyDepartureActivity.this, MainActivity.class);
+        intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
     @Override
-    public void onClick(View v) { }
+    public void onClick(View v) {
+
+
+    }
+
+    public boolean CheckAll() {
+        dbHandler = new DBSQLiteHandler(getApplicationContext());
+        wordsListFavourite = dbHandler.getWords();
+        if (wordsListFavourite.size()>=mRecyclerAdapterMorning.getItemCount() && wordsListFavourite.size()!=0)
+        {
+            sPref = getPreferences(MODE_PRIVATE);
+            editor = sPref.edit();
+            simpleDateFormat = new SimpleDateFormat(Constants.SIMPLE_DATE_FORMAT);
+            calendar = Calendar.getInstance();
+            today = simpleDateFormat.format(calendar.getTime());
+            editor.putString(Constants.SAVED_DATE_CHECKALL, today);
+            editor.commit();
+            return true;
+        }
+        else return false;
+    }
+
+
+    public void Motivation(){
+        sPref = getPreferences(MODE_PRIVATE);
+        dateSH = sPref.getString(Constants.SAVED_DATE_CHECKALL, Constants.NULL);
+        simpleDateFormat = new SimpleDateFormat(Constants.SIMPLE_DATE_FORMAT);
+        calendar  = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -1);
+        today = simpleDateFormat.format(calendar.getTime());
+        if (CheckAll() && dateSH.equals(today)){ // ну тут я просто проверяла условие на выполнено всё
+            motivCount++;
+            editor = sPref.edit();
+            editor.putInt(Constants.MOTIV_COUNT, motivCount);
+            editor.commit();
+        }
+        else{
+            motivCount=0;
+            editor = sPref.edit();
+            editor.putInt(Constants.MOTIV_COUNT, motivCount);
+            editor.commit();
+
+        }
+    }
 }

@@ -14,7 +14,13 @@ import java.util.List;
 
 public class DBSQLiteHandler extends SQLiteOpenHelper {
 
-	Context context;
+	private Context context;
+	private String CREATE_TABLE, query;
+	private SQLiteDatabase db;
+	private ContentValues contentValues;
+	private Cursor cursor;
+	private Word wordFound, word;
+	private List<Word> wordsList;
 
 	public DBSQLiteHandler(Context context) {
 		super(context, Constants.DATABASE_NAME, null, Constants.DATABASE_VERSION);
@@ -23,7 +29,7 @@ public class DBSQLiteHandler extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		String CREATE_TABLE = "CREATE TABLE " + Constants.TABLE_WORD + "("
+		CREATE_TABLE = "CREATE TABLE " + Constants.TABLE_WORD + "("
                 + Constants.KEY_ID + " INTEGER PRIMARY KEY," + Constants.KEY_WORD + " TEXT,"
                 + Constants.KEY_POS + " TEXT" + ")";
 		db.execSQL(CREATE_TABLE);
@@ -36,9 +42,9 @@ public class DBSQLiteHandler extends SQLiteOpenHelper {
 	}
 
 	public void addWord(Word word){
-		SQLiteDatabase db = this.getWritableDatabase();
+		db = this.getWritableDatabase();
 		
-		ContentValues contentValues = new ContentValues();
+		contentValues = new ContentValues();
 		contentValues.put(Constants.KEY_WORD, word.getWord());
 		contentValues.put(Constants.KEY_POS, word.getPartOfSpeech());
 		
@@ -47,35 +53,35 @@ public class DBSQLiteHandler extends SQLiteOpenHelper {
 	}
 
 	public void removeWord(Word word){
-		SQLiteDatabase db = this.getWritableDatabase();
+		db = this.getWritableDatabase();
 		
 		db.delete(Constants.TABLE_WORD, Constants.KEY_WORD + " = ?", new String[]{String.valueOf(word.getWord())});
 		db.close();
 	}
 
 	public Word getWord(Word word){
-		SQLiteDatabase db = this.getReadableDatabase();
+		db = this.getReadableDatabase();
 
-		Cursor cursor = db.query(Constants.TABLE_WORD, new String[]{Constants.KEY_ID,Constants.KEY_WORD,Constants.KEY_POS},Constants.KEY_ID + " = ?",
+		cursor = db.query(Constants.TABLE_WORD, new String[]{Constants.KEY_ID,Constants.KEY_WORD,Constants.KEY_POS},Constants.KEY_ID + " = ?",
 				new String[]{String.valueOf(word.getId())}, null,null,null,null);
 		if(cursor!=null)
 			cursor.moveToFirst();
 
-		Word wordFound = new Word(cursor.getString(1), cursor.getString(2));
+		wordFound = new Word(cursor.getString(1), cursor.getString(2));
 
 		return wordFound;
 	}
 
 	public ArrayList<Word> getWords(){
-		List<Word> wordsList = new ArrayList<Word>();
-		String query = "SELECT * FROM " + Constants.TABLE_WORD;
+		wordsList = new ArrayList<Word>();
+		query = "SELECT * FROM " + Constants.TABLE_WORD;
 		
-		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.rawQuery(query, null);
+		db = this.getReadableDatabase();
+		cursor = db.rawQuery(query, null);
 		
 		if(cursor.moveToFirst()){
 			do{
-				Word word = new Word(cursor.getString(1), cursor.getString(2));
+				word = new Word(cursor.getString(1), cursor.getString(2));
 				wordsList.add(word);
 			}while(cursor.moveToNext());
 		}
