@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ecobeauty.R;
@@ -28,6 +29,7 @@ public class CheckCompositionActivity extends Activity {
     EditText editText;
     Button button;
     ListView listView;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +54,11 @@ public class CheckCompositionActivity extends Activity {
         button = findViewById(R.id.check);
         listView = findViewById(R.id.listView);
 
-        final ArrayList<HashMap<String, Object>> comp1 = new ArrayList<HashMap<String, Object>>();
+        final ArrayList<HashMap<String, Object>> component = new ArrayList<HashMap<String, Object>>();
 
         final String[] from = Constants.COMPOSITION;
         final int[] to = { R.id.textView, R.id.textView2, R.id.textView3, R.id.textView4};
-        final SimpleAdapter adapter = new SimpleAdapter(this, comp1, R.layout.adapter_item, from, to);
+        final SimpleAdapter adapter = new SimpleAdapter(this, component, R.layout.adapter_item, from, to);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +84,7 @@ public class CheckCompositionActivity extends Activity {
                             client.put(getString(R.string.danger), cursor.getString(3));
                             client.put(getString(R.string.describe_danger), cursor.getString(4));
 
-                            comp1.add(client);
+                            component.add(client);
                             cursor.moveToNext();
                         }
                         cursor.close();
@@ -102,4 +104,3 @@ public class CheckCompositionActivity extends Activity {
         finish();
     }
 }
-

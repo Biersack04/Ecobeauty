@@ -48,6 +48,10 @@ public class Constants {
     public static final String COMBINED_TYPE = "Комбинированный тип";
     public static String BASIC_NAME_USER_PRODUCT = "UserProduct";
     public static String BASIC_NAME_USER_WISH = "UserWish";
+    public static String LINE_ONE =  "line1";
+    public static String LINE_TWO =  "line2";
+    public static String NAME = "name";
+    public static String USER_COSMETICS = "UserCosmetics";
 
 }
 

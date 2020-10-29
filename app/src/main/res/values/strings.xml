@@ -108,7 +108,10 @@
     <string name="fatType">Жирный тип</string>
     <string name="dryType">Сухой тип</string>
     <string name="combinedType">Комбинированный тип</string>
-
+    <string name="u">\"У \"</string>
+    <string name="expiryDateExpired">\" истек срок годности: \"</string>
+    <string name="now">\"Cегодня \"</string>
+    <string name="sendForRecycling">Пора отправить это на переработку!</string>
 
 
 </resources>
