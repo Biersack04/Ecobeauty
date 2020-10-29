@@ -87,41 +87,46 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/email"
-            android:textColorHighlight="#EAD5D5"
-            android:textColorHint="@color/beige">
+            app:hintTextColor="@color/darkGrey"
+            app:boxStrokeColor="@color/darkGrey">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:background="@color/Colorless"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/beige"
-                android:textColorHighlight="#E8CBCB"
-                android:textColorHint="@color/beige"
-                android:background="@color/Colorless"/>
+                android:textColor="@color/darkGrey"
+                android:textColorHighlight="@color/lightGrey"
+                android:textColorHint="@color/darkGrey"
+                android:textColorLink="@color/darkGrey"
+                app:hintTextAppearance="@color/darkGrey" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/password"
-            android:textColorHint="@color/beige">
+            app:hintTextColor="@color/darkGrey"
+            app:boxStrokeColor="@color/darkGrey"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:passwordToggleEnabled="true">
 
-            <com.google.android.material.textfield.TextInputEditText
-
+            <EditText
                 android:id="@+id/password"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:background="@color/Colorless"
                 android:inputType="textPassword"
-                android:textColor="@color/beige"
-                android:background="@color/Colorless"/>
+                android:textColor="@color/darkGrey"
+                android:textColorLink="@color/darkGrey"
+                android:hint="@string/password"/>
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_login"

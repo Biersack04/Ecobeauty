@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/tools"
+    android:background="@drawable/item_normal"
     android:orientation="vertical"
-    app:ignore="NamespaceTypo"
-    android:background="@drawable/item_normal">
+    app:ignore="NamespaceTypo">
 
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/fab_menu"
-        android:layout_width="196dp"
-        android:layout_height="233dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/imageButton2"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="10dp"
-
-
-        fab:fab_colorNormal="#BE7B70"
-        fab:fab_colorPressed="#AE7066"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="32dp"
+        fab:fab_colorNormal="@color/beige"
+        fab:fab_colorPressed="@color/btn_login_forgot"
         fab:fab_colorRipple="#99FFFFFF"
-        fab:fab_shadowColor="#66000000"
+        fab:fab_shadowColor="#696969"
         fab:fab_showShadow="true"
         fab:layout_constraintBottom_toBottomOf="parent"
         fab:layout_constraintEnd_toEndOf="parent"
@@ -32,11 +31,11 @@
         fab:layout_constraintTop_toTopOf="parent"
         fab:layout_constraintVertical_bias="0.987"
         fab:menu_backgroundColor="#ccffffff"
-        fab:menu_colorNormal="#BE7B70"
-        fab:menu_colorPressed="#AE7066"
+        fab:menu_colorNormal="@color/beige"
+        fab:menu_colorPressed="@color/btn_login_forgot"
         fab:menu_colorRipple="#99FFFFFF"
-        fab:menu_labels_colorNormal="#333333"
-        fab:menu_labels_colorPressed="#444444"
+        fab:menu_labels_colorNormal="#696969"
+        fab:menu_labels_colorPressed="#696969"
         fab:menu_labels_colorRipple="#66FFFFFF"
         fab:menu_labels_ellipsize="end"
         fab:menu_labels_maxLines="-1"
@@ -50,7 +49,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="add"
-            android:src="@drawable/addd"
+            android:src="@drawable/ic_baseline_add_24"
+            fab:fab_colorNormal="@color/beige"
+            fab:fab_colorPressed="@color/bg_login"
             fab:fab_label="@string/add"
             fab:fab_size="mini" />
 
@@ -59,7 +60,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="remove"
-            android:src="@drawable/del"
+            android:src="@drawable/ic_delete"
+            fab:fab_colorNormal="@color/beige"
+            fab:fab_colorPressed="@color/bg_login"
             fab:fab_label="@string/remove"
             fab:fab_size="mini" />
 
@@ -68,87 +71,114 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="move"
-            android:src="@drawable/move"
+            android:src="@drawable/ic_shopping_cart"
+            fab:fab_colorNormal="@color/beige"
+            fab:fab_colorPressed="@color/bg_login"
             fab:fab_label="@string/inCosmetics"
             fab:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_toEndOf="@+id/imageButton2"
-        android:layout_toRightOf="@+id/imageButton2"
-        android:backgroundTint="@color/Colorless"
-        fab:layout_constraintBottom_toBottomOf="parent"
-        fab:layout_constraintEnd_toEndOf="parent"
-        fab:layout_constraintHorizontal_bias="1.0"
-        fab:layout_constraintStart_toEndOf="@+id/imageButton2"
-        fab:layout_constraintTop_toTopOf="parent"
-        fab:layout_constraintVertical_bias="0.983"
-        fab:srcCompat="@drawable/wish" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/Colorless"
-        android:onClick="homecosm"
-        fab:layout_constraintBottom_toBottomOf="parent"
-        fab:layout_constraintEnd_toEndOf="parent"
-        fab:layout_constraintHorizontal_bias="0.0"
-        fab:layout_constraintStart_toStartOf="parent"
-        fab:layout_constraintTop_toTopOf="parent"
-        fab:layout_constraintVertical_bias="0.983"
-        fab:srcCompat="@drawable/cosmet" />
-
     <ListView
         android:id="@+id/wishlist"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="250dp"
-        android:layout_marginTop="80dp"
+        android:layout_height="334dp"
         android:layout_above="@+id/fab_menu"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         fab:layout_constraintBottom_toBottomOf="parent"
         fab:layout_constraintEnd_toEndOf="parent"
-        fab:layout_constraintHorizontal_bias="0.496"
+        fab:layout_constraintHorizontal_bias="0.487"
         fab:layout_constraintStart_toStartOf="parent"
-        fab:layout_constraintTop_toTopOf="parent"
-        fab:layout_constraintVertical_bias="0.255" />
+        fab:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        fab:layout_constraintVertical_bias="0.0" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/entername"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:hint="@string/inputName"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        app:boxStrokeColor="@color/darkGrey"
+        app:hintTextColor="@color/darkGrey"
+        fab:boxStrokeColor="@color/darkGrey"
+        fab:hintTextColor="@color/darkGrey"
         fab:layout_constraintBottom_toBottomOf="parent"
         fab:layout_constraintEnd_toEndOf="parent"
+        fab:layout_constraintHorizontal_bias="0.0"
         fab:layout_constraintStart_toStartOf="parent"
         fab:layout_constraintTop_toTopOf="parent"
-        fab:layout_constraintVertical_bias="0.044"
-        android:inputType="textCapWords"/>
+        fab:layout_constraintVertical_bias="0.023">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/entername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/inputName"
+            android:inputType="textCapWords"
+            android:textColorHighlight="@color/lightGrey"
+            android:textColorHint="@color/darkGrey"
+            android:textColorLink="@color/darkGrey"
+            app:hintTextAppearance="@color/darkGrey"
+            app:hintTextColor="@color/darkGrey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/cosmbuttom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="55dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/ic_home2"
+        fab:layout_constraintBottom_toBottomOf="parent"
+        fab:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/wishbuttom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="55dp"
+        android:background="@drawable/ic_person2"
+        fab:layout_constraintBottom_toBottomOf="parent"
+        fab:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/сosmtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="55dp"
+        android:layout_marginLeft="5dp"
+        android:text="@string/cosmetics"
+        android:textColor="@color/darkGrey"
+        fab:layout_constraintBottom_toBottomOf="parent"
+        fab:layout_constraintStart_toEndOf="@+id/cosmbuttom" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/wishtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginVertical="55dp"
+        android:layout_marginRight="5dp"
+        android:onClick="goWish"
+        android:text="@string/wish"
+        android:textColor="@color/lightGrey"
+        fab:layout_constraintBottom_toBottomOf="parent"
+        fab:layout_constraintEnd_toStartOf="@+id/wishbuttom" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

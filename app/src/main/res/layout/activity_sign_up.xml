@@ -30,20 +30,22 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/email"
-            android:textColorHighlight="#EAD5D5"
-            android:textColorHint="@color/beige">
+            app:hintTextColor="@color/darkGrey"
+            app:boxStrokeColor="@color/darkGrey">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
+                android:hint="@string/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textColor="@color/beige"
-                android:textColorHighlight="#E8CBCB"
-                android:textColorHint="@color/beige"
+                android:textColor="@color/darkGrey"
+                android:textColorHighlight="@color/lightGrey"
+                android:textColorHint="@color/darkGrey"
+                android:textColorLink="@color/darkGrey"
+                app:hintTextAppearance="@color/darkGrey"
                 android:background="@color/Colorless" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -51,21 +53,25 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/password"
-            android:textColorHint="@color/beige">
+            app:hintTextColor="@color/darkGrey"
+            app:boxStrokeColor="@color/darkGrey"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:focusableInTouchMode="true"
+                android:hint="@string/password"
                 android:imeActionId="@+id/login"
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textColor="@color/beige"
                 android:background="@color/Colorless"
+                android:textColor="@color/darkGrey"
+                android:textColorLink="@color/darkGrey"
                 tools:ignore="InvalidImeActionId" />
 
         </com.google.android.material.textfield.TextInputLayout>

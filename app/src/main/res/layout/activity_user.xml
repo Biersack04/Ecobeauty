@@ -16,7 +16,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
         app:boxStrokeColor="@color/darkGrey"
-        app:hintTextColor="@color/darkGrey">
+        app:hintTextColor="@color/darkGrey"
+        >
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -31,7 +32,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:inputType="textCapWords"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

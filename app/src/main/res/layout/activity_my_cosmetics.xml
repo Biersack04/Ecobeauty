@@ -77,8 +77,7 @@
             android:clickable="true"
             android:onClick="add"
             android:src="@drawable/ic_baseline_add_24"
-            app:backgroundTint="@color/bg_login"
-            app:rippleColor="#AC6464" />
+            app:rippleColor="#99FFFFFF" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/cosmbuttom"
@@ -94,9 +93,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
+            android:layout_marginRight="20dp"
             android:layout_marginBottom="55dp"
             android:background="@drawable/ic_person"
-            android:layout_marginRight="20dp"
             android:onClick="goWish" />
 
         <com.google.android.material.textview.MaterialTextView

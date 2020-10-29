@@ -32,22 +32,31 @@ public class WishList extends AppCompatActivity {
     SQLiteDatabase db;
     Cursor cursor;
     SimpleCursorAdapter adapter;
-    ArrayList<Long> idCheckedProduct;
-    ArrayList<String> nameCheckedProduct;
-    int numberCountNameUserWish, nameIndex;
-    String nameUserWish, stringCountNameUserWish, uid, nameWish, nameCheck, nameMove;
+    ArrayList<Long> idCheckedProduct = new ArrayList<>();
+    ArrayList<String> nameCheckedProduct = new ArrayList<>();
+    int numberCountNameUserWish = 0;
+    String nameUserWish, stringCountNameUserWish, uid, nameWish, nameCheck, nameMove, name;
     DatabaseReference myRef;
     boolean containsWord;
+    int nameIndex;
+    FirebaseUser user;
+    FirebaseDatabase database;
+    String[] headers;
+    EditText nameEditText;
+    DatabaseReference rootRef;
+    ContentValues cv;
+    Query queryRemove, queryMove;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wishlist);
-
         fam = (FloatingActionMenu) findViewById(R.id.fab_menu);
         wishList = (ListView) findViewById(R.id.wishlist);
         wishList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        nameEditText = (EditText) findViewById(R.id.entername);
+
 
 
         fam.setOnClickListener(new View.OnClickListener() {
@@ -66,107 +75,105 @@ public class WishList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id)
             {
-                      containsWord = idCheckedProduct.contains(id);
-                        if (containsWord){
-                            idCheckedProduct.remove(id);
-                        }
-                        else{
-                            idCheckedProduct.add(id);
-                        }
+                containsWord = idCheckedProduct.contains(id);
+                if (containsWord){
+                    idCheckedProduct.remove(id);
+                }
+                else{
+                    idCheckedProduct.add(id);
+                }
             }
         });
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
-        FirebaseDatabase database = FirebaseDatabase.getInstance(getString(R.string.dataBase));
+        database = FirebaseDatabase.getInstance(getString(R.string.dataBase));
         myRef = database.getReference(uid);
         stringCountNameUserWish = Integer.toString(numberCountNameUserWish);
         nameUserWish = BASIC_NAME_USER_WISH + stringCountNameUserWish;
     }
 
 
-   @Override
-   public void onResume() {
-       super.onResume();
-       db = databaseHelper.getReadableDatabase();
-       cursor =  db.rawQuery("select * from "+ TABLE_W + " order by "+ DatabaseHelper2.COLUMN_NAME2, null);
+    @Override
+    public void onResume() {
+        super.onResume();
+        db = databaseHelper.getReadableDatabase();
+        cursor =  db.rawQuery("select * from "+ TABLE_W + " order by "+ DatabaseHelper2.COLUMN_NAME2, null);
 
-       if (cursor.getCount()>=1) {
-           numberCountNameUserWish =0;
-           for (int i = 0; i < cursor.getCount(); i++) {
-               while (cursor.moveToNext()) {
-                   numberCountNameUserWish++;
-                   stringCountNameUserWish = Integer.toString(numberCountNameUserWish);
-                   nameUserWish = BASIC_NAME_USER_WISH + stringCountNameUserWish;
-                   nameIndex = cursor.getColumnIndex(COLUMN_NAME2);
-                   nameWish = cursor.getString(nameIndex);
-                   myRef.child("UserWishes").child(nameUserWish).setValue(new UserWish(nameWish));
-                   }
-               }
-           }
+        if (cursor.getCount()>=1) {
+            numberCountNameUserWish =0;
+            for (int i = 0; i < cursor.getCount(); i++) {
+                while (cursor.moveToNext()) {
+                    numberCountNameUserWish++;
+                    stringCountNameUserWish = Integer.toString(numberCountNameUserWish);
+                    nameUserWish = BASIC_NAME_USER_WISH + stringCountNameUserWish;
+                    nameIndex = cursor.getColumnIndex(COLUMN_NAME2);
+                    nameWish = cursor.getString(nameIndex);
+                    myRef.child("UserWishes").child(nameUserWish).setValue(new UserWish(nameWish));
+                }
+            }
+        }
 
-       String[] headers = new String[] {COLUMN_NAME2};
-       adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_multiple_choice,
-               cursor, headers, new int[]{android.R.id.text1});
-       wishList.setAdapter(adapter);
-   }
+        headers = new String[] {COLUMN_NAME2};
+        adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_multiple_choice,
+                cursor, headers, new int[]{android.R.id.text1});
+        wishList.setAdapter(adapter);
+    }
 
-     public void add(View view) {
-         EditText nameEditText = (EditText) findViewById(R.id.entername);
-         db = databaseHelper.getWritableDatabase();
-         String name = nameEditText.getText().toString();
-         ContentValues cv = new ContentValues();
-         cv.put(COLUMN_NAME2, name);
-         db.insert(TABLE_W, null, cv);
-         nameEditText.setText("");
-         onResume();
-     }
+    public void add(View view) {
 
 
-   public void remove(View view) {
+        db = databaseHelper.getWritableDatabase();
+        name = nameEditText.getText().toString();
+        cv = new ContentValues();
+        cv.put(COLUMN_NAME2, name);
+        db.insert(TABLE_W, null, cv);
+        nameEditText.setText("");
+        onResume();
+    }
 
-       nameCheckedProduct = new ArrayList<String>();
-       DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-       nameCheck ="";
 
-       for(int i=0;i<idCheckedProduct.size();i++) {
+    public void remove(View view) {
 
-           cursor = db.rawQuery("select * from " + DatabaseHelper2.TABLE_W +
-                           " where " + DatabaseHelper2.COLUMN_ID2 + " like ?" ,
-                   new String[]{"%" + idCheckedProduct.get(i)} );
-           if(cursor.getCount() >= 1) {
+        nameCheckedProduct = new ArrayList<String>();
+        rootRef = FirebaseDatabase.getInstance().getReference();
+        nameCheck ="";
 
-               while (cursor.moveToNext()) {
+        for(int i=0;i<idCheckedProduct.size();i++) {
+            cursor = db.rawQuery("select * from " + DatabaseHelper2.TABLE_W +
+                            " where " + DatabaseHelper2.COLUMN_ID2 + " like ?" ,
+                    new String[]{"%" + idCheckedProduct.get(i)} );
+            if(cursor.getCount() >= 1) {
+                while (cursor.moveToNext()) {
+                    int nameIndex = cursor.getColumnIndex(COLUMN_NAME2);
+                    nameCheck = cursor.getString(nameIndex);
+                    nameCheckedProduct.add(nameCheck);
+                }
+            }
+        }
 
-                   int nameIndex = cursor.getColumnIndex(COLUMN_NAME2);
-                   nameCheck = cursor.getString(nameIndex);
-                   nameCheckedProduct.add(nameCheck);
-               }
-           }
-       }
+        for(int i = 0; i< nameCheckedProduct.size(); i++){
+            queryRemove = rootRef
+                    .child(uid)
+                    .child("UserWishes")
+                    .orderByChild("name")
+                    .equalTo(nameCheck);
+            queryRemove.getRef().removeValue();
 
-       for(int i = 0; i< nameCheckedProduct.size(); i++){
-       Query query = rootRef
-               .child(uid)
-               .child("UserWishes")
-               .orderByChild("name")
-               .equalTo(nameCheck);
-       query.getRef().removeValue();
+        }
 
-       }
-
-       db = databaseHelper.getWritableDatabase();
-      for(int i=0;i<idCheckedProduct.size();i++){
-          db.delete(TABLE_W, "_id = ?", new String[]{valueOf(idCheckedProduct.get(i))});
-      }
-      onResume();
-   }
+        db = databaseHelper.getWritableDatabase();
+        for(int i=0;i<idCheckedProduct.size();i++){
+            db.delete(TABLE_W, "_id = ?", new String[]{valueOf(idCheckedProduct.get(i))});
+        }
+        onResume();
+    }
 
     public void move(View view) {
 
         db = databaseHelper.getWritableDatabase();
         nameCheckedProduct = new ArrayList<>();
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        rootRef = FirebaseDatabase.getInstance().getReference();
 
         for(int i=0;i<idCheckedProduct.size();i++) {
             cursor = db.rawQuery("select * from " + DatabaseHelper2.TABLE_W +
@@ -182,25 +189,25 @@ public class WishList extends AppCompatActivity {
         }
 
         for(int i = 0; i< nameCheckedProduct.size(); i++){
-            ContentValues cv = new ContentValues();
+            cv = new ContentValues();
             cv.put(DatabaseHelper2.COLUMN_NAME, nameCheckedProduct.get(i));
             db.insert(TABLE, null, cv);
         }
 
         for(int i = 0; i< nameCheckedProduct.size(); i++){
-            Query query = rootRef
+            queryMove = rootRef
                     .child(uid)
                     .child("UserWishes")
                     .orderByChild("name")
                     .equalTo(nameMove);
-            query.getRef().removeValue();
+            queryMove.getRef().removeValue();
         }
 
         for(int i=0;i<idCheckedProduct.size();i++) {
             db.delete(TABLE_W, "_id = ?", new String[]{valueOf(idCheckedProduct.get(i))});
         }
         onResume();
-     }
+    }
 
     public void homeCosmetics(View view) {
 
