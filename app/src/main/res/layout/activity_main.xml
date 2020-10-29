@@ -5,64 +5,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/cosm_title_one"
-    tools:context=".MainActivity">
+    tools:context=".main.MainActivity">
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/myMakeup"
         android:layout_width="290dp"
         android:layout_height="50dp"
-        android:layout_marginTop="300dp"
-        app:backgroundTint="@color/Cosmetic_Background"
+        android:layout_marginBottom="20dp"
         android:onClick="onCosmeticsClick"
-        app:cornerRadius="30dp"
         android:text="@string/cosmeticMain"
         android:textColor="@color/colorTextTitle"
+        app:backgroundTint="@color/Cosmetic_Background"
+        app:cornerRadius="30dp"
         app:layout_constraintBottom_toTopOf="@+id/checkComposition"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1"
-        app:layout_constraintVertical_bias="0.812" />
+        app:layout_constraintTop_toBottomOf="@+id/myDeparture" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/myDeparture"
         android:layout_width="290dp"
         android:layout_height="50dp"
-        android:layout_marginTop="380dp"
-        app:backgroundTint="@color/Check_Background"
-        app:cornerRadius="30dp"
+        android:layout_marginTop="350dp"
+        android:layout_marginBottom="20dp"
         android:onClick="onMyDeparture"
         android:text="@string/myCare"
         android:textColor="@color/white"
+        app:backgroundTint="@color/Check_Background"
+        app:cornerRadius="30dp"
         app:layout_constraintBottom_toTopOf="@+id/myMakeup"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881" />
+        app:layout_constraintTop_toBottomOf="@+id/textView1"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/checkComposition"
         android:layout_width="290dp"
         android:layout_height="50dp"
-        app:backgroundTint="@color/Check_Background"
-        app:cornerRadius="30dp"
+        android:layout_marginBottom="10dp"
         android:onClick="onCheckClick"
         android:text="@string/checkComposition"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:backgroundTint="@color/Check_Background"
+        app:cornerRadius="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/aboutApp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.883" />
+        app:layout_constraintTop_toBottomOf="@+id/myMakeup" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView1"
+        style="@style/ButtonStyle"
         android:layout_width="271dp"
         android:layout_height="83dp"
-        style="@style/ButtonStyle"
         android:gravity="center_horizontal"
         android:text="@string/appName"
         android:textAlignment="center"
@@ -78,21 +78,20 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/aboutApp"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="30dp"
         android:backgroundTint="@color/Colorless"
         android:onClick="onMyButtonClick"
         android:text="@string/aboutApp"
         android:textColor="@color/darkGrey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkComposition"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-
+        app:layout_constraintTop_toBottomOf="@+id/checkComposition" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,6 @@ public class ScrollingFABAnimation extends
 		super(context, attrs);
 	}
 
-
 	@Override
 	public boolean layoutDependsOn(CoordinatorLayout parent, FloatingActionButton child, View dependency) {
 		return dependency instanceof Snackbar.SnackbarLayout;

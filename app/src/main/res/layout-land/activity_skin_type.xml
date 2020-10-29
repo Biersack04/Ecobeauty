@@ -16,7 +16,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:text="@string/checkSkinType"
-        android:textColor="@color/colorTitle"
+        android:textColor="@color/darkGrey"
         android:textStyle="bold"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,32 +44,32 @@
             android:id="@+id/radioButtonOne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/normal"
-            android:textColor="@color/colorTitle"
+            android:text="@string/normalText"
+            android:textColor="@color/darkGrey"
             android:textSize="20sp" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/radioButtonTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/fat"
-            android:textColor="@color/colorTitle"
+            android:text="@string/fatText"
+            android:textColor="@color/darkGrey"
             android:textSize="20sp" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/radioButtonThird"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/dry"
-            android:textColor="@color/colorTitle"
+            android:text="@string/dryText"
+            android:textColor="@color/darkGrey"
             android:textSize="20sp" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/radioButtonFour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/combined"
-            android:textColor="@color/colorTitle"
+            android:text="@string/combinedText"
+            android:textColor="@color/darkGrey"
             android:textSize="20sp" />
     </RadioGroup>
 
@@ -77,16 +77,17 @@
         android:id="@+id/capture"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:backgroundTint="@color/colorButton"
         android:text="@string/scan"
-        android:textColor="@color/text"
         android:textSize="@dimen/dim_button"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/beige"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

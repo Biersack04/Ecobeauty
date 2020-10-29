@@ -104,7 +104,7 @@
         android:layout_marginEnd="50dp"
         android:gravity="center"
         android:text="@string/textCosmetic"
-        android:textColor="@color/colorTitle"
+        android:textColor="@color/darkGrey"
         android:textSize="@dimen/dim_title"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

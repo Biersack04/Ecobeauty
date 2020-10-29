@@ -19,8 +19,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import java.util.ArrayList;
+
+import static com.example.ecobeauty.main.Constants.BASIC_NAME_USER_WISH;
 import static com.example.ecobeauty.mycosmetics.DatabaseHelper2.*;
-import static com.example.ecobeauty.mydeparture.Constants.BASIC_NAME_USER_WISH;
 import static java.lang.String.*;
 
 

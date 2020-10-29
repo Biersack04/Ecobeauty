@@ -4,7 +4,7 @@
     android:id="@+id/favList_Layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/GrayGood"
+    android:background="@color/white"
     android:orientation="horizontal" >
 
     <androidx.appcompat.widget.Toolbar

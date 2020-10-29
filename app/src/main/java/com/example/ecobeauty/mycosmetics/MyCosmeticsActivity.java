@@ -1,6 +1,7 @@
 package com.example.ecobeauty.mycosmetics;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,8 +16,9 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.ecobeauty.MainActivity;
+
 import com.example.ecobeauty.R;
+import com.example.ecobeauty.main.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -26,10 +28,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.example.ecobeauty.main.Constants.BASIC_NAME_USER_PRODUCT;
 import static com.example.ecobeauty.mycosmetics.DatabaseHelper2.COLUMN_DATE;
 import static com.example.ecobeauty.mycosmetics.DatabaseHelper2.COLUMN_ID;
 import static com.example.ecobeauty.mycosmetics.DatabaseHelper2.COLUMN_NAME;
-import static com.example.ecobeauty.mydeparture.Constants.BASIC_NAME_USER_PRODUCT;
+
+
 
 public class MyCosmeticsActivity extends AppCompatActivity {
 
@@ -39,9 +44,9 @@ public class MyCosmeticsActivity extends AppCompatActivity {
     Cursor userCursor, seedate, check, checkDate;
     ArrayList<String> nameCheckedProduct, nameSeeDateProduct, seeDateProduct;
     List<Map<String, String>> items;
-    String[] keys = { "line1", "line2" };
-    int[] controlIds = { android.R.id.text1, android.R.id.text2 };
-    Map<String, String> map ;
+    String[] keys = {"line1", "line2"};
+    int[] controlIds = {android.R.id.text1, android.R.id.text2};
+    Map<String, String> map;
     int numberCountNameUserProduct, nameIndex, dateIndex, IdIndex;
     String nameUserProduct, stringCountNameUserProduct, uid, currentName, currentDate, today, name, DatenewFormat;
     DatabaseReference myRef;
@@ -60,14 +65,14 @@ public class MyCosmeticsActivity extends AppCompatActivity {
         myCosmetics = (TextView) findViewById(R.id.textAbout);
         myCosmetics.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMedium.ttf"));
 
-        userList = (ListView)findViewById(R.id.list);
+        userList = (ListView) findViewById(R.id.list);
 
         userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 String name = items.get(position).get("line1");
-                long ci= check(name);
+                long ci = check(name);
 
                 Intent intent = new Intent(getApplicationContext(), UserActivity.class);
                 intent.putExtra("id", ci);
@@ -86,6 +91,7 @@ public class MyCosmeticsActivity extends AppCompatActivity {
         myRef = database.getReference(uid);
 
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -103,29 +109,29 @@ public class MyCosmeticsActivity extends AppCompatActivity {
             today = DateUtils.formatDateTime(this,
                     millis, DateUtils.FORMAT_SHOW_DATE);
 
-            Toast toast = Toast.makeText(getApplicationContext(), "У " + currentName +" истек срок годности: "+currentDate+ "\n" + "Cегодня " + today + "\n"+ "Пора отправить это на переработку!",
+            Toast toast = Toast.makeText(getApplicationContext(), "У " + currentName + " истек срок годности: " + currentDate + "\n" + "Cегодня " + today + "\n" + "Пора отправить это на переработку!",
                     Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
-            if( v != null) v.setGravity(Gravity.CENTER);
+            if (v != null) v.setGravity(Gravity.CENTER);
             toast.show();
 
         }
         checkDate.close();
 
-        userCursor =  db.rawQuery("select * from "+ DatabaseHelper2.TABLE + " order by "+ DatabaseHelper2.COLUMN_NAME, null, null);
+        userCursor = db.rawQuery("select * from " + DatabaseHelper2.TABLE + " order by " + DatabaseHelper2.COLUMN_NAME, null, null);
 
         nameCheckedProduct = new ArrayList<String>();
 
-        if(userCursor.getCount() >= 1) {
+        if (userCursor.getCount() >= 1) {
 
             numberCountNameUserProduct = 0;
             items = new ArrayList<>();
-            seedate =  db.rawQuery("select * from "+ DatabaseHelper2.TABLE + " order by "+ DatabaseHelper2.COLUMN_NAME, null, null);
+            seedate = db.rawQuery("select * from " + DatabaseHelper2.TABLE + " order by " + DatabaseHelper2.COLUMN_NAME, null, null);
             seeDateProduct = new ArrayList<String>();
             nameSeeDateProduct = new ArrayList<String>();
 
-            for(int i=0;i<seedate.getCount();i++) {
+            for (int i = 0; i < seedate.getCount(); i++) {
 
                 while (seedate.moveToNext()) {
 
@@ -141,13 +147,13 @@ public class MyCosmeticsActivity extends AppCompatActivity {
                     map.put("line1", name);
 
                     dateIndex = seedate.getColumnIndex(COLUMN_DATE);
-                    Date=seedate.getLong(dateIndex);
+                    Date = seedate.getLong(dateIndex);
                     DatenewFormat = DateUtils.formatDateTime(this, Date, DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR);
                     seeDateProduct.add(DatenewFormat);
                     map.put("line2", DatenewFormat);
                     items.add(map);
 
-                    myRef.child("UserCosmetics").child(nameUserProduct).setValue(new UserCosmetics(name,Date));
+                    myRef.child("UserCosmetics").child(nameUserProduct).setValue(new UserCosmetics(name, Date));
                 }
                 numberCountNameUserProduct++;
                 stringCountNameUserProduct = Integer.toString(numberCountNameUserProduct);
@@ -155,9 +161,7 @@ public class MyCosmeticsActivity extends AppCompatActivity {
             }
             numberCountNameUserProduct = 0;
 
-        }
-        else if(userCursor.getCount() == 0)
-        {
+        } else if (userCursor.getCount() == 0) {
             items = new ArrayList<>();
             map = new HashMap<>();
         }
@@ -167,13 +171,12 @@ public class MyCosmeticsActivity extends AppCompatActivity {
     }
 
 
-    public Long check (String name)
-    {
+    public Long check(String name) {
         idСheck = Long.valueOf(0);
 
         db = databaseHelper.getReadableDatabase();
-        check= db.rawQuery("select * from " + DatabaseHelper2.TABLE + " where " +
-                COLUMN_NAME + " = ?" , new String[]{name});
+        check = db.rawQuery("select * from " + DatabaseHelper2.TABLE + " where " +
+                COLUMN_NAME + " = ?", new String[]{name});
         check.moveToFirst();
 
         IdIndex = check.getColumnIndex(COLUMN_ID); // Выводит
@@ -183,30 +186,21 @@ public class MyCosmeticsActivity extends AppCompatActivity {
     }
 
 
-    public void add(View view){
+    public void add(View view) {
 
         Intent intent = new Intent(this, UserActivity.class);
         startActivity(intent);
     }
 
 
-    public void goWish (View view) {
+    public void goWish(View view) {
 
         Intent intent = new Intent(this, WishList.class);
         startActivity(intent);
     }
 
     public void goHome(View view) {
-
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(MyCosmeticsActivity.this, MainActivity.class);
         startActivity(intent);
     }
-
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-        db.close();
-
-    }
-
 }

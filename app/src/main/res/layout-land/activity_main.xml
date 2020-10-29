@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/cosm_title_two"
-    tools:context=".MainActivity">
+    tools:context=".main.MainActivity">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/myMakeup"
         android:layout_width="290dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="10dp"
         android:onClick="onCosmeticsClick"
         android:text="@string/myCare"
         android:textColor="@color/white"
@@ -20,38 +20,47 @@
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toTopOf="@+id/checkComposition"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.964" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/aboutApp"
-        android:layout_width="112dp"
-        android:layout_height="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/u_munchies"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="430dp"
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/Colorless"
         android:onClick="onMyButtonClick"
+        android:text="@string/aboutApp"
+        android:textColor="@color/darkGrey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkComposition1" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.944" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/checkComposition"
         android:layout_width="290dp"
         android:layout_height="50dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginBottom="14dp"
-        app:backgroundTint="@color/Cosmetic_Background"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="10dp"
         android:onClick="onCheckClick"
-        app:cornerRadius="30dp"
         android:text="@string/cosmeticMain"
         android:textColor="@color/colorTextTitle"
+        app:backgroundTint="@color/Cosmetic_Background"
+        app:cornerRadius="30dp"
         app:layout_constraintBottom_toTopOf="@+id/checkComposition1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myMakeup" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.979" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView1"
@@ -74,7 +83,8 @@
         android:id="@+id/checkComposition1"
         android:layout_width="290dp"
         android:layout_height="50dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginBottom="10dp"
         android:onClick="onCheckClick"
         android:text="@string/checkComposition"
         android:textColor="@color/white"
@@ -82,7 +92,8 @@
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toTopOf="@+id/aboutApp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkComposition" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
 </androidx.constraintlayout.widget.ConstraintLayout>

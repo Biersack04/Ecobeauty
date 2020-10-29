@@ -14,31 +14,25 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecobeauty.R;
+import com.example.ecobeauty.main.Constants;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressLint("NewApi")
+@SuppressLint(Constants.NEW_API)
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsViewHolder>{
 	
 	private List<Word> wordsList;
-	public List<Word> favouriteWords = new ArrayList<Word>();
-	int mPreviousPosition = -1;
-	Context mContext;
-	static ClickListener clickListener;	
-	SharedPreference mSharedPreference;
-	//added extra
-	DBSQLiteHandler dbHandler;
 	public ArrayList<Word> wordsListDB = new ArrayList<Word>();
-	private static final String LOG_TAG = "myLogs" ;
+	static ClickListener clickListener;
 
+	Context mContext;
+	DBSQLiteHandler dbHandler;
 
 	public RecyclerAdapter(Context con, List<Word> wordsList){
 		this.wordsList=wordsList;
 		this.mContext=con;
-		//mSharedPreference = new SharedPreference();
-		//added extra
 		this.dbHandler = new DBSQLiteHandler(mContext);
 		this.wordsListDB = (ArrayList<Word>) wordsList;
 	}
@@ -51,7 +45,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 	
 	@Override
 	public void onBindViewHolder(ItemsViewHolder holder, int position) {
-		
 		Word wordMapper = wordsList.get(position);
 		
 		holder.txtViewIcon.setText(""+ wordMapper.getWord().charAt(0));
@@ -59,48 +52,27 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 		holder.txtViewWord.setText(wordMapper.getWord());
 		holder.txtViewPOS.setText(wordMapper.getPartOfSpeech());
 
-
-		/*If a product exists in SQLite then set filled star drawable and set a tag*/
 		if(checkFavouriteItem(wordMapper)){
-
 			Drawable starFilled = ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.ic_favourite_filled, null);
 			starFilled.setBounds(0,0,24,24);
 			holder.imgButtonFavourite.setBackground(starFilled);
-			holder.imgButtonFavourite.setTag("filled");
+			holder.imgButtonFavourite.setTag(Constants.FILLED);
 			
 		}else{
-			
 			Drawable starEmpty = ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.ic_favourite,null);
 			starEmpty.setBounds(0,0,24,24);
 			holder.imgButtonFavourite.setBackground(starEmpty);
-			holder.imgButtonFavourite.setTag("empty");
-			
+			holder.imgButtonFavourite.setTag(Constants.EMPTY);
 		}
-		//Animation on Up and Down scroll
-		
-		/*if(position>mPreviousPosition){
-			AnimationUtils.animate(holder, true);			
-		}else{
-			AnimationUtils.animate(holder, true);
-		}	
-	    mPreviousPosition = position;*/
 	}
 	
 	@Override
 	public int getItemCount() {
-		//Log.i("TAG", "RecyclerAdapterwordsList.size() " + wordsList.size());
 		int a =wordsList.size();
-		//a=a-1;
 		return a;
-
-		//return (null != wordsList ? wordsList.size() : 0);
 	}
 
-
-
-
 	public class ItemsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-		
 		CardView cardView;
 		TextView txtViewIcon,txtViewWord,txtViewPOS;
 		ImageButton imgButtonFavourite;
@@ -109,11 +81,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 		public ItemsViewHolder(View itemView){
 			super(itemView);
 			
-			cardView = (CardView) itemView.findViewById(R.id.cardViewID);
-			txtViewIcon = (TextView) itemView.findViewById(R.id.txtView_iconEntry);
-			txtViewWord = (TextView) itemView.findViewById(R.id.txtView_Word);
-			txtViewPOS = (TextView) itemView.findViewById(R.id.txtView_PartOfSpeech);
-			imgButtonFavourite = (ImageButton) itemView.findViewById(R.id.imgButton_Favourite);			
+			cardView = itemView.findViewById(R.id.cardViewID);
+			txtViewIcon = itemView.findViewById(R.id.txtView_iconEntry);
+			txtViewWord = itemView.findViewById(R.id.txtView_Word);
+			txtViewPOS = itemView.findViewById(R.id.txtView_PartOfSpeech);
+			imgButtonFavourite = itemView.findViewById(R.id.imgButton_Favourite);
 			
 			itemView.setOnClickListener(this);	
 			imgButtonFavourite.setOnClickListener(new View.OnClickListener() {
@@ -122,49 +94,29 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 				public void onClick(View view) {
 					
 					String tag = imgButtonFavourite.getTag().toString();
-					if (tag.equalsIgnoreCase("empty") && !starred) {
-						
-						//SharedPreference way
-						//mSharedPreference.addFavorite(mContext,	wordsList.get(getAdapterPosition()));
-						
-						//SQLiteDB way
+					if (tag.equalsIgnoreCase(Constants.EMPTY) && !starred) {
+
 						dbHandler.addWord(wordsList.get(getAdapterPosition()));
 						
-						imgButtonFavourite.setTag("filled");
+						imgButtonFavourite.setTag(Constants.FILLED);
 						Drawable starFilled = ResourcesCompat.getDrawable(view.getResources(), R.drawable.ic_favourite_filled, null);
 						starFilled.setBounds(0, 0, 24, 24);
 						imgButtonFavourite.setBackground(starFilled);
 						
-						Snackbar.make(view, "Отличная работа!", Snackbar.LENGTH_LONG).setAction("Отменить",new View.OnClickListener() {
+						Snackbar.make(view, R.string.goodJob, Snackbar.LENGTH_LONG).setAction(R.string.cancel,new View.OnClickListener() {
 							
 							@Override
 							public void onClick(View view) {
-								//SharedPreference way
-								//mSharedPreference.removeFavorite(mContext, wordsList.get(getAdapterPosition()));
-								
-								//SQLiteDB way
 								dbHandler.removeWord(wordsList.get(getAdapterPosition()));
-								
+
 								Drawable star = ResourcesCompat.getDrawable(view.getResources(), R.drawable.ic_favourite, null);
 								star.setBounds(0,0,24,24);
 								imgButtonFavourite.setBackground(star);
 							}
 						}).show();
 					} else {
-
-						//SharedPreference way
-						//mSharedPreference.removeFavorite(mContext,	wordsList.get(getAdapterPosition()));
-						
-						//SQLiteDB way
 						dbHandler.removeWord(wordsList.get(getAdapterPosition()));
-						
-						//***ДЕДЛИК убрать
-						//wordsList.remove(getAdapterPosition());
-						//notifyItemRemoved(getAdapterPosition());
-						//notifyItemRangeChanged(getAdapterPosition(), wordsList.size());
-						//*******//	
-						
-						imgButtonFavourite.setTag("empty");
+						imgButtonFavourite.setTag(Constants.EMPTY);
 						Drawable starEmpty = ResourcesCompat.getDrawable(view.getResources(), R.drawable.ic_favourite, null);
 						starEmpty.setBounds(0, 0, 24, 24);
 						imgButtonFavourite.setBackground(starEmpty);					
@@ -183,36 +135,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 	}
 	
 	
-/*	//added extra
-	public void removeItem(int position){
-		wordsList.remove(position);
-		notifyItemRemoved(position);
-	}
-		
-	//added extra
-	public void addItem(MapperClass mapperObject){
-		wordsList.add(mapperObject);
-		notifyDataSetChanged();
-	}
-*/
-	
-	//Checks whether a particular product exists in SQLiteDB
 	public boolean checkFavouriteItem(Word checkStarredItem){
 		boolean check = false;
-		//shared preference way
-		/*List<Word> favouriteItemsInSharedPreference = mSharedPreference.getFavorites(mContext); 
-		
-		if (favouriteItemsInSharedPreference != null) {
-            for (Word word : favouriteItemsInSharedPreference) {
-                if (word.equals(checkStarredItem)) {
-                    check = true;
-                    break;
-                }
-            }
-        }*/
-        
-		
-		//SQLiteDB way		
+
 		ArrayList<Word> itemsInDB = dbHandler.getWords();
 		
 		if(itemsInDB!=null){
@@ -227,11 +152,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 	}	
 
 	public void setListener(ClickListener clicked){
-
 		RecyclerAdapter.clickListener = clicked;
 	}	
 	
 	public interface ClickListener{
-		public void itemClicked(View view, int position);
+		void itemClicked(View view, int position);
 	}
 }

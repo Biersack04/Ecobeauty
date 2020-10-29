@@ -15,9 +15,9 @@
 
         <activity android:name="com.example.ecobeauty.authorization.SignUpActivity"  android:screenOrientation="portrait" />
         <activity android:name="com.example.ecobeauty.mycosmetics.WishList"  android:screenOrientation="portrait"/>
-        <activity android:name="com.example.ecobeauty.MainActivity"  android:screenOrientation="portrait"/>
         <activity android:name="com.example.ecobeauty.mycosmetics.MyCosmeticsActivity" android:screenOrientation="portrait" />
-        <activity android:name="com.example.ecobeauty.authorization.LoginActivity"  android:screenOrientation="portrait">
+        <activity android:name="com.example.ecobeauty.authorization.LoginActivity"  android:screenOrientation="portrait"/>
+        <activity android:name="com.example.ecobeauty.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,6 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="com.example.ecobeauty.aboutapp.AboutAppActivity"
             android:label="@string/aboutTitle"  android:screenOrientation="portrait" />
@@ -32,7 +33,7 @@
         <activity android:name="com.example.ecobeauty.mycosmetics.UserActivity"  android:screenOrientation="portrait" />
         <activity android:name="com.example.ecobeauty.mydeparture.MyDepartureActivity"  android:screenOrientation="portrait"/>
         <activity android:name="com.example.ecobeauty.mydeparture.SkinTypeActivity"  android:screenOrientation="portrait" />
-        <activity android:name="com.example.ecobeauty.mydeparture.Types"/>
+        <activity android:name="com.example.ecobeauty.mydeparture.Types"  android:screenOrientation="portrait"/>
 
 
     </application>
