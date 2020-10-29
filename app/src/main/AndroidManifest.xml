@@ -17,7 +17,7 @@
         <activity android:name="com.example.ecobeauty.mycosmetics.WishList"  android:screenOrientation="portrait"/>
         <activity android:name="com.example.ecobeauty.mycosmetics.MyCosmeticsActivity" android:screenOrientation="portrait" />
         <activity android:name="com.example.ecobeauty.authorization.LoginActivity"  android:screenOrientation="portrait"/>
-        <activity android:name="com.example.ecobeauty.main.MainActivity">
+        <activity android:name="com.example.ecobeauty.main.MainActivity"  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
