@@ -24,7 +24,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"></ListView>
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textAbout"
@@ -76,7 +77,11 @@
             android:clickable="true"
             android:onClick="add"
             android:src="@drawable/ic_baseline_add_24"
+<<<<<<< HEAD
             app:backgroundTint="@color/beige"
+=======
+            app:backgroundTint="@color/bg_login"
+>>>>>>> master
             app:rippleColor="#99FFFFFF" />
 
         <androidx.appcompat.widget.AppCompatImageButton
