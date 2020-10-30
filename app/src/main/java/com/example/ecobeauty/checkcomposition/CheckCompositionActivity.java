@@ -40,7 +40,7 @@ public class CheckCompositionActivity extends Activity {
         editText = findViewById(R.id.structure);
         button = findViewById(R.id.check);
         listView = findViewById(R.id.listView);
-        checkCompos = findViewById(R.id.checkCompos);
+        checkCompos = findViewById(R.id.myDepTitle);
         textMsg = findViewById(R.id.textMsgAboutCheck);
 
         button.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));

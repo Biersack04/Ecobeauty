@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="45dp"
         android:gravity="center"
         android:text="@string/cosmeticMain"
         android:textColor="@color/darkGrey"
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="52dp"
             android:background="@drawable/ic_person"
             android:onClick="goWish" />
 

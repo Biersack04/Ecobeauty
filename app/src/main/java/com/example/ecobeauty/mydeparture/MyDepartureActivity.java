@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,7 +24,7 @@ import java.util.List;
 
 public class MyDepartureActivity<view> extends Activity implements RecyclerAdapter.ClickListener,View.OnClickListener{
 
-    public TextView typeSkin;
+    public TextView typeSkin, titleName, nameDay, typeSkinMsg, morning, evening;
     private RecyclerView mRecyclerViewM, mRecyclerViewN;
     private List<Word> wordsListMorning, wordsListNight;
     private SharedPreferences mSharedPreferences;
@@ -36,13 +37,31 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
     String skinType, type;
     SharedPreferences sPref;
     RecyclerAdapter mRecyclerAdapterM, mRecyclerAdapterN;
+    Button myDeparture;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_departure);
+
         typeSkin = findViewById(R.id.textTypeSkin);
+        myDeparture = findViewById(R.id.buttonDeparture);
+        titleName = findViewById(R.id.myDepTitle);
+        nameDay = findViewById(R.id.numDay);
+        typeSkinMsg = findViewById(R.id.typeSkin);
+        morning = findViewById(R.id.morningMsg);
+        evening = findViewById(R.id.eveningMsg);
+
+
         typeSkin.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
+        myDeparture.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+        titleName.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+        nameDay.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
+        typeSkinMsg.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
+        morning.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+        evening.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+
         skinType ="";
 
         Bundle arguments = getIntent().getExtras();
