@@ -26,11 +26,10 @@ public class CheckCompositionActivity extends Activity {
 
     private DatabaseHelper mDBHelper;
     private SQLiteDatabase mDb;
-
-    EditText editText;
-    Button button;
-    ListView listView;
-    TextView checkCompos, textMsg;
+    private EditText editText;
+    private Button button;
+    private ListView listView;
+    private TextView checkCompos, textMsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,6 @@ public class CheckCompositionActivity extends Activity {
         checkCompos.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
         textMsg.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
 
-
         mDBHelper = new DatabaseHelper(this);
 
         try {
@@ -62,8 +60,6 @@ public class CheckCompositionActivity extends Activity {
             throw mSQLException;
         }
 
-
-
         final ArrayList<HashMap<String, Object>> component = new ArrayList<HashMap<String, Object>>();
 
         final String[] from = Constants.COMPOSITION;
@@ -74,16 +70,14 @@ public class CheckCompositionActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                ListView listView = findViewById(R.id.listView);
-
                 HashMap<String, Object> client;
 
                 String product = editText.getText().toString();
                 product = product.toUpperCase();
                 String[] words = product.split(getString(R.string.split));
 
-                for (String a : words) {
-                    Cursor cursor = mDb.rawQuery("SELECT * FROM comp1 WHERE name =?", new String[]{a});
+                for (String comp : words) {
+                    Cursor cursor = mDb.rawQuery("SELECT * FROM comp1 WHERE name =?", new String[]{comp});
                     cursor.moveToFirst();
 
                     if (cursor.getCount() != 0) {

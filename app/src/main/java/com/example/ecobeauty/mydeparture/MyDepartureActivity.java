@@ -127,10 +127,6 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
 
     }
 
-
-
-
-
     @Override
     public void itemClicked(View view, int position) {
 
@@ -220,14 +216,14 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
         mRecyclerViewNight.setAdapter(mRecyclerAdapterNight);
     }
 
-    public void onTypeSkin(View view)
-    {
+    public void onTypeSkin(View view) {
         intent = new Intent(this, SkinTypeActivity.class);
         startActivity(intent);
     }
 
 
     public void onBackOnClick (View view) {
+        saveText();
         intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
@@ -281,6 +277,13 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        saveText();
+    }
+
+
+    @Override
     public void onBackPressed() {
         saveText();
         intent = new Intent(this, MainActivity.class);
@@ -288,10 +291,7 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
     }
 
     @Override
-    public void onClick(View v) {
-
-
-    }
+    public void onClick(View v) {}
 
     public boolean checkAll() {
         dbHandler = new DBSQLiteHandler(getApplicationContext());
