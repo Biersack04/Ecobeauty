@@ -16,8 +16,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
         app:boxStrokeColor="@color/darkGrey"
-        app:hintTextColor="@color/darkGrey"
-        >
+        app:hintTextColor="@color/darkGrey">
 
 
         <com.google.android.material.textfield.TextInputEditText

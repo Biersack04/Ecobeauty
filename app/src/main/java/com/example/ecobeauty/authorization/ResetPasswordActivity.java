@@ -26,6 +26,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private ProgressBar progressBar;
     private TextView resetText;
+    private String email = inputEmail.getText().toString().trim();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,6 @@ public class ResetPasswordActivity extends AppCompatActivity {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = inputEmail.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplication(), getString(R.string.emailAtRegistration), Toast.LENGTH_SHORT).show();

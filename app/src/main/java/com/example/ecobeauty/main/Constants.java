@@ -53,5 +53,9 @@ public class Constants {
     public static final String MOTIV_COUNT = "saved_motivation_count";
     public static final String SIMPLE_DATE_FORMAT="MMM dd yyyy";
     public static final String NULL ="null";
+    public static String LINE_ONE =  "line1";
+    public static String LINE_TWO =  "line2";
+    public static String NAME = "name";
+    public static String USER_COSMETICS = "UserCosmetics";
 }
 

@@ -30,6 +30,8 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private Button btnSignup, btnLogin, btnReset;
     private ImageView lipstickImageView, eyeshadowImageView, blushImageView, brushImageView, mascaraImageView;
+    private final String email = inputEmail.getText().toString();
+    private final String password = inputPassword.getText().toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         brushImageView.startAnimation(motionUpBrushAnimation);
         mascaraImageView.startAnimation(motionUpMascaraAnimation);
         inputEmail = (TextInputEditText) findViewById(R.id.email);
-        inputPassword = (EditText) findViewById(R.id.password);
+        inputPassword = findViewById(R.id.password);
         btnLogin.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
         btnReset.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMediumItalic)));
         btnSignup.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
@@ -89,8 +91,6 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                String email = inputEmail.getText().toString();
-                final String password = inputPassword.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), getString(R.string.inputEmail), Toast.LENGTH_SHORT).show();

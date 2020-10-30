@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ecobeauty.R;
+import com.example.ecobeauty.main.Constants;
 import com.example.ecobeauty.main.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,7 +45,7 @@ public class MyCosmeticsActivity extends AppCompatActivity {
     Cursor userCursor, seedate, check, checkDate;
     ArrayList<String> nameCheckedProduct, nameSeeDateProduct, seeDateProduct;
     List<Map<String, String>> items;
-    String[] keys = {"line1", "line2"};
+    String[] keys = {Constants.LINE_ONE, Constants.LINE_TWO};
     int[] controlIds = {android.R.id.text1, android.R.id.text2};
     Map<String, String> map;
     int numberCountNameUserProduct, nameIndex, dateIndex, IdIndex;
@@ -63,7 +64,7 @@ public class MyCosmeticsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_cosmetics);
 
         myCosmetics = (TextView) findViewById(R.id.textAbout);
-        myCosmetics.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/robotoMedium.ttf"));
+        myCosmetics.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
 
         userList = (ListView) findViewById(R.id.list);
 
@@ -71,13 +72,13 @@ public class MyCosmeticsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String name = items.get(position).get("line1");
+                String name = items.get(position).get(Constants.LINE_ONE);
                 long ci = check(name);
 
                 Intent intent = new Intent(getApplicationContext(), UserActivity.class);
-                intent.putExtra("id", ci);
+                intent.putExtra(Constants.KEY_ID, ci);
 
-                intent.putExtra("name", name);
+                intent.putExtra(Constants.NAME, name);
                 startActivity(intent);
 
             }
@@ -109,7 +110,7 @@ public class MyCosmeticsActivity extends AppCompatActivity {
             today = DateUtils.formatDateTime(this,
                     millis, DateUtils.FORMAT_SHOW_DATE);
 
-            Toast toast = Toast.makeText(getApplicationContext(), "У " + currentName + " истек срок годности: " + currentDate + "\n" + "Cегодня " + today + "\n" + "Пора отправить это на переработку!",
+            Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.u) + currentName + getString(R.string.expiryDateExpired) + currentDate + "\n" + getString(R.string.now) + today + "\n" + getString(R.string.sendForRecycling),
                     Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
@@ -144,16 +145,16 @@ public class MyCosmeticsActivity extends AppCompatActivity {
                     nameIndex = seedate.getColumnIndex(COLUMN_NAME);
                     name = seedate.getString(nameIndex);
                     nameSeeDateProduct.add(name);
-                    map.put("line1", name);
+                    map.put(Constants.LINE_ONE, name);
 
                     dateIndex = seedate.getColumnIndex(COLUMN_DATE);
                     Date = seedate.getLong(dateIndex);
                     DatenewFormat = DateUtils.formatDateTime(this, Date, DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR);
                     seeDateProduct.add(DatenewFormat);
-                    map.put("line2", DatenewFormat);
+                    map.put(Constants.LINE_TWO, DatenewFormat);
                     items.add(map);
 
-                    myRef.child("UserCosmetics").child(nameUserProduct).setValue(new UserCosmetics(name, Date));
+                    myRef.child(Constants.USER_COSMETICS).child(nameUserProduct).setValue(new UserCosmetics(name, Date));
                 }
                 numberCountNameUserProduct++;
                 stringCountNameUserProduct = Integer.toString(numberCountNameUserProduct);

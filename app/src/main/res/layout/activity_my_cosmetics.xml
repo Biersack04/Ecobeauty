@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/item_normal"
+    android:orientation="vertical"
     tools:context=".mycosmetics.MyCosmeticsActivity">
 
 
@@ -18,21 +17,20 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:divider="@color/Divider"
-        android:dividerHeight="10.0sp"
+        android:dividerHeight="3sp"
         android:listSelector="@drawable/list_selector"
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:layout_constraintBottom_toTopOf="@+id/container_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        ></ListView>
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textAbout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
         android:gravity="center"
         android:text="@string/cosmeticMain"
@@ -41,23 +39,24 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="54dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/left_back"
         android:onClick="goHome"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/container_layout"
@@ -65,6 +64,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -72,21 +72,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
-            android:layout_margin="32dp"
+            android:layout_margin="36dp"
             android:backgroundTint="@color/beige"
             android:clickable="true"
             android:onClick="add"
             android:src="@drawable/ic_baseline_add_24"
+<<<<<<< HEAD
+            app:backgroundTint="@color/beige"
+=======
+            app:backgroundTint="@color/bg_login"
+>>>>>>> master
             app:rippleColor="#99FFFFFF" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/cosmbuttom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom|left"
+            android:layout_marginBottom="50dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginVertical="50dp"
-            android:background="@drawable/ic_home"
-            />
+            android:background="@drawable/ic_home" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/wishbuttom"
@@ -94,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="55dp"
+            android:layout_marginBottom="50dp"
             android:background="@drawable/ic_person"
             android:onClick="goWish" />
 
@@ -102,28 +107,23 @@
             android:id="@+id/сosmtext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cosmetics"
-            android:textColor="@color/lightGrey"
+            android:layout_gravity="bottom|left"
+            android:layout_marginVertical="55dp"
             android:layout_marginLeft="60dp"
-            android:layout_marginVertical="60dp"
-            />
+            android:text="@string/cosmetics"
+            android:textColor="@color/lightGrey" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/wishtext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/wish"
-            android:textColor="@color/darkGrey"
-            android:layout_marginRight="70dp"
-            android:layout_marginVertical="60dp"
             android:layout_gravity="bottom|right"
+            android:layout_marginVertical="55dp"
+            android:layout_marginRight="60dp"
             android:onClick="goWish"
-            />
+            android:text="@string/wish"
+            android:textColor="@color/darkGrey" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
