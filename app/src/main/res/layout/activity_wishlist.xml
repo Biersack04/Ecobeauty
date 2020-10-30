@@ -38,9 +38,13 @@
         fab:menu_backgroundColor="#ccffffff"
         fab:menu_colorNormal="@color/beige"
 <<<<<<< HEAD
+<<<<<<< HEAD
         fab:menu_colorPressed="@color/bg_login"
 =======
 >>>>>>> master
+=======
+        fab:menu_colorPressed="@color/bg_login"
+>>>>>>> Fedotova
         fab:menu_colorRipple="#99FFFFFF"
         fab:menu_labels_colorNormal="#696969"
         fab:menu_labels_colorPressed="#696969"

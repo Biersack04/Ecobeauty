@@ -55,7 +55,7 @@ public class MyCosmeticsActivity extends AppCompatActivity {
     FirebaseUser user;
     FirebaseDatabase database;
     Long Date, idСheck, millis;
-    TextView myCosmetics;
+    TextView myCosmetics, cosmText, wishText;
 
 
     @Override
@@ -65,6 +65,12 @@ public class MyCosmeticsActivity extends AppCompatActivity {
 
         myCosmetics = (TextView) findViewById(R.id.textAbout);
         myCosmetics.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+        cosmText = (TextView) findViewById(R.id.сosmtext);
+        wishText = (TextView) findViewById(R.id.wishtext);
+
+        myCosmetics.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+        cosmText.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
+        wishText.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
 
         userList = (ListView) findViewById(R.id.list);
 

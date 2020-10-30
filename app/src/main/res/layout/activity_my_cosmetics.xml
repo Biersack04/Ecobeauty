@@ -31,7 +31,8 @@
         android:id="@+id/textAbout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="43dp"
         android:gravity="center"
         android:text="@string/cosmeticMain"
         android:textColor="@color/darkGrey"
@@ -51,7 +52,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="50dp"
-        android:background="@drawable/left_back"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/ic_left_back"
         android:onClick="goHome"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +79,7 @@
             android:clickable="true"
             android:onClick="add"
             android:src="@drawable/ic_baseline_add_24"
-            app:backgroundTint="@color/beige"
+            app:backgroundTint="@color/bg_login"
             app:rippleColor="#99FFFFFF" />
 
         <androidx.appcompat.widget.AppCompatImageButton
