@@ -12,12 +12,12 @@
         android:id="@+id/textView8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:text="@string/checkSkinType"
         android:textColor="@color/darkGrey"
-        android:textSize="20sp"
+        android:textSize="@dimen/dim_title"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,11 +28,11 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="387dp"
-        android:layout_height="191dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -46,15 +46,19 @@
             android:layout_height="wrap_content"
             android:text="@string/normalText"
             android:textColor="@color/darkGrey"
-            android:textSize="20sp" />
+            android:layout_marginTop="24dp"
+            android:textSize="@dimen/dim_title"
+         />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/radioButtonTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/fatText"
+            android:layout_marginTop="12dp"
             android:textColor="@color/darkGrey"
-            android:textSize="20sp" />
+            android:textSize="@dimen/dim_title"
+             />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/radioButtonThird"
@@ -62,7 +66,9 @@
             android:layout_height="wrap_content"
             android:text="@string/dryText"
             android:textColor="@color/darkGrey"
-            android:textSize="20sp" />
+            android:layout_marginTop="12dp"
+            android:textSize="@dimen/dim_title"
+            />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/radioButtonFour"
@@ -70,17 +76,18 @@
             android:layout_height="wrap_content"
             android:text="@string/combinedText"
             android:textColor="@color/darkGrey"
-            android:textSize="20sp" />
+            android:layout_marginTop="12dp"
+            android:textSize="@dimen/dim_title"
+            />
     </RadioGroup>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/capture"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="@color/beige"
         android:text="@string/scan"
         android:textColor="@color/white"
-        android:textSize="@dimen/dim_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"

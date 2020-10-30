@@ -3,6 +3,7 @@ package com.example.ecobeauty.mydeparture;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -36,6 +37,8 @@ public class SkinTypeActivity extends Activity {
         classifier = new Classifier(Utils.assetFilePath(this, Constants.NETWORK_FILE));
 
         capture = findViewById(R.id.capture);
+        capture.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+
         capture.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
