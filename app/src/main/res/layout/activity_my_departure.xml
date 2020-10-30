@@ -9,14 +9,14 @@
 
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView6"
+        android:id="@+id/myDepTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:gravity="center"
         android:text="@string/myCare"
-        android:textColor="@color/darkGrey"
         android:textSize="@dimen/dim_title"
+        android:textColor="@color/darkGrey"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="50dp"
-        android:background="@drawable/left_back"
+        android:background="@drawable/ic_left_back"
         android:onClick="onBackOnClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,13 +42,12 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button2"
+        android:id="@+id/buttonDeparture"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:onClick="onTypeSkin"
         android:text="@string/changeTypeSkins"
         android:textColor="@color/white"
-        android:textSize="@dimen/dim_button"
         app:backgroundTint="@color/beige"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,34 +58,33 @@
 
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/typeSkin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/youSkinType"
         android:textColor="@color/darkGrey"
-        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.687"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/myDepTitle"
         app:layout_constraintVertical_bias="0.014" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textView12"
+        android:id="@+id/numDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:text="@string/dayDeparture"
         android:textColor="@color/darkGrey"
-        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/myDepTitle"
         app:layout_constraintVertical_bias="0.014" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -96,28 +94,27 @@
         android:textAlignment="center"
         android:textColor="@color/step"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintBottom_toTopOf="@+id/morningMsg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.71"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
         app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textView10"
+        android:id="@+id/morningMsg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="20dp"
         android:text="@string/morning"
+        android:textSize="@dimen/dim_title"
         android:textColor="@color/darkGrey"
-        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/myDepTitle" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMainMorning"
@@ -126,13 +123,13 @@
         android:clipToPadding="false"
         android:onClick="positionAction"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintBottom_toTopOf="@+id/eveningMsg"
+        app:layout_constraintTop_toBottomOf="@+id/morningMsg"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textView11"
+        android:id="@+id/eveningMsg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -140,9 +137,9 @@
         android:layout_marginBottom="264dp"
         android:text="@string/evening"
         android:textColor="@color/darkGrey"
-        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        android:textSize="@dimen/dim_title"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDeparture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
@@ -154,7 +151,7 @@
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/eveningMsg"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -168,11 +165,10 @@
         android:textColor="@color/step"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintEnd_toStartOf="@+id/textView9"
+        app:layout_constraintBottom_toTopOf="@+id/morningMsg"
         app:layout_constraintHorizontal_bias="0.329"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/numDay"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

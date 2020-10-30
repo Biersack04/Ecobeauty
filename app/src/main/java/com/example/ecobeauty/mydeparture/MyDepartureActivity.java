@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -28,7 +30,7 @@ import java.util.List;
 
 public class MyDepartureActivity<view> extends Activity implements RecyclerAdapter.ClickListener,View.OnClickListener{
 
-    private TextView typeSkin, motivCountText;
+    private TextView typeSkin, motivCountText,  titleName, nameDay, typeSkinMsg, morning, evening;;
     private DatabaseHelper3 databaseHelper;
     private SQLiteDatabase db;
     private Cursor cursorPeriod;
@@ -48,14 +50,33 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
     private Calendar calendar;
     private SimpleDateFormat simpleDateFormat;
     private View viewRecyclerMorning;
+    private Button myDeparture;
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_departure);
+
         typeSkin = findViewById(R.id.textTypeSkin);
         motivCountText = findViewById(R.id.textMotivCount);
+        myDeparture = findViewById(R.id.buttonDeparture);
+        titleName = findViewById(R.id.myDepTitle);
+        nameDay = findViewById(R.id.numDay);
+        typeSkinMsg = findViewById(R.id.typeSkin);
+        morning = findViewById(R.id.morningMsg);
+        evening = findViewById(R.id.eveningMsg);
+
+
+        typeSkin.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
+        myDeparture.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+        titleName.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+        nameDay.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
+        typeSkinMsg.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
+        morning.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+        evening.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+
+        skinType ="";
 
         arguments = getIntent().getExtras();
         if(arguments != null) {
@@ -102,7 +123,7 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
         sPref = getPreferences(MODE_PRIVATE);
         motivCount = sPref.getInt(Constants.MOTIV_COUNT, 0);
         motivCountText.setText(Integer.toString(motivCount));
-        Motivation();
+        motivation();
 
     }
 
@@ -272,7 +293,7 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
 
     }
 
-    public boolean CheckAll() {
+    public boolean checkAll() {
         dbHandler = new DBSQLiteHandler(getApplicationContext());
         wordsListFavourite = dbHandler.getWords();
         if (wordsListFavourite.size()>=mRecyclerAdapterMorning.getItemCount() && wordsListFavourite.size()!=0)
@@ -290,14 +311,14 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
     }
 
 
-    public void Motivation(){
+    public void motivation(){
         sPref = getPreferences(MODE_PRIVATE);
         dateSH = sPref.getString(Constants.SAVED_DATE_CHECKALL, Constants.NULL);
         simpleDateFormat = new SimpleDateFormat(Constants.SIMPLE_DATE_FORMAT);
         calendar  = Calendar.getInstance();
         calendar.add(Calendar.DATE, -1);
         today = simpleDateFormat.format(calendar.getTime());
-        if (CheckAll() && dateSH.equals(today)){ // ну тут я просто проверяла условие на выполнено всё
+        if (checkAll() && dateSH.equals(today)){
             motivCount++;
             editor = sPref.edit();
             editor.putInt(Constants.MOTIV_COUNT, motivCount);
