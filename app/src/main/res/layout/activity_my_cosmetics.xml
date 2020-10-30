@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="43dp"
         android:gravity="center"
         android:text="@string/cosmeticMain"
         android:textColor="@color/darkGrey"
@@ -49,9 +49,9 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"
-        android:background="@drawable/left_back"
+        android:background="@drawable/ic_left_back"
         android:onClick="goHome"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +76,7 @@
             android:clickable="true"
             android:onClick="add"
             android:src="@drawable/ic_baseline_add_24"
+            app:backgroundTint="@color/bg_login"
             app:rippleColor="#99FFFFFF" />
 
         <androidx.appcompat.widget.AppCompatImageButton
@@ -93,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="55dp"
+            android:layout_marginBottom="58dp"
             android:background="@drawable/ic_person"
             android:onClick="goWish" />
 

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ecobeauty.R;
@@ -28,11 +30,23 @@ public class CheckCompositionActivity extends Activity {
     EditText editText;
     Button button;
     ListView listView;
+    TextView checkCompos, textMsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_composition);
+
+        editText = findViewById(R.id.structure);
+        button = findViewById(R.id.check);
+        listView = findViewById(R.id.listView);
+        checkCompos = findViewById(R.id.checkCompos);
+        textMsg = findViewById(R.id.textMsgAboutCheck);
+
+        button.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+        checkCompos.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
+        textMsg.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
+
 
         mDBHelper = new DatabaseHelper(this);
 
@@ -48,9 +62,7 @@ public class CheckCompositionActivity extends Activity {
             throw mSQLException;
         }
 
-        editText = findViewById(R.id.structure);
-        button = findViewById(R.id.check);
-        listView = findViewById(R.id.listView);
+
 
         final ArrayList<HashMap<String, Object>> comp1 = new ArrayList<HashMap<String, Object>>();
 
