@@ -20,10 +20,7 @@
         android:layout_margin="28dp"
         android:elevation="1dp"
         fab:fab_colorNormal="@color/beige"
-<<<<<<< HEAD
         fab:fab_colorPressed="@color/bg_login"
-=======
->>>>>>> master
         fab:fab_colorRipple="#99FFFFFF"
         fab:fab_shadowColor="#696969"
         fab:fab_showShadow="true"
@@ -37,14 +34,7 @@
         fab:layout_constraintVertical_bias="1.0"
         fab:menu_backgroundColor="#ccffffff"
         fab:menu_colorNormal="@color/beige"
-<<<<<<< HEAD
-<<<<<<< HEAD
         fab:menu_colorPressed="@color/bg_login"
-=======
->>>>>>> master
-=======
-        fab:menu_colorPressed="@color/bg_login"
->>>>>>> Fedotova
         fab:menu_colorRipple="#99FFFFFF"
         fab:menu_labels_colorNormal="#696969"
         fab:menu_labels_colorPressed="#696969"
