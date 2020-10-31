@@ -11,6 +11,7 @@ import android.text.format.DateUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -55,7 +56,8 @@ public class MyCosmeticsActivity extends AppCompatActivity {
     FirebaseUser user;
     FirebaseDatabase database;
     Long Date, idСheck, millis;
-    TextView myCosmetics, cosmText, wishText;
+    TextView myCosmetics, cosmText, wishText, textEmptyList;
+    ImageView emptyList;
 
 
     @Override
@@ -67,10 +69,13 @@ public class MyCosmeticsActivity extends AppCompatActivity {
         myCosmetics.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
         cosmText = (TextView) findViewById(R.id.сosmtext);
         wishText = (TextView) findViewById(R.id.wishtext);
+        emptyList = (ImageView) findViewById(R.id.emptyList);
+        textEmptyList= (TextView) findViewById(R.id.textEmptyList);
 
         myCosmetics.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
         cosmText.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
         wishText.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
+        textEmptyList.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
 
         userList = (ListView) findViewById(R.id.list);
 
@@ -132,6 +137,10 @@ public class MyCosmeticsActivity extends AppCompatActivity {
 
         if (userCursor.getCount() >= 1) {
 
+            emptyList.setVisibility(View.GONE);
+            textEmptyList.setVisibility(View.GONE);
+            userList.setVisibility(View.VISIBLE);
+
             numberCountNameUserProduct = 0;
             items = new ArrayList<>();
             seedate = db.rawQuery("select * from " + DatabaseHelper2.TABLE + " order by " + DatabaseHelper2.COLUMN_NAME, null, null);
@@ -171,6 +180,9 @@ public class MyCosmeticsActivity extends AppCompatActivity {
         } else if (userCursor.getCount() == 0) {
             items = new ArrayList<>();
             map = new HashMap<>();
+            userList.setVisibility(View.GONE);
+            emptyList.setVisibility(View.VISIBLE);
+            textEmptyList.setVisibility(View.VISIBLE);
         }
 
         ListAdapter adapter = new SimpleAdapter(this, items, android.R.layout.simple_list_item_2, keys, controlIds);
