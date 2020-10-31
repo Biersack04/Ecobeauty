@@ -30,8 +30,11 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private Button btnSignup, btnLogin, btnReset;
     private ImageView lipstickImageView, eyeshadowImageView, blushImageView, brushImageView, mascaraImageView;
-    private final String email = inputEmail.getText().toString();
-    private final String password = inputPassword.getText().toString();
+    private static String email;
+    private static String password;
+
+    public LoginActivity() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_login);
+
         lipstickImageView =  findViewById(R.id.lipstick);
         eyeshadowImageView =  findViewById(R.id.eyeshadow);
         blushImageView = findViewById(R.id.blush);
@@ -61,6 +65,12 @@ public class LoginActivity extends AppCompatActivity {
         blushImageView.startAnimation(motionUpBlushAnimation);
         brushImageView.startAnimation(motionUpBrushAnimation);
         mascaraImageView.startAnimation(motionUpMascaraAnimation);
+
+        btnSignup = findViewById(R.id.btn_signup);
+        btnLogin= findViewById(R.id.btn_login);
+        btnReset= findViewById(R.id.btn_reset_password);
+
+
         inputEmail = (TextInputEditText) findViewById(R.id.email);
         inputPassword = findViewById(R.id.password);
         btnLogin.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
@@ -91,6 +101,9 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                email = inputEmail.getText().toString();
+                password = inputPassword.getText().toString();
+
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), getString(R.string.inputEmail), Toast.LENGTH_SHORT).show();
