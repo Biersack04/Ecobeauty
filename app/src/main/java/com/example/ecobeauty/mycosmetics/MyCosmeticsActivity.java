@@ -103,6 +103,7 @@ public class MyCosmeticsActivity extends AppCompatActivity {
 
         databaseHelper = new DatabaseHelper2(getApplicationContext());
         user = FirebaseAuth.getInstance().getCurrentUser();
+        Log.i("userFireBase", String.valueOf(user));
         uid = user.getUid();
         database = FirebaseDatabase.getInstance(getString(R.string.dataBase));
         myRef = database.getReference(uid);
