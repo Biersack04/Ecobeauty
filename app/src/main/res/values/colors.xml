@@ -49,6 +49,10 @@
     <color name="lightGrey">#adadad</color>
     <color name="white">#F4F4F4</color>
     <color name="step">#6E0404</color>
+    <color name="green">#28B62E</color>
+    <color name="yellow">#FFD400</color>
+    <color name="orange">#DF8500</color>
+    <color name="red">#C50909</color>
     <color name="Colorless">#00000000</color>
     <color name="transparent">@android:color/transparent</color>
 
