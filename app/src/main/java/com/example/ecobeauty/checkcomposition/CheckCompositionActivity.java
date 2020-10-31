@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -21,6 +23,7 @@ import com.example.ecobeauty.main.Constants;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class CheckCompositionActivity extends Activity {
 
@@ -29,7 +32,10 @@ public class CheckCompositionActivity extends Activity {
     private EditText editText;
     private Button button;
     private ListView listView;
-    private TextView checkCompos, textMsg;
+    private TextView checkCompos, textMsg, stage;
+    private SimpleAdapter adapter;
+    private int number;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +70,31 @@ public class CheckCompositionActivity extends Activity {
 
         final String[] from = Constants.COMPOSITION;
         final int[] to = { R.id.textView, R.id.textView2, R.id.textView3, R.id.textView4};
-        final SimpleAdapter adapter = new SimpleAdapter(this, component, R.layout.adapter_item, from, to);
+
+        adapter = new SimpleAdapter(this, component, R.layout.adapter_item, from, to)
+        {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                stage = view.findViewById(R.id.textView4);
+                number = Integer.parseInt(stage.getText().toString());
+                switch (number) {
+                    case 0: case 1: case 2:
+                        stage.setTextColor(getResources().getColor(R.color.green));
+                        break;
+                    case 3: case 4: case 5:
+                        stage.setTextColor(getResources().getColor(R.color.yellow));
+                        break;
+                    case 6: case 7:
+                        stage.setTextColor(getResources().getColor(R.color.orange));
+                        break;
+                    case 8: case 9: case 10:
+                        stage.setTextColor(getResources().getColor(R.color.red));
+                        break;
+                }
+                return view;
+            }
+        };
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +125,7 @@ public class CheckCompositionActivity extends Activity {
                         editText.setText("");
 
                     } else {
-                        Toast toast = Toast.makeText(getApplicationContext(), R.string.componentsMissing, Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(), R.string.componentsMissing, Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                     }
