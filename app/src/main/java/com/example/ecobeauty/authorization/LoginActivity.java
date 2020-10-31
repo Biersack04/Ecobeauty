@@ -69,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         btnSignup = findViewById(R.id.btn_signup);
         btnLogin= findViewById(R.id.btn_login);
         btnReset= findViewById(R.id.btn_reset_password);
+        progressBar = findViewById(R.id.progressBar);
 
 
         inputEmail = (TextInputEditText) findViewById(R.id.email);
