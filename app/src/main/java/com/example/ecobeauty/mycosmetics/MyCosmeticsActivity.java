@@ -103,7 +103,6 @@ public class MyCosmeticsActivity extends AppCompatActivity {
 
         databaseHelper = new DatabaseHelper2(getApplicationContext());
         user = FirebaseAuth.getInstance().getCurrentUser();
-        Log.i("userFireBase", String.valueOf(user));
         uid = user.getUid();
         database = FirebaseDatabase.getInstance(getString(R.string.dataBase));
         myRef = database.getReference(uid);
@@ -170,18 +169,19 @@ public class MyCosmeticsActivity extends AppCompatActivity {
                     name = seeDate.getString(nameIndex);
                     nameSeeDateProduct.add(name);
                     map.put(Constants.LINE_ONE, name);
-
                     dateIndex = seeDate.getColumnIndex(COLUMN_DATE);
                     Date = seeDate.getLong(dateIndex);
 
                     if (Date == 0)
                     {
                         seeDateProduct.add(" ");
+                        Log.i(" if (Date == 0)", String.valueOf(Date));
+                        DatenewFormat = " ";
                     }
                     else {
                         DatenewFormat = DateUtils.formatDateTime(this, Date, DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR);
+                        Log.i(" if (Date == 0) else", String.valueOf(DatenewFormat));
                         seeDateProduct.add(DatenewFormat);
-
                     }
 
                     map.put(Constants.LINE_TWO, DatenewFormat);
