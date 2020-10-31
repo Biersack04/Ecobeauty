@@ -79,11 +79,10 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/capture"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="@color/beige"
         android:text="@string/scan"
         android:textColor="@color/white"
-        android:textSize="@dimen/dim_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
