@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -21,16 +23,19 @@ import com.example.ecobeauty.main.Constants;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class CheckCompositionActivity extends Activity {
 
     private DatabaseHelper mDBHelper;
     private SQLiteDatabase mDb;
+    private EditText editText;
+    private Button button;
+    private ListView listView;
+    private TextView checkCompos, textMsg, stage;
+    private SimpleAdapter adapter;
+    private int number;
 
-    EditText editText;
-    Button button;
-    ListView listView;
-    TextView checkCompos, textMsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +52,6 @@ public class CheckCompositionActivity extends Activity {
         checkCompos.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
         textMsg.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoRegular)));
 
-
         mDBHelper = new DatabaseHelper(this);
 
         try {
@@ -62,19 +66,39 @@ public class CheckCompositionActivity extends Activity {
             throw mSQLException;
         }
 
-
-
         final ArrayList<HashMap<String, Object>> component = new ArrayList<HashMap<String, Object>>();
 
         final String[] from = Constants.COMPOSITION;
         final int[] to = { R.id.textView, R.id.textView2, R.id.textView3, R.id.textView4};
-        final SimpleAdapter adapter = new SimpleAdapter(this, component, R.layout.adapter_item, from, to);
+
+        adapter = new SimpleAdapter(this, component, R.layout.adapter_item, from, to)
+        {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                stage = view.findViewById(R.id.textView4);
+                number = Integer.parseInt(stage.getText().toString());
+                switch (number) {
+                    case 0: case 1: case 2:
+                        stage.setTextColor(getResources().getColor(R.color.green));
+                        break;
+                    case 3: case 4: case 5:
+                        stage.setTextColor(getResources().getColor(R.color.yellow));
+                        break;
+                    case 6: case 7:
+                        stage.setTextColor(getResources().getColor(R.color.orange));
+                        break;
+                    case 8: case 9: case 10:
+                        stage.setTextColor(getResources().getColor(R.color.red));
+                        break;
+                }
+                return view;
+            }
+        };
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                ListView listView = findViewById(R.id.listView);
 
                 HashMap<String, Object> client;
 
@@ -82,8 +106,8 @@ public class CheckCompositionActivity extends Activity {
                 product = product.toUpperCase();
                 String[] words = product.split(getString(R.string.split));
 
-                for (String a : words) {
-                    Cursor cursor = mDb.rawQuery("SELECT * FROM comp1 WHERE name =?", new String[]{a});
+                for (String comp : words) {
+                    Cursor cursor = mDb.rawQuery("SELECT * FROM comp1 WHERE name =?", new String[]{comp});
                     cursor.moveToFirst();
 
                     if (cursor.getCount() != 0) {
@@ -101,7 +125,7 @@ public class CheckCompositionActivity extends Activity {
                         editText.setText("");
 
                     } else {
-                        Toast toast = Toast.makeText(getApplicationContext(), R.string.componentsMissing, Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(), R.string.componentsMissing, Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                     }
