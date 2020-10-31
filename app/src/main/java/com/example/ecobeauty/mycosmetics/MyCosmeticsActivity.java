@@ -1,13 +1,16 @@
 package com.example.ecobeauty.mycosmetics;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -43,7 +46,7 @@ public class MyCosmeticsActivity extends AppCompatActivity {
     ListView userList;
     DatabaseHelper2 databaseHelper;
     SQLiteDatabase db;
-    Cursor userCursor, seedate, check, checkDate;
+    Cursor userCursor, seeDate, check, checkDate;
     ArrayList<String> nameCheckedProduct, nameSeeDateProduct, seeDateProduct;
     List<Map<String, String>> items;
     String[] keys = {Constants.LINE_ONE, Constants.LINE_TWO};
@@ -58,6 +61,8 @@ public class MyCosmeticsActivity extends AppCompatActivity {
     Long Date, idСheck, millis;
     TextView myCosmetics, cosmText, wishText, textEmptyList;
     ImageView emptyList;
+    Toast toast;
+    ListAdapter adapter;
 
 
     @Override
@@ -104,6 +109,7 @@ public class MyCosmeticsActivity extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onResume() {
         super.onResume();
@@ -114,14 +120,15 @@ public class MyCosmeticsActivity extends AppCompatActivity {
 
         checkDate = db.rawQuery("select name,date from " + DatabaseHelper2.TABLE + " where " +
                 DatabaseHelper2.COLUMN_DATE + "<?", new String[]{String.valueOf(millis)});
+
         while (checkDate.moveToNext()) {
+
             currentName = checkDate.getString(0);
             currentDate = DateUtils.formatDateTime(this,
                     checkDate.getLong(1), DateUtils.FORMAT_SHOW_DATE);
             today = DateUtils.formatDateTime(this,
                     millis, DateUtils.FORMAT_SHOW_DATE);
-
-            Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.u) + currentName + getString(R.string.expiryDateExpired) + currentDate + "\n" + getString(R.string.now) + today + "\n" + getString(R.string.sendForRecycling),
+            toast = Toast.makeText(getApplicationContext(), getString(R.string.u) + currentName + getString(R.string.expiryDateExpired) + currentDate + "\n" + getString(R.string.now) + today + "\n" + getString(R.string.sendForRecycling),
                     Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
@@ -129,6 +136,7 @@ public class MyCosmeticsActivity extends AppCompatActivity {
             toast.show();
 
         }
+
         checkDate.close();
 
         userCursor = db.rawQuery("select * from " + DatabaseHelper2.TABLE + " order by " + DatabaseHelper2.COLUMN_NAME, null, null);
@@ -143,13 +151,13 @@ public class MyCosmeticsActivity extends AppCompatActivity {
 
             numberCountNameUserProduct = 0;
             items = new ArrayList<>();
-            seedate = db.rawQuery("select * from " + DatabaseHelper2.TABLE + " order by " + DatabaseHelper2.COLUMN_NAME, null, null);
+            seeDate = db.rawQuery("select * from " + DatabaseHelper2.TABLE + " order by " + DatabaseHelper2.COLUMN_NAME, null, null);
             seeDateProduct = new ArrayList<String>();
             nameSeeDateProduct = new ArrayList<String>();
 
-            for (int i = 0; i < seedate.getCount(); i++) {
+            for (int i = 0; i < seeDate.getCount(); i++) {
 
-                while (seedate.moveToNext()) {
+                while (seeDate.moveToNext()) {
 
                     numberCountNameUserProduct++;
                     stringCountNameUserProduct = Integer.toString(numberCountNameUserProduct);
@@ -157,27 +165,39 @@ public class MyCosmeticsActivity extends AppCompatActivity {
 
                     map = new HashMap<>();
 
-                    nameIndex = seedate.getColumnIndex(COLUMN_NAME);
-                    name = seedate.getString(nameIndex);
+                    nameIndex = seeDate.getColumnIndex(COLUMN_NAME);
+                    name = seeDate.getString(nameIndex);
                     nameSeeDateProduct.add(name);
                     map.put(Constants.LINE_ONE, name);
 
-                    dateIndex = seedate.getColumnIndex(COLUMN_DATE);
-                    Date = seedate.getLong(dateIndex);
-                    DatenewFormat = DateUtils.formatDateTime(this, Date, DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR);
-                    seeDateProduct.add(DatenewFormat);
+                    dateIndex = seeDate.getColumnIndex(COLUMN_DATE);
+                    Date = seeDate.getLong(dateIndex);
+
+                    if (Date == 0)
+                    {
+                        seeDateProduct.add(" ");
+                    }
+                    else {
+                        DatenewFormat = DateUtils.formatDateTime(this, Date, DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR);
+                        seeDateProduct.add(DatenewFormat);
+
+                    }
+
                     map.put(Constants.LINE_TWO, DatenewFormat);
                     items.add(map);
 
                     myRef.child(Constants.USER_COSMETICS).child(nameUserProduct).setValue(new UserCosmetics(name, Date));
                 }
+
                 numberCountNameUserProduct++;
                 stringCountNameUserProduct = Integer.toString(numberCountNameUserProduct);
                 nameUserProduct = BASIC_NAME_USER_PRODUCT + stringCountNameUserProduct;
             }
+
             numberCountNameUserProduct = 0;
 
         } else if (userCursor.getCount() == 0) {
+
             items = new ArrayList<>();
             map = new HashMap<>();
             userList.setVisibility(View.GONE);
@@ -185,12 +205,13 @@ public class MyCosmeticsActivity extends AppCompatActivity {
             textEmptyList.setVisibility(View.VISIBLE);
         }
 
-        ListAdapter adapter = new SimpleAdapter(this, items, android.R.layout.simple_list_item_2, keys, controlIds);
+        adapter = new SimpleAdapter(this, items, android.R.layout.simple_list_item_2, keys, controlIds);
         userList.setAdapter(adapter);
     }
 
 
     public Long check(String name) {
+
         idСheck = Long.valueOf(0);
 
         db = databaseHelper.getReadableDatabase();

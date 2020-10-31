@@ -37,6 +37,7 @@ public class UserActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_user);
 
         nameBox = (EditText) findViewById(R.id.name);

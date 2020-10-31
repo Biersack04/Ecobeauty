@@ -20,7 +20,7 @@
         android:layout_margin="28dp"
         android:elevation="1dp"
         fab:fab_colorNormal="@color/beige"
-        fab:fab_colorPressed="@color/bg_login"
+        fab:fab_colorPressed="@color/beige"
         fab:fab_colorRipple="#99FFFFFF"
         fab:fab_shadowColor="#696969"
         fab:fab_showShadow="true"
@@ -32,9 +32,9 @@
         fab:layout_constraintStart_toStartOf="parent"
         fab:layout_constraintTop_toTopOf="parent"
         fab:layout_constraintVertical_bias="1.0"
-        fab:menu_backgroundColor="#ccffffff"
+        fab:menu_backgroundColor="@color/Colorless"
         fab:menu_colorNormal="@color/beige"
-        fab:menu_colorPressed="@color/bg_login"
+        fab:menu_colorPressed="@color/beige"
         fab:menu_colorRipple="#99FFFFFF"
         fab:menu_labels_colorNormal="#696969"
         fab:menu_labels_colorPressed="#696969"
@@ -53,7 +53,7 @@
             android:onClick="add"
             android:src="@drawable/ic_baseline_add_24"
             fab:fab_colorNormal="@color/beige"
-            fab:fab_colorPressed="@color/bg_login"
+            fab:fab_colorPressed="@color/beige"
             fab:fab_label="@string/add"
             fab:fab_size="mini" />
 
@@ -64,7 +64,7 @@
             android:onClick="remove"
             android:src="@drawable/ic_delete"
             fab:fab_colorNormal="@color/beige"
-            fab:fab_colorPressed="@color/bg_login"
+            fab:fab_colorPressed="@color/beige"
             fab:fab_label="@string/remove"
             fab:fab_size="mini" />
 
@@ -75,7 +75,7 @@
             android:onClick="move"
             android:src="@drawable/ic_shopping_cart"
             fab:fab_colorNormal="@color/beige"
-            fab:fab_colorPressed="@color/bg_login"
+            fab:fab_colorPressed="@color/beige"
             fab:fab_label="@string/inCosmetics"
             fab:fab_size="mini" />
 
