@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.example.ecobeauty.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,7 +34,8 @@ public class UserActivity extends Activity {
     DatabaseReference myRef;
     FirebaseDatabase database;
     Calendar dateAndTime;
-    String uid, idFireBase;
+    String uid, idFireBase, nameProduct;
+    ContentValues cv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,10 +107,15 @@ public class UserActivity extends Activity {
 
     public void save(View view){
 
-        ContentValues cv = new ContentValues();
-        cv.put(DatabaseHelper2.COLUMN_NAME, nameBox.getText().toString());
-        cv.put(DatabaseHelper2.COLUMN_DATE, dateAndTime.getTimeInMillis());
-
+        cv = new ContentValues();
+        nameProduct = nameBox.getText().toString();
+        if (nameProduct.equals("")){
+            Toast.makeText(getApplicationContext(), getString(R.string.emptyEditText), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            cv.put(DatabaseHelper2.COLUMN_NAME, nameProduct);
+            cv.put(DatabaseHelper2.COLUMN_DATE, dateAndTime.getTimeInMillis());
+        }
         if (userId > 0) {
 
             db.update(DatabaseHelper2.TABLE, cv, DatabaseHelper2.COLUMN_ID + "=" + userId, null);
