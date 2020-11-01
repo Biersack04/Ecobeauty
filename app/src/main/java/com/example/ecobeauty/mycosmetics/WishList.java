@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import com.example.ecobeauty.R;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.firebase.auth.FirebaseAuth;
@@ -123,14 +125,18 @@ public class WishList extends AppCompatActivity {
 
     public void add(View view) {
 
-
-        db = databaseHelper.getWritableDatabase();
         name = nameEditText.getText().toString();
-        cv = new ContentValues();
-        cv.put(COLUMN_NAME2, name);
-        db.insert(TABLE_W, null, cv);
-        nameEditText.setText("");
-        onResume();
+        if (name.equals("")){
+            Toast.makeText(getApplicationContext(), getString(R.string.emptyEditText), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            db = databaseHelper.getWritableDatabase();
+            cv = new ContentValues();
+            cv.put(COLUMN_NAME2, name);
+            db.insert(TABLE_W, null, cv);
+            nameEditText.setText("");
+            onResume();
+        }
     }
 
 

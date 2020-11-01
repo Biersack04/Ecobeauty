@@ -179,7 +179,6 @@
         android:layout_gravity="bottom|right"
         android:layout_marginVertical="55dp"
         android:layout_marginRight="5dp"
-        android:onClick="goWish"
         android:text="@string/wish"
         android:textColor="@color/lightGrey"
         fab:layout_constraintBottom_toBottomOf="parent"
