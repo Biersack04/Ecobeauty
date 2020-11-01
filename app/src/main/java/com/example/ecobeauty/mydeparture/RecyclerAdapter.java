@@ -35,7 +35,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 
 	DBSQLiteHandler dbHandler;
 	public ArrayList<Word> wordsListDB = new ArrayList<Word>();
-	private static final String LOG_TAG = "myLogs" ;
 
 
 	public RecyclerAdapter(Context con, List<Word> wordsList){
@@ -116,7 +115,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsV
 						starFilled.setBounds(0, 0, 24, 24);
 						imgButtonFavourite.setBackground(starFilled);
 
-						Snackbar.make(view, "Отличная работа!", Snackbar.LENGTH_LONG).setAction("Отменить",new View.OnClickListener() {
+						Snackbar.make(view, R.string.goodJob, Snackbar.LENGTH_LONG).setAction(R.string.cancel,new View.OnClickListener() {
 							
 							@Override
 							public void onClick(View view) {
