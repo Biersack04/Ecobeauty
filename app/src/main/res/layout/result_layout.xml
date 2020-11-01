@@ -32,7 +32,6 @@
         android:text="@string/backUp"
         android:textColor="@color/white"
         app:backgroundTint="@color/beige"
-        android:textSize="@dimen/dim_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
