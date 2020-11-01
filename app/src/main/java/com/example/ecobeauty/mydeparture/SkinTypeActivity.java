@@ -28,6 +28,7 @@ public class SkinTypeActivity extends Activity {
     private Intent cameraIntent, intentToType, intentToMyDepartureActivity;
     private RadioGroup radioGroup;
     private Bundle activityData;
+    private  PresetRadioGroup mSetDurationPresetRadioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +47,6 @@ public class SkinTypeActivity extends Activity {
                 startActivityForResult(cameraIntent,cameraRequestCode);
             }
         });
-
-        PresetRadioGroup mSetDurationPresetRadioGroup;
 
          mSetDurationPresetRadioGroup = (PresetRadioGroup) findViewById(R.id.preset_time_radio_group);
          mSetDurationPresetRadioGroup.setOnCheckedChangeListener(new PresetRadioGroup.OnCheckedChangeListener() {

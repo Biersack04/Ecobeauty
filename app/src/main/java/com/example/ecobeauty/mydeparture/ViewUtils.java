@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ViewUtils {
     private static final AtomicInteger sNextGeneratedId = new AtomicInteger(1);
+    private static int newValue;
 
     @SuppressLint("NewApi")
     public static int generateViewId() {
@@ -17,10 +18,9 @@ public class ViewUtils {
         if (Build.VERSION.SDK_INT < 17) {
             for (; ; ) {
                 final int result = sNextGeneratedId.get();
-                // aapt-generated IDs have the high byte nonzero; clamp to the range under that.
-                int newValue = result + 1;
+                newValue = result + 1;
                 if (newValue > 0x00FFFFFF)
-                    newValue = 1; // Roll over to 1, not 0.
+                    newValue = 1;
                 if (sNextGeneratedId.compareAndSet(result, newValue)) {
                     return result;
                 }

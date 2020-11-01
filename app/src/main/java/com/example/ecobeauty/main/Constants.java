@@ -1,5 +1,7 @@
 package com.example.ecobeauty.main;
 
+import android.graphics.Color;
+
 public class Constants {
     public static String[] IMAGENET_CLASSES = new String[]{"normal","fat","dry","combined"};
     public static final int IMG_SIZE = 224;
@@ -53,9 +55,12 @@ public class Constants {
     public static final String MOTIV_COUNT = "saved_motivation_count";
     public static final String SIMPLE_DATE_FORMAT="MMM dd yyyy";
     public static final String NULL ="null";
-    public static String LINE_ONE =  "line1";
-    public static String LINE_TWO =  "line2";
-    public static String NAME = "name";
-    public static String USER_COSMETICS = "UserCosmetics";
+    public static final String LINE_ONE =  "line1";
+    public static final String LINE_TWO =  "line2";
+    public static final String NAME = "name";
+    public static final String USER_COSMETICS = "UserCosmetics";
+    public static final int DEFAULT_TEXT_COLOR = Color.TRANSPARENT;
+    public static final String LAYOUT_WIDTH = "layout_width";
+    public static final String LAYOUT_HEIGHT = "layout_height";
 }
 
