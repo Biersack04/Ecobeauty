@@ -47,31 +47,31 @@ public class SkinTypeActivity extends Activity {
             }
         });
 
-        radioGroup = findViewById(R.id.radioGroup);
-        radioGroup.clearCheck();
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        PresetRadioGroup mSetDurationPresetRadioGroup;
 
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
+         mSetDurationPresetRadioGroup = (PresetRadioGroup) findViewById(R.id.preset_time_radio_group);
+         mSetDurationPresetRadioGroup.setOnCheckedChangeListener(new PresetRadioGroup.OnCheckedChangeListener() {
+             @Override
+                public void onCheckedChanged(View radioGroup, View radioButton, boolean isChecked, int checkedId) {
+                    switch (checkedId) {
                     case -1:
                         Toast.makeText(getApplicationContext(), R.string.nothingSelected,
                                 Toast.LENGTH_SHORT).show();
                         count+=1;
                         break;
-                    case R.id.radioButtonOne:
+                    case R.id.preset_time_value_button_normal:
                         typeSkin = getString(R.string.normal);
                         count+=1;
                         break;
-                    case R.id.radioButtonTwo:
+                    case R.id.preset_time_value_button_fat:
                         typeSkin = getString(R.string.fat);
                         count+=1;
                         break;
-                    case R.id.radioButtonThird:
+                    case R.id.preset_time_value_button_dry:
                         typeSkin = getString(R.string.dry);
                         count+=1;
                         break;
-                    case R.id.radioButtonFour:
+                    case R.id.preset_time_value_button_combined:
                         typeSkin = getString(R.string.combined);
                         count+=1;
                         break;

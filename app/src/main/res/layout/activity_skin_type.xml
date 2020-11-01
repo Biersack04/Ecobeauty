@@ -26,64 +26,59 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
+    <com.example.ecobeauty.mydeparture.PresetRadioGroup
+        android:id="@+id/preset_time_radio_group"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:weightSum="4"
+        android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.179">
+        app:layout_constraintTop_toTopOf="parent">
 
-
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/radioButtonOne"
+        <com.example.ecobeauty.mydeparture.PresetValueButton
+            android:id="@+id/preset_time_value_button_normal"
+            style="@style/PresetLayoutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/normalText"
-            android:textColor="@color/darkGrey"
-            android:layout_marginTop="24dp"
-            android:textSize="@dimen/dim_title"
-         />
+            android:layout_weight="1"
+            android:background="#cd5c5c"
+            app:presetButtonValueText="@string/normalText" />
 
-
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/radioButtonTwo"
+        <com.example.ecobeauty.mydeparture.PresetValueButton
+            android:id="@+id/preset_time_value_button_fat"
+            style="@style/PresetLayoutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/fatText"
-            android:layout_marginTop="12dp"
-            android:textColor="@color/darkGrey"
-            android:textSize="@dimen/dim_title"
-             />
+            android:layout_weight="1"
+            android:background="#5d8aa8"
+            android:layout_marginTop="14dp"
+            app:presetButtonValueText="@string/fatText" />
 
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/radioButtonThird"
+
+        <com.example.ecobeauty.mydeparture.PresetValueButton
+            android:id="@+id/preset_time_value_button_dry"
+            style="@style/PresetLayoutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/dryText"
-            android:textColor="@color/darkGrey"
-            android:layout_marginTop="12dp"
-            android:textSize="@dimen/dim_title"
-            />
+            android:layout_weight="1"
+            android:background="#d9bc4e"
+            android:layout_marginTop="14dp"
+            app:presetButtonValueText="@string/dryText" />
 
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/radioButtonFour"
+        <com.example.ecobeauty.mydeparture.PresetValueButton
+            android:id="@+id/preset_time_value_button_combined"
+            style="@style/PresetLayoutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/combinedText"
-            android:textColor="@color/darkGrey"
-            android:layout_marginTop="12dp"
-            android:textSize="@dimen/dim_title"
-            />
-    </RadioGroup>
+            android:layout_weight="1"
+            android:background="#7bb14f"
+            android:layout_marginTop="14dp"
+            app:presetButtonValueText="@string/combinedText" />
+    </com.example.ecobeauty.mydeparture.PresetRadioGroup>
 
 
     <com.google.android.material.button.MaterialButton
