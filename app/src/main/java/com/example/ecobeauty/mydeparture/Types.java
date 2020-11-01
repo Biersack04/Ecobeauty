@@ -1,7 +1,9 @@
 package com.example.ecobeauty.mydeparture;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,12 +16,16 @@ public class Types extends AppCompatActivity {
     private TextView text;
     private Intent intentToMyDepartureActivity;
     private Bundle activityData;
+    Button textButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.result_layout);
+        textButton = findViewById(R.id.button3);
+        textButton.setTypeface(Typeface.createFromAsset(getAssets(), getString(R.string.robotoMedium)));
         text = findViewById(R.id.textViewResult);
+
         prediction  = getIntent().getStringExtra(Constants.PRED);
 
         if (prediction.equals(getString(R.string.normal))){
