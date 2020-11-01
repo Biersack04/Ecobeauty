@@ -55,5 +55,8 @@
     <color name="red">#C50909</color>
     <color name="Colorless">#00000000</color>
     <color name="transparent">@android:color/transparent</color>
-
+    <color name="light_grey_semi_transparent">#80313435</color>
+    <color name="gray">#808080</color>
+    <color name="black">#FF000000</color>
+    <color name="green_transparent">#9900FF04</color>
 </resources>
