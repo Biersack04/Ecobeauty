@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#E42B6A"
+            android:background="#cd5c5c"
             app:presetButtonValueText="@string/normalText" />
 
         <com.example.ecobeauty.mydeparture.PresetValueButton
@@ -54,7 +54,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#6074F9"
+            android:background="#5d8aa8"
+            android:layout_marginTop="14dp"
             app:presetButtonValueText="@string/fatText" />
 
 
@@ -64,7 +65,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#F4CA8F"
+            android:background="#d9bc4e"
+            android:layout_marginTop="14dp"
             app:presetButtonValueText="@string/dryText" />
 
         <com.example.ecobeauty.mydeparture.PresetValueButton
@@ -73,7 +75,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#5ABB56"
+            android:background="#7bb14f"
+            android:layout_marginTop="14dp"
             app:presetButtonValueText="@string/combinedText" />
     </com.example.ecobeauty.mydeparture.PresetRadioGroup>
 
