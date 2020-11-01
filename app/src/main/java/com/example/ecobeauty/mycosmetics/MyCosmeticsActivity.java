@@ -175,12 +175,10 @@ public class MyCosmeticsActivity extends AppCompatActivity {
                     if (Date == 0)
                     {
                         seeDateProduct.add(" ");
-                        Log.i(" if (Date == 0)", String.valueOf(Date));
                         DatenewFormat = " ";
                     }
                     else {
                         DatenewFormat = DateUtils.formatDateTime(this, Date, DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR);
-                        Log.i(" if (Date == 0) else", String.valueOf(DatenewFormat));
                         seeDateProduct.add(DatenewFormat);
                     }
 
