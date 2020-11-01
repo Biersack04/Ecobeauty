@@ -115,17 +115,18 @@ public class UserActivity extends Activity {
         else {
             cv.put(DatabaseHelper2.COLUMN_NAME, nameProduct);
             cv.put(DatabaseHelper2.COLUMN_DATE, dateAndTime.getTimeInMillis());
+            if (userId > 0) {
+
+                db.update(DatabaseHelper2.TABLE, cv, DatabaseHelper2.COLUMN_ID + "=" + userId, null);
+
+            } else {
+
+                db.insert(DatabaseHelper2.TABLE, null, cv);
+            }
+
+            goHome();
         }
-        if (userId > 0) {
 
-            db.update(DatabaseHelper2.TABLE, cv, DatabaseHelper2.COLUMN_ID + "=" + userId, null);
-
-        } else {
-
-            db.insert(DatabaseHelper2.TABLE, null, cv);
-        }
-
-        goHome();
     }
 
     public void delete(View view){
