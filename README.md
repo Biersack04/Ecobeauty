@@ -6,7 +6,7 @@
 Это мобильное приложение сочетает в себе онлайн косметичку с контролем срока годности, проверкой состава косметического средства и советчиком по ежедневному уходу с учетом типа кожи.
 
 - [Скачать apk файл](https://yadi.sk/d/U06Em-Hq_vOCqQ).
-- [Посмотреть видео работы приложения](https://drive.google.com/file/d/1723-TiBCIrBdX5iwgTUAniB8gZsiOFaH/view).
+- [Посмотреть видео работы приложения](https://drive.google.com/file/d/1XYZgJidAJNfAmRQXZ1y-1a-aSEa5yJtC/view).
 - Вы так же можете посмотреть [презентационное видео](https://drive.google.com/file/d/1dt3-S3yBxz2Mc18dlRcfPP4kPb2IevQ6/view?usp=sharing).
 
 ## Описание основных функций приложения
