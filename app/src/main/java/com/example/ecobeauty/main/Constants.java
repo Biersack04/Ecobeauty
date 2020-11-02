@@ -13,7 +13,7 @@ public class Constants {
     public static String DB_NAME_ONE = "comp11.db";
     public static String DB_PATH_ONE = "C:\\Users\\Aisov\\AndroidStudioProjects\\Project\\app\\src\\main\\assets";
     public static final int DB_VERSION = 1;
-    public static String DB_NAME_THREE = "uhod1.db";
+    public static String DB_NAME_THREE = "uhod.db";
     public static String DB_PATH_THREE = "C:\\Users\\I.Am.Biersack\\Desktop\\proektAmina\\ecobeauty\\app\\src\\main\\assets";
     public static String DATABASES = "/databases/";
     public static String DATA_DATA = "/data/data/";

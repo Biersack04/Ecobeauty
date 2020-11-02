@@ -159,9 +159,11 @@ public class MyDepartureActivity<view> extends Activity {
         databaseHelper = new DatabaseHelper3(this);
         db = databaseHelper.getReadableDatabase();
         cursorPeriod = db.rawQuery("" +
-                "select name, description " +
-                "from main " +
-                "where type_of_skin = ? and when_= ? ", new String[]{skinType, Period});
+                "select c.name, c.description " +
+                "from type t " +
+                "join main m on t._id=m.type_of_skin " +
+                "join cosm c on m.id_cosm=c._id " +
+                "where m.type_of_skin = (select _id from type where type = ?) and m.when_= ? ", new String[]{skinType, Period});
         countPeriodProduct = cursorPeriod.getCount();
         cursorPeriod.moveToFirst();
 
