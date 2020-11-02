@@ -12,16 +12,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.ecobeauty.R;
 import com.example.ecobeauty.main.Constants;
 import com.example.ecobeauty.main.MainActivity;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,14 +25,14 @@ import java.util.List;
 
 
 
-public class MyDepartureActivity<view> extends Activity implements RecyclerAdapter.ClickListener,View.OnClickListener{
+public class MyDepartureActivity<view> extends Activity {
 
     private TextView typeSkin, motivCountText,  titleName, nameDay, typeSkinMsg, morning, evening;;
     private DatabaseHelper3 databaseHelper;
     private SQLiteDatabase db;
     private Cursor cursorPeriod;
     private int countPeriodProduct=0, motivCount;
-    private String skinType, strWord, strPosition, savedText, today,today2, dateSH, type;
+    private String skinType, savedText, today,today2, dateSH, type;
     private SharedPreferences sPref;
     private RecyclerView mRecyclerViewMorning, mRecyclerViewNight;
     private RecyclerAdapter mRecyclerAdapterMorning, mRecyclerAdapterNight;
@@ -52,10 +48,9 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
     private SimpleDateFormat simpleDateFormat;
     private View viewRecyclerMorning;
     private Button myDeparture;
-    private boolean check;
-    int count =0;
 
-    @SuppressLint("WrongViewCast")
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,57 +132,6 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
 
     }
 
-    @Override
-    public void itemClicked(View view, int position) {
-
-        viewRecyclerMorning =mRecyclerViewMorning.findContainingItemView(view);
-
-        if (viewRecyclerMorning!=null)
-        {
-            Word mapperObject = wordsList1.get(position);
-            // Log.i(TAG, "mapperObject - " + mapperObject);
-
-            Log.i("TAG", "position= " + position);
-
-            String strWord = mapperObject.getWord();
-            String strPOS = mapperObject.getPartOfSpeech();
-            mEditor = mSharedPreferences.edit();
-            mEditor.putString("word", strWord);
-            mEditor.putString("pos", strPOS);
-            // Log.i(TAG, "mEditor - " + mEditor);
-            mEditor.commit();
-
-        }
-        else
-        {
-            Word mapperObject1 = wordsList2.get(position);
-            // Log.i(TAG, "mapperObject - " + mapperObject);
-
-            Log.i("TAG", "position= " + position);
-
-            String strWord1 = mapperObject1.getWord();
-            // Log.i(TAG, "strWord - " + strWord);
-            String strPOS1 = mapperObject1.getPartOfSpeech();
-            // Log.i(TAG, "strPOS - " + strPOS);
-
-            mEditor = mSharedPreferences.edit();
-            mEditor.putString("word", strWord1);
-            mEditor.putString("pos", strPOS1);
-            // Log.i(TAG, "mEditor - " + mEditor);
-            mEditor.commit();
-
-        }
-        /*strWord = mapperObject.getWord();
-        strPosition = mapperObject.getPartOfSpeech();
-        mEditor = mSharedPreferences.edit();
-        mEditor.putString(Constants.WORD, strWord);
-        mEditor.putString(Constants.POS, strPosition);
-        mEditor.commit();*/
-
-
-    }
-
-
 
     private void prepareRecyclerView(String Period) {
         switch (Period) {
@@ -196,7 +140,6 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
                 wordsList1 = new ArrayList<>();
                 mRecyclerAdapterMorning = new RecyclerAdapter(getApplicationContext(), wordsList1);
                 mRecyclerViewMorning.setHasFixedSize(true);
-                mRecyclerAdapterMorning.setListener(this);
                 mRecyclerViewMorning.setItemAnimator(new DefaultItemAnimator());
                 mRecyclerViewMorning.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 mRecyclerViewMorning.setAdapter(mRecyclerAdapterMorning);
@@ -206,7 +149,6 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
                 wordsList2 = new ArrayList<>();
                 mRecyclerAdapterNight = new RecyclerAdapter(getApplicationContext(), wordsList2);
                 mRecyclerViewNight.setHasFixedSize(true);
-                mRecyclerAdapterNight.setListener(this);
                 mRecyclerViewNight.setItemAnimator(new DefaultItemAnimator());
                 mRecyclerViewNight.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 mRecyclerViewNight.setAdapter(mRecyclerAdapterNight);
@@ -246,9 +188,7 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
     @Override
     public void onResume() {
         super.onResume();
-        mRecyclerAdapterMorning.setListener(this);
         mRecyclerViewMorning.setAdapter(mRecyclerAdapterMorning);
-        mRecyclerAdapterNight.setListener(this);
         mRecyclerViewNight.setAdapter(mRecyclerAdapterNight);
     }
 
@@ -327,8 +267,6 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
         startActivity(intent);
     }
 
-    @Override
-    public void onClick(View v) {}
 
     public boolean checkAll() {
         dbHandler = new DBSQLiteHandler(getApplicationContext());
@@ -354,9 +292,6 @@ public class MyDepartureActivity<view> extends Activity implements RecyclerAdapt
         calendar2.add(Calendar.DATE, 0);
         today = simpleDateFormat.format(calendar.getTime());
         today2 = simpleDateFormat.format(calendar2.getTime());
-        Log.i("dateSH", dateSH);
-        Log.i(" today", today);
-        Log.i(" today2", today2);
         if (!dateSH.equals(today2)) {
             if (checkAll() ) {
                 motivCount++;

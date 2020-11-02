@@ -28,8 +28,6 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemsViewHolder>{
 	
 	private List<Word> wordsList;
-	public List<Word> favouriteWords = new ArrayList<Word>();
-	int mPreviousPosition = -1;
 	Context mContext;
 	static ClickListener clickListener;
 
