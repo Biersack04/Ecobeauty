@@ -106,6 +106,11 @@ public class MyDepartureActivity<view> extends Activity {
                 dbHandler = new DBSQLiteHandler(getApplicationContext());
                 db = dbHandler.getReadableDatabase();
                 dbHandler.onUpgrade(db,1,2);
+                motivCount = 0;
+                sPref = getPreferences(MODE_PRIVATE);
+                editor = sPref.edit();
+                editor.putInt(Constants.MOTIV_COUNT, motivCount);
+                editor.apply();
 
             }
         }else{
@@ -276,7 +281,6 @@ public class MyDepartureActivity<view> extends Activity {
 
 
     public void motivation() {
-        int count = 0;
         sPref = getPreferences(MODE_PRIVATE);
         dateSH = sPref.getString(Constants.SAVED_DATE_CHECKALL, Constants.NULL);
         simpleDateFormat = new SimpleDateFormat(Constants.SIMPLE_DATE_FORMAT);
@@ -293,12 +297,18 @@ public class MyDepartureActivity<view> extends Activity {
                 sPref = getPreferences(MODE_PRIVATE);
                 editor = sPref.edit();
                 editor.putString(Constants.SAVED_DATE_CHECKALL, today2);
-            } else {
-                motivCount = 0;
-            }
+                editor.putInt(Constants.MOTIV_COUNT, motivCount);
+            editor.apply();
+        }
+        else if (!checkAll() && today.equals(today2))
+        {
+            motivCount = 0;
+            sPref = getPreferences(MODE_PRIVATE);
             editor = sPref.edit();
             editor.putInt(Constants.MOTIV_COUNT, motivCount);
             editor.apply();
 
         }
+    }
+
     }}
