@@ -13,23 +13,33 @@
 
 **Авторизация**
 При открытии приложения нас приветствует активность со входом. Если вы не были зарегистрирован, можно перейти в активность регистрации, а если забыли пароль, то можно его изменить, используя email указанный при регистрации.
+<br>
 <img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/gif1.gif" width="15%">
-
+<br>
 **Проверка состава**
+<br>
 Активность предназначена для поиска компонентов из состава косметического средства в имеющейся базе данных. Благодаря проверке вы сможете узнать, есть ли в косметике опасные вещества
-<img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/gif2.gif" width="10%">
-
+<br>
+<img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/gif2.gif" width="18%">
+<br>
 **Косметичка**
+<br>
 Активность предназначена для вывода списка товаров, которые пользователь вносит в свою базу данных. Пользователь видит название товара и срок, до которого он годен. По истечении срока годности всплывает специальное уведомление.
-<img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/gif3.gif" width="10%">
-
+<br>
+<img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/gif3.gif" width="18%">
+<br>
 **Желания**
+<br>
 Предназначена для сохранения косметических средств, которые пользователь только планирует приобрести. После преобретения товары можно легко перенести в Косметичку
-<img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/gif4.gif" width="10%">
-
+<br>
+<img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/gif4.gif" width="18%">
+<br>
 **Уход**
+<br>
 Активность поможет пользователям следить за своей ежедневной бьюти-рутиной. После определения типы кожи с помощью AI или после ручного выбора появляестя список рекомендуемых ежедневных процедур.Отмечать их выполнение можно в чек-листе, который ежедневно обновляется. Для мотивации количество дней подряд, когда были выполнены все задания, подсчитываются.
-<img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/gif5.gif" width="10%">
+<br>
+<img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/gif5.gif" width="18%">
+<br>
 ### Авторы
 
 - Авторы проекта: Аисова Амина, Минакина Дарья, Федотова Виктория.
