@@ -1,8 +1,7 @@
-![](https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log1.png)
-![](https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log2.png)
-![](https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log3.png)
-![](https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log4.png)
-![](https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log5.png)
+<img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log1.png" width="15%"> <img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log2.png" width="15%"> <img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log3.png" width="15%"> <img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log4.png" width="15%">
+<h1 align="center">ECOBEAUTY</h1>
+<h2 align="center">
+  
 ## О приложении
 
 Это мобильное приложение сочетает в себе онлайн косметичку с контролем срока годности, проверкой состава косметического средства и советчиком по ежедневному уходу с учетом типа кожи.
