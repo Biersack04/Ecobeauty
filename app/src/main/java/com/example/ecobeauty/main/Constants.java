@@ -23,9 +23,6 @@ public class Constants {
     public static final String KEY_ID = "id";
     public static final String KEY_WORD = "word";
     public static final String KEY_POS = "partofspeech";
-    public static final String NEW_API = "NewApi";
-    public static final String FILLED = "filled";
-    public static final String EMPTY = "empty";
     public static final String NETWORK_FILE= "model_densenet121.pt";
     public static final String DATA = "data";
     public static final String PRED = "pred";

@@ -1,6 +1,6 @@
 package com.example.ecobeauty.mydeparture;
 
-import android.annotation.SuppressLint;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,7 +8,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -159,11 +158,9 @@ public class MyDepartureActivity<view> extends Activity {
         databaseHelper = new DatabaseHelper3(this);
         db = databaseHelper.getReadableDatabase();
         cursorPeriod = db.rawQuery("" +
-                "select c.name, c.description " +
-                "from type t " +
-                "join main m on t._id=m.type_of_skin " +
-                "join cosm c on m.id_cosm=c._id " +
-                "where m.type_of_skin = (select _id from type where type = ?) and m.when_= ? ", new String[]{skinType, Period});
+                "select name, description " +
+                "from main " +
+                "where type_of_skin = ? and when_= ? ", new String[]{skinType, Period});
         countPeriodProduct = cursorPeriod.getCount();
         cursorPeriod.moveToFirst();
 

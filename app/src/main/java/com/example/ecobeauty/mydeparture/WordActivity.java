@@ -1,4 +1,4 @@
-package com.example.ecobeauty.mycosmetics;
+package com.example.ecobeauty.mydeparture;
 
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
