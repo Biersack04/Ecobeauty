@@ -1,7 +1,7 @@
-![](https://github.com/Biersack04/Ecobeauty/raw/master/{path}/log1.png)
-![](https://github.com/Biersack04/Ecobeauty/raw/master/{path}/log2.png)
-![](https://github.com/Biersack04/Ecobeauty/raw/master/{path}/log3.png)
-![](https://github.com/Biersack04/Ecobeauty/raw/master/screenshotslog4.png)
+![](https://github.com/Biersack04/Ecobeauty/raw/master/screenshots/log1.png)
+![](https://github.com/Biersack04/Ecobeauty/raw/master/screenshots/log2.png)
+![](https://github.com/Biersack04/Ecobeauty/raw/master/screenshots/log3.png)
+![](https://github.com/Biersack04/Ecobeauty/raw/master/screenshots/log4.png)
 ![](https://github.com/Biersack04/Ecobeauty/raw/master/screenshots/log5.png)
 ## О приложении
 
