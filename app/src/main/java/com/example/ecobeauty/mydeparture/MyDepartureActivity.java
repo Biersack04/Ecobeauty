@@ -38,15 +38,14 @@ public class MyDepartureActivity<view> extends Activity {
     private RecyclerAdapter mRecyclerAdapterMorning, mRecyclerAdapterNight;
     private List<Word> wordsList1,wordsList2;
     private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor, editor;
+    private SharedPreferences.Editor editor;
     private DBSQLiteHandler dbHandler;
     private ArrayList<Word> wordsListFavourite;
     private Bundle arguments;
-    private Word mapperObject, mapperClass;
+    private Word mapperClass;
     private Intent intent;
     private Calendar calendar, calendar2;
     private SimpleDateFormat simpleDateFormat;
-    private View viewRecyclerMorning;
     private Button myDeparture;
 
 
@@ -160,11 +159,9 @@ public class MyDepartureActivity<view> extends Activity {
         databaseHelper = new DatabaseHelper3(this);
         db = databaseHelper.getReadableDatabase();
         cursorPeriod = db.rawQuery("" +
-                "select c.name, c.description " +
-                "from type t " +
-                "join main m on t._id=m.type_of_skin " +
-                "join cosm c on m.id_cosm=c._id " +
-                "where m.type_of_skin = (select _id from type where type = ?) and m.when_= ? ", new String[]{skinType, Period});
+                "select name, description " +
+                "from main " +
+                "where type_of_skin = ? and when_= ? ", new String[]{skinType, Period});
         countPeriodProduct = cursorPeriod.getCount();
         cursorPeriod.moveToFirst();
 
@@ -273,7 +270,6 @@ public class MyDepartureActivity<view> extends Activity {
         wordsListFavourite = dbHandler.getWords();
         if (wordsListFavourite.size()>=mRecyclerAdapterMorning.getItemCount() && wordsListFavourite.size()!=0)
         {
-
             return true;
         }
         else return false;
@@ -284,7 +280,6 @@ public class MyDepartureActivity<view> extends Activity {
         int count = 0;
         sPref = getPreferences(MODE_PRIVATE);
         dateSH = sPref.getString(Constants.SAVED_DATE_CHECKALL, Constants.NULL);
-        Log.i("dateSH", dateSH);
         simpleDateFormat = new SimpleDateFormat(Constants.SIMPLE_DATE_FORMAT);
         calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, -1);
@@ -292,6 +287,7 @@ public class MyDepartureActivity<view> extends Activity {
         calendar2.add(Calendar.DATE, 0);
         today = simpleDateFormat.format(calendar.getTime());
         today2 = simpleDateFormat.format(calendar2.getTime());
+
         if (!dateSH.equals(today2)) {
             if (checkAll() ) {
                 motivCount++;
