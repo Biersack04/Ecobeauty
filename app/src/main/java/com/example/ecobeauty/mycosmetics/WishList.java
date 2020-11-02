@@ -90,7 +90,7 @@ public class WishList extends AppCompatActivity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
-        database = FirebaseDatabase.getInstance(getString(R.string.dataBase));
+        database = FirebaseDatabase.getInstance("https://ecobeauty2-2c5ec.firebaseio.com/");
         myRef = database.getReference(uid);
         stringCountNameUserWish = Integer.toString(numberCountNameUserWish);
         nameUserWish = BASIC_NAME_USER_WISH + stringCountNameUserWish;
