@@ -18,32 +18,23 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.example.ecobeauty.R;
+import com.example.ecobeauty.main.Constants;
 
 import java.util.ArrayList;
 
 public class PresetValueButton extends RelativeLayout implements RadioCheckable {
-    // Views
-    private TextView mValueTextView, mUnitTextView;
-
-    // Constants
-    public static final int DEFAULT_TEXT_COLOR = Color.TRANSPARENT;
-
-    // Attribute Variables
+    private TextView mValueTextView;
     private String mValue;
     private int mValueTextColor;
     private int mPressedTextColor;
-
-    // Variables
     private Drawable mInitialBackgroundDrawable;
     private OnClickListener mOnClickListener;
     private OnTouchListener mOnTouchListener;
     private boolean mChecked;
     private ArrayList<OnCheckedChangeListener> mOnCheckedChangeListeners = new ArrayList<>();
-
-
-    //================================================================================
-    // Constructors
-    //================================================================================
+    private TypedArray obtainStyledAttributes;
+    private Resources resources;
+    private LayoutInflater inflater;
 
     public PresetValueButton(Context context) {
         super(context);
@@ -70,24 +61,19 @@ public class PresetValueButton extends RelativeLayout implements RadioCheckable 
         setupView();
     }
 
-    //================================================================================
-    // Init & inflate methods
-    //================================================================================
-
     private void parseAttributes(AttributeSet attrs) {
-        TypedArray a = getContext().obtainStyledAttributes(attrs,
+        obtainStyledAttributes = getContext().obtainStyledAttributes(attrs,
                 R.styleable.PresetValueButton, 0, 0);
-        Resources resources = getContext().getResources();
+        resources = getContext().getResources();
         try {
-            mValue = a.getString(R.styleable.PresetValueButton_presetButtonValueText);
-            mValueTextColor = a.getColor(R.styleable.PresetValueButton_presetButtonValueTextColor, resources.getColor(R.color.white));
-            mPressedTextColor = a.getColor(R.styleable.PresetValueButton_presetButtonPressedTextColor, resources.getColor(R.color.black));
+            mValue = obtainStyledAttributes.getString(R.styleable.PresetValueButton_presetButtonValueText);
+            mValueTextColor = obtainStyledAttributes.getColor(R.styleable.PresetValueButton_presetButtonValueTextColor, resources.getColor(R.color.white));
+            mPressedTextColor = obtainStyledAttributes.getColor(R.styleable.PresetValueButton_presetButtonPressedTextColor, resources.getColor(R.color.black));
         } finally {
-            a.recycle();
+            obtainStyledAttributes.recycle();
         }
     }
 
-    // Template method
     private void setupView() {
         inflateView();
         bindView();
@@ -95,24 +81,18 @@ public class PresetValueButton extends RelativeLayout implements RadioCheckable 
     }
 
     protected void inflateView() {
-
-        LayoutInflater inflater = LayoutInflater.from(getContext());
+        inflater = LayoutInflater.from(getContext());
         inflater.inflate(R.layout.custom_preset_button, this, true);
         mValueTextView = (TextView) findViewById(R.id.text_view_value);
         mInitialBackgroundDrawable = getBackground();
-
     }
 
     protected void bindView() {
-       if (mValueTextColor != DEFAULT_TEXT_COLOR) {
+       if (mValueTextColor != Constants.DEFAULT_TEXT_COLOR) {
             mValueTextView.setTextColor(mValueTextColor);
         }
         mValueTextView.setText(mValue);
     }
-
-    //================================================================================
-    // Overriding default behavior
-    //================================================================================
 
     @Override
     public void setOnClickListener(@Nullable OnClickListener l) {
@@ -137,20 +117,14 @@ public class PresetValueButton extends RelativeLayout implements RadioCheckable 
     }
 
     private void onTouchUp(MotionEvent motionEvent) {
-        // Handle user defined click listeners
         if (mOnClickListener != null) {
             mOnClickListener.onClick(this);
         }
     }
-    //================================================================================
-    // Public methods
-    //================================================================================
 
     public void setCheckedState() {
         setBackgroundResource(R.drawable.background_shape_preset_button__pressed);
         mValueTextView.setTextColor(mPressedTextColor);
-
-
     }
 
     public void setNormalState() {
@@ -165,10 +139,6 @@ public class PresetValueButton extends RelativeLayout implements RadioCheckable 
     public void setValue(String value) {
         mValue = value;
     }
-
-    //================================================================================
-    // Checkable implementation
-    //================================================================================
 
     @Override
     public void setChecked(boolean checked) {
@@ -208,10 +178,7 @@ public class PresetValueButton extends RelativeLayout implements RadioCheckable 
         mOnCheckedChangeListeners.remove(onCheckedChangeListener);
     }
 
-    //================================================================================
-    // Inner classes
-    //================================================================================
-    private final class TouchListener implements OnTouchListener {
+     private final class TouchListener implements OnTouchListener {
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {

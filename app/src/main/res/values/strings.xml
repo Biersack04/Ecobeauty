@@ -113,6 +113,6 @@
     <string name="now">\"Cегодня \"</string>
     <string name="sendForRecycling">Пора отправить это на переработку!</string>
     <string name="textEmptyList">Вы еще ничего не добавили</string>
-    <string name="emptyEditText">Вы ничего не ввели!</string>>
+    <string name="emptyEditText">Вы ничего не ввели!</string>
 
 </resources>

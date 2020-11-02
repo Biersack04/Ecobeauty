@@ -12,24 +12,20 @@ import androidx.annotation.IdRes;
 import androidx.annotation.RequiresApi;
 
 import com.example.ecobeauty.R;
+import com.example.ecobeauty.main.Constants;
 
 import java.util.HashMap;
 
 public class PresetRadioGroup extends LinearLayout {
 
-    // Attribute Variables
-    private int mCheckedId = View.NO_ID;
+    private int mCheckedId = View.NO_ID, id;
     private boolean mProtectFromCheckedChange = false;
-    // Variables
     private OnCheckedChangeListener mOnCheckedChangeListener;
     private HashMap<Integer, View> mChildViewsMap = new HashMap<>();
     private PassThroughHierarchyChangeListener mPassThroughListener;
     private RadioCheckable.OnCheckedChangeListener mChildOnCheckedChangeListener;
-
-
-    //================================================================================
-    // Constructors
-    //================================================================================
+    private  TypedArray obtainStyledAttributes;
+    private View checkedView;;
 
     public PresetRadioGroup(Context context) {
         super(context);
@@ -56,32 +52,23 @@ public class PresetRadioGroup extends LinearLayout {
         setupView();
     }
 
-    //================================================================================
-    // Init & inflate methods
-    //================================================================================
-
     private void parseAttributes(AttributeSet attrs) {
-        TypedArray a = getContext().obtainStyledAttributes(attrs,
+        obtainStyledAttributes = getContext().obtainStyledAttributes(attrs,
                 R.styleable.PresetRadioGroup, 0, 0);
         try {
-            mCheckedId = a.getResourceId(R.styleable.PresetRadioGroup_presetRadioCheckedId, View.NO_ID);
+            mCheckedId = obtainStyledAttributes.getResourceId(R.styleable.PresetRadioGroup_presetRadioCheckedId, View.NO_ID);
 
         } finally {
-            a.recycle();
+            obtainStyledAttributes.recycle();
         }
     }
 
-    // Template method
     private void setupView() {
         mChildOnCheckedChangeListener = new CheckedStateTracker();
         mPassThroughListener = new PassThroughHierarchyChangeListener();
         super.setOnHierarchyChangeListener(mPassThroughListener);
     }
 
-
-    //================================================================================
-    // Overriding default behavior
-    //================================================================================
     @Override
     public void addView(View child, int index, ViewGroup.LayoutParams params) {
         if (child instanceof RadioCheckable) {
@@ -101,14 +88,12 @@ public class PresetRadioGroup extends LinearLayout {
 
     @Override
     public void setOnHierarchyChangeListener(OnHierarchyChangeListener listener) {
-        // the user listener is delegated to our pass-through listener
         mPassThroughListener.mOnHierarchyChangeListener = listener;
     }
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        // checks the appropriate radio button as requested in the XML file
         if (mCheckedId != View.NO_ID) {
             mProtectFromCheckedChange = true;
             setCheckedStateForView(mCheckedId, true);
@@ -134,7 +119,6 @@ public class PresetRadioGroup extends LinearLayout {
     }
 
     public void check(@IdRes int id) {
-        // don't even bother
         if (id != View.NO_ID && (id == mCheckedId)) {
             return;
         }
@@ -151,7 +135,6 @@ public class PresetRadioGroup extends LinearLayout {
     }
 
     private void setCheckedStateForView(int viewId, boolean checked) {
-        View checkedView;
         checkedView = mChildViewsMap.get(viewId);
         if (checkedView == null) {
             checkedView = findViewById(viewId);
@@ -168,10 +151,6 @@ public class PresetRadioGroup extends LinearLayout {
     public LayoutParams generateLayoutParams(AttributeSet attrs) {
         return new LayoutParams(getContext(), attrs);
     }
-    //================================================================================
-    // Public methods
-    //================================================================================
-
 
     public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
         mOnCheckedChangeListener = onCheckedChangeListener;
@@ -181,85 +160,53 @@ public class PresetRadioGroup extends LinearLayout {
         return mOnCheckedChangeListener;
     }
 
-
-    //================================================================================
-    // Nested classes
-    //================================================================================
     public static interface OnCheckedChangeListener {
         void onCheckedChanged(View radioGroup, View radioButton, boolean isChecked, int checkedId);
     }
 
     public static class LayoutParams extends LinearLayout.LayoutParams {
-        /**
-         * {@inheritDoc}
-         */
+
         public LayoutParams(Context c, AttributeSet attrs) {
             super(c, attrs);
         }
 
-        /**
-         * {@inheritDoc}
-         */
         public LayoutParams(int w, int h) {
             super(w, h);
         }
 
-        /**
-         * {@inheritDoc}
-         */
         public LayoutParams(int w, int h, float initWeight) {
             super(w, h, initWeight);
         }
 
-        /**
-         * {@inheritDoc}
-         */
         public LayoutParams(ViewGroup.LayoutParams p) {
             super(p);
         }
 
-        /**
-         * {@inheritDoc}
-         */
         public LayoutParams(MarginLayoutParams source) {
             super(source);
         }
 
-        /**
-         * <p>Fixes the child's width to
-         * {@link android.view.ViewGroup.LayoutParams#WRAP_CONTENT} and the child's
-         * height to  {@link android.view.ViewGroup.LayoutParams#WRAP_CONTENT}
-         * when not specified in the XML file.</p>
-         *
-         * @param a          the styled attributes set
-         * @param widthAttr  the width attribute to fetch
-         * @param heightAttr the height attribute to fetch
-         */
         @Override
         protected void setBaseAttributes(TypedArray a,
                                          int widthAttr, int heightAttr) {
 
             if (a.hasValue(widthAttr)) {
-                width = a.getLayoutDimension(widthAttr, "layout_width");
+                width = a.getLayoutDimension(widthAttr, Constants.LAYOUT_WIDTH);
             } else {
                 width = WRAP_CONTENT;
             }
 
             if (a.hasValue(heightAttr)) {
-                height = a.getLayoutDimension(heightAttr, "layout_height");
+                height = a.getLayoutDimension(heightAttr, Constants.LAYOUT_HEIGHT);
             } else {
                 height = WRAP_CONTENT;
             }
         }
     }
 
-    //================================================================================
-    // Inner classes
-    //================================================================================
     private class CheckedStateTracker implements RadioCheckable.OnCheckedChangeListener {
         @Override
         public void onCheckedChanged(PresetValueButton radioGroup, boolean isChecked) {
-            // prevents from infinite recursion
             if (mProtectFromCheckedChange) {
                 return;
             }
@@ -270,8 +217,7 @@ public class PresetRadioGroup extends LinearLayout {
             }
             mProtectFromCheckedChange = false;
 
-
-            int id = radioGroup.getId();
+            id = radioGroup.getId();
             setCheckedId(id, true);
         }
     }
@@ -280,13 +226,9 @@ public class PresetRadioGroup extends LinearLayout {
             ViewGroup.OnHierarchyChangeListener {
         private ViewGroup.OnHierarchyChangeListener mOnHierarchyChangeListener;
 
-        /**
-         * {@inheritDoc}
-         */
         public void onChildViewAdded(View parent, View child) {
             if (parent == PresetRadioGroup.this && child instanceof RadioCheckable) {
-                int id = child.getId();
-                // generates an id if it's missing
+                id = child.getId();
                 if (id == View.NO_ID) {
                     id = ViewUtils.generateViewId();
                     child.setId(id);
@@ -301,10 +243,7 @@ public class PresetRadioGroup extends LinearLayout {
             }
         }
 
-        /**
-         * {@inheritDoc}
-         */
-        public void onChildViewRemoved(View parent, View child) {
+         public void onChildViewRemoved(View parent, View child) {
             if (parent == PresetRadioGroup.this && child instanceof RadioCheckable) {
                 ((RadioCheckable) child).removeOnCheckChangeListener(mChildOnCheckedChangeListener);
             }

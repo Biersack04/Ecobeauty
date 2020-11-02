@@ -67,7 +67,6 @@ public class CheckCompositionActivity extends Activity {
         }
 
         final ArrayList<HashMap<String, Object>> component = new ArrayList<HashMap<String, Object>>();
-
         final String[] from = Constants.COMPOSITION;
         final int[] to = { R.id.textView, R.id.textView2, R.id.textView3, R.id.textView4};
 
