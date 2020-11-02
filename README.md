@@ -1,4 +1,4 @@
-<img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log1.png" width="15%"> <img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log2.png" width="15%"> <img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log3.png" width="15%"> <img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log4.png" width="15%">
+<h1 align="center"> <img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log1.png" width="15%"> <img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log2.png" width="15%"> <img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log3.png" width="15%"> <img src="https://github.com/Biersack04/Ecobeauty/raw/master/screeenshots/log4.png" width="15%"> </h1>
 <h1 align="center">ECOBEAUTY</h1>
   
 ## О приложении
@@ -6,7 +6,7 @@
 Это мобильное приложение сочетает в себе онлайн косметичку с контролем срока годности, проверкой состава косметического средства и советчиком по ежедневному уходу с учетом типа кожи.
 
 - [Скачать apk файл](https://yadi.sk/d/U06Em-Hq_vOCqQ).
-- [Посмотреть видео работы приложения](https://laravel.com/docs/container).
+- [Посмотреть видео работы приложения](https://yadi.sk/d/OFfnHFCeYSdn8w).
 - Вы так же можете посмотреть [презентационное видео](https://drive.google.com/file/d/1dt3-S3yBxz2Mc18dlRcfPP4kPb2IevQ6/view?usp=sharing).
 
 ## Описание основных функций приложения
